@@ -8,7 +8,7 @@ export default function Menu() {
         <span className="navbar-brand">
           <img src={logo} alt="logo Sport See" />
         </span>
-        <button
+        {/* <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -18,7 +18,7 @@ export default function Menu() {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav w-100 d-flex justify-content-evenly">
             <li className="nav-item">
