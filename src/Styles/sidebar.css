@@ -1,0 +1,32 @@
+.sidebar {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 6.5em;
+  background: var(--navBar-bg-color);
+}
+
+.sidebar-item {
+  justify-content: center;
+  display: flex;
+  margin: 1em auto;
+  width: var(--icon-64);
+  height: var(--icon-64);
+  background: var(--icon-bg-activity);
+  border-radius: var(--icon-border-radius);
+}
+
+.copyright {
+  margin: 0;
+  color: white;
+  transform: rotate(-90deg);
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  left: -3rem;
+  bottom: 12.5%;
+}

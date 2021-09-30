@@ -1,0 +1,46 @@
+/*
+Author: Amandine ARIAS;
+Project: Sport See;
+Type: React app;
+Description: Tableau de bord d'analyse de performances sportives;
+First version: 27/09/2021;
+Tags: app, sport, dashboard, performance, health;
+*/
+
+/************ GENERAL ************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+#root {
+  flex-grow: 1;
+}
+
+/************ BODY ************/
+body {
+  box-sizing: border-box;
+  min-width: 1024px;
+  min-height: 780px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+main {
+ margin: 5% 12%;
+}
+
+a {
+  text-decoration: none !important;
+}

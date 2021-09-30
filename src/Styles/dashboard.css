@@ -1,0 +1,9 @@
+.user-name {
+    color: var(--text-user-name);
+}
+
+.welcome-message{
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    font-size: larger;
+}
