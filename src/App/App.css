@@ -4,7 +4,7 @@ Project: Sport See;
 Type: React app;
 Description: Tableau de bord d'analyse de performances sportives;
 First version: 27/09/2021;
-Tags: app, sport, dashboard, performance;
+Tags: app, sport, dashboard, performance, health;
 */
 
 /************ GENERAL ************/
@@ -35,4 +35,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main {
+ margin: 5% 12%;
+}
+
+a {
+  text-decoration: none !important;
 }
