@@ -1,0 +1,50 @@
+.dark {
+  background: var(--dark-bg-color);
+}
+
+.accueil {
+  margin: 0 0;
+}
+
+.accueil header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: var(--dark-bg-color);
+}
+
+.logo {
+  margin-left: 2rem;
+}
+
+.welcome-msg {
+  position: absolute;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.users {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.user {
+  margin: 1rem 5rem;
+}
+
+.avatar {
+  width: 10rem;
+  height: 10rem;
+}
+
+.user-name {
+  margin-top: 1rem;
+  color: var(--text-active-link);
+}
