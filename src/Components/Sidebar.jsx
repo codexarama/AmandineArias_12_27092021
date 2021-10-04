@@ -1,20 +1,18 @@
 import React from 'react';
 import Item from './Items';
-import iconYoga from '../Assets/icon_yoga.svg';
-import iconSwim from '../Assets/icon_swim.svg';
-import iconCycling from '../Assets/icon_cycling.svg';
-import iconBobybuilding from '../Assets/icon_bodybuilding.svg';
-import {data} from '../services/data'
+import Yoga from '../Assets/icon_yoga.svg';
+import Swim from '../Assets/icon_swim.svg';
+import Cycling from '../Assets/icon_cycling.svg';
+import Bobybuilding from '../Assets/icon_bodybuilding.svg';
 import '../Styles/sidebar.css';
 
 export default function Sidebar() {
+  const activity = [Yoga, Swim, Cycling, Bobybuilding];
   return (
     <aside className="sidebar">
-      <Item icon={iconYoga} alt={'yoga icon'} />
-      <Item icon={iconSwim} alt={'swim icon'} />
-      <Item icon={iconCycling} alt={'cycling icon'} />
-      <Item icon={iconBobybuilding} alt={'bodybuilding icon'} />
-      <Item copyright={data.copyright} />
+      {activity.map((sport) => (
+        <Item key={sport} icon={sport} alt={`${sport} icon`} />
+      ))}
     </aside>
   );
 }

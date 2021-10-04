@@ -1,15 +1,23 @@
 import React from 'react';
-import Menu from '../Components/Menu';
-import Accueil from '../Components/Accueil';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Accueil from '../Pages/Accueil';
+import Dashboard from '../Pages/Dashboard';
+// import Bientot from '../Pages/EnConstruction';
+import Erreur from '../Components/Erreur404';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter className="App">
-      <Menu />
       <Switch>
+        {/* page ACCUEIL */}
         <Route exact path="/" component={Accueil} />
+
+        {/* page DASHBOARD */}
+        <Route path="/user/:id" component={Dashboard} />
+
+        {/* page NOT FOUND */}
+        <Route component={Erreur} />
       </Switch>
     </BrowserRouter>
   );

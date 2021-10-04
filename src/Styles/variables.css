@@ -1,6 +1,7 @@
 :root {
   /* BACKGROUND COLORS */
-  --navBar-bg-color: rgb(33, 37, 41);
+  --dark-bg-color : rgb(33, 37, 41);
+  --light-bg-color : #fff;
   --icon-bg-activity: #fff;
   --icon-bg-calories: rgba(255, 0, 0, 0.1);
   --icon-bg-proteins: rgba(74, 184, 255, 0, 1);
@@ -13,9 +14,10 @@
   /* SIZES */
   --icon-64: 64px;
   --icon-32: 32px;
-  
+
   /* TEXT COLORS */
   --text-user-name: #ff0000;
+  --alert: #ff0000;
   --text-active-link: #fff;
   --text-link: grey;
 }

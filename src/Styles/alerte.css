@@ -1,0 +1,42 @@
+.alert-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.info-redirection {
+margin-top: 5rem;
+color: var(--alert);
+}
+
+.error {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 0;
+  color: var(--alert);
+}
+
+.error-number {
+  font-size: 10em;
+  font-weight: 800;
+  text-align: center;
+}
+
+.error-message {
+  font-size: x-large;
+}
+
+.error-back {
+  width: fit-content;
+  height: 2.5rem;
+  margin: auto;
+  padding: 0 0 !important;
+  border-bottom: solid 2px var(--alert);
+  color: var(--alert);
+  font-size: x-small;
+}
