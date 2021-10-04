@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   width: 6.5em;
-  background: var(--navBar-bg-color);
+  background: var(--dark-bg-color);
 }
 
 .sidebar-item {
