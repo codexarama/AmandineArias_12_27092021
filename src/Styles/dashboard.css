@@ -1,3 +1,7 @@
+.light {
+    background: var(--light-bg-color);
+}
+
 .user-name {
     color: var(--text-user-name);
 }
