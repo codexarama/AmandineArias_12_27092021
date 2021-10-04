@@ -1,16 +1,20 @@
 export const getUserById = (userId) => {
   // return new Promise((resolve, reject) => {
-    fetch(`http://localhost:3000/user/${userId}`)
-      .then((result) => result.json())
-      .then((data) => console.log(data));
-      // .then(
-      //   (data) => {
-      //     data.ok ? resolve(data) : reject(new Error('error'));
-      //   },
-      //   (error) => {
-      //     reject(new Error(error.message));
-      //   }
-      // ); // undefined
+  fetch(`http://localhost:3000/user/${userId}`)
+    .then((result) => result.json())
+    .then((data) => {
+      data.find((data) => data.id === userId);
+      // data.map(({...data}) => data.userId)
+    });
+  // .then((data) => console.log(data));
+  // .then(
+  //   (data) => {
+  //     data.ok ? resolve(data) : reject(new Error('error'));
+  //   },
+  //   (error) => {
+  //     reject(new Error(error.message));
+  //   }
+  // ); // undefined
   // });
 };
 
