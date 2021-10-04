@@ -19,3 +19,8 @@
   color: var(--text-active-link);
   border-bottom: 5px solid red;
 }
+
+.nav-link:focus, .nav-link:hover {
+  /* color: unset; */
+  color: var(--text-link);
+}
