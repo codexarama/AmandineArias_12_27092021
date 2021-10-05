@@ -1,0 +1,35 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  position: absolute;
+  right: 0;
+}
+
+.aside-content {
+    background: var(--icon-bg-health);
+    border-radius: var(--icon-border-radius);
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.aside-item {
+    margin-left: 1rem;
+    border-radius: var(--icon-border-radius);
+}
+
+#icone-calories {
+  background: var(--icon-bg-calories);
+}
+
+#icone-protéines {
+  background: var(--icon-bg-proteins);
+}
+
+#icone-glucides {
+  background: var(--icon-bg-carbohydrates);
+}
+
+#icone-lipides {
+  background: var(--icon-bg-lipids);
+}

@@ -3,10 +3,11 @@
   --dark-bg-color : rgb(33, 37, 41);
   --light-bg-color : #fff;
   --icon-bg-activity: #fff;
+  --icon-bg-health: rgba(0, 0, 0, 0.025);
   --icon-bg-calories: rgba(255, 0, 0, 0.1);
-  --icon-bg-proteins: rgba(74, 184, 255, 0, 1);
-  --icon-bg-carbohydrates: rgba(249, 206, 35, 0.1);
-  --icon-bg-lipids: rgba(255, 165, 0, 0.1);
+  --icon-bg-proteins: rgba(74, 184, 255, 0.15);
+  --icon-bg-carbohydrates: rgba(249, 206, 35, 0.2);
+  --icon-bg-lipids: rgba(255, 69, 0, 0.1);
 
   /* SHAPE */
   --icon-border-radius: 0.5rem;

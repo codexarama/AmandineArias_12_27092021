@@ -38,7 +38,8 @@ code {
 }
 
 main {
- margin: 5% 12%;
+  position: relative;
+  margin: 5% 12%;
 }
 
 a {
