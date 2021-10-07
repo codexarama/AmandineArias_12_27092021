@@ -1,6 +1,6 @@
 .sidebar {
   z-index: -1;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   top: 0;
   display: flex;
