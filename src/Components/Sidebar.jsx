@@ -8,14 +8,16 @@ import '../Styles/sidebar.css';
 
 const activities = [Yoga, Swim, Cycling, Bobybuilding];
 
-export default function Sidebar({ activityName }) {
+export default function Sidebar({ activityName, copyright }) {
   activityName = ['yoga', 'natation', 'cyclisme', 'musculation'];
+  copyright = 'Copyright, SportSee 2020';
 
   return (
     <nav className="sidebar">
       {activities.map((icon, index) => (
-        <Items key={index} icon={icon} alt={"icone " + activityName[index]} />
+        <Items key={index} icon={icon} alt={'icone ' + activityName[index]} />
       ))}
+      <span className="copyright">{copyright}</span>
     </nav>
   );
 }
