@@ -9,9 +9,15 @@
     padding: 1rem;
 }
 
-.aside-item {
-    margin-left: 1rem;
-    border-radius: var(--icon-border-radius);
+.aside-content .aside-item {
+  width: 100%;
+  justify-content: flex-start;
+  background: transparent;
+  margin-left: 1.2rem;
+}
+
+.aside-content img {
+  border-radius: var(--icon-border-radius);
 }
 
 #icone-calories {
