@@ -1,6 +1,6 @@
 .sidebar {
   z-index: -1;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   top: 0;
   display: flex;
@@ -11,8 +11,8 @@
 }
 
 .sidebar-item {
-  justify-content: center;
   display: flex;
+  justify-content: center;
   margin: 1em auto;
   width: var(--icon-64);
   height: var(--icon-64);
@@ -30,3 +30,4 @@
   left: -3rem;
   bottom: 12.5%;
 }
+

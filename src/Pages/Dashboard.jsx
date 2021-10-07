@@ -4,6 +4,8 @@ import Navbar from '../Components/Navbar';
 import EnConstruction from './EnConstruction';
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
+import Health from '../Components/Health';
+// import KeyData from '../Components/KeyData';
 import { mock } from '../__MOCK__/mockedData';
 // import GetUserById from '../services/api';
 // import { getUserById } from '../services/api';
@@ -18,7 +20,8 @@ export default function Dashboard() {
   const user = useParams();
   const userId = parseInt(user.id);
   const current = mock.find((data) => data.id === userId);
-  const { userInfos } = current;
+  const { userInfos, msg } = current;
+  // const { userInfos, msg, keyData } = current;
 
   return (
     <>
@@ -33,7 +36,11 @@ export default function Dashboard() {
         <Route path={`${path}`}>
           <Sidebar />
           <main>
-            <Header name={userInfos.firstName} />
+            <Header name={userInfos.firstName} msg={msg} />
+            <section className="performances" >
+              <Health />
+              {/* <KeyData keyData={keyData.calorieCount} /> */}
+            </section>
           </main>
         </Route>
       </Switch>
