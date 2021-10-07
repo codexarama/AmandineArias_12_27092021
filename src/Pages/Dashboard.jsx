@@ -36,10 +36,11 @@ export default function Dashboard() {
         <Route path={`${path}`}>
           <Sidebar />
           <main>
-            <Header name={userInfos.firstName} msg={msg}/>
-            <Health />
-            {/* <KeyData keyData={keyData.calorieCount} /> */}
-
+            <Header name={userInfos.firstName} msg={msg} />
+            <section className="performances" >
+              <Health />
+              {/* <KeyData keyData={keyData.calorieCount} /> */}
+            </section>
           </main>
         </Route>
       </Switch>
