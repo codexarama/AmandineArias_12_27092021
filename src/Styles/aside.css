@@ -1,15 +1,11 @@
 .aside {
-  display: flex;
-  flex-direction: column;
   width: 20%;
-  position: absolute;
-  right: 0;
 }
 
 .aside-content {
     background: var(--icon-bg-health);
     border-radius: var(--icon-border-radius);
-    margin: 1rem 0;
+    margin: 2rem 0;
     padding: 1rem;
 }
 
