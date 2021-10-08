@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import EnConstruction from './EnConstruction';
@@ -6,22 +6,28 @@ import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import Health from '../Components/Health';
 // import KeyData from '../Components/KeyData';
-import { mock } from '../__MOCK__/mockedData';
-// import GetUserById from '../services/api';
-// import { getUserById } from '../services/api';
+import { getUserById } from '../Services/api';
 import '../Styles/dashboard.css';
 
 export default function Dashboard() {
-  // GetUserById(12)
-  // getUserById();
+  const [user, setUser] = useState({});
 
+  // GET PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
 
-  const user = useParams();
-  const userId = parseInt(user.id);
-  const current = mock.find((data) => data.id === userId);
-  const { userInfos, msg } = current;
-  // const { userInfos, msg, keyData } = current;
+  // GET URL PARAMS
+  let params = useParams();
+
+  useEffect(() => {
+    // eslint-disable-next-line
+   let userId = params.id;
+    // React Hook useEffect has a missing dependency: 'params.id'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+    getUserById(userId).then((data) => setUser(data));
+    // eslint-disable-next-line
+  }, []);
+
+  console.log(user);
 
   return (
     <>
@@ -36,10 +42,10 @@ export default function Dashboard() {
         <Route path={`${path}`}>
           <Sidebar />
           <main>
-            <Header name={userInfos.firstName} msg={msg} />
-            <section className="performances" >
+            <Header name={user.userInfos.firstName} />
+            <section className="performances">
               <Health />
-              {/* <KeyData keyData={keyData.calorieCount} /> */}
+              {/* <KeyData data={user.keyData.calorieCount} /> */}
             </section>
           </main>
         </Route>
