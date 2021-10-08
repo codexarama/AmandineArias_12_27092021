@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Navbar from '../Components/Navbar';
 import EnConstruction from './EnConstruction';
 import Sidebar from '../Components/Sidebar';
@@ -10,24 +11,28 @@ import { getUserById } from '../Services/api';
 import '../Styles/dashboard.css';
 
 export default function Dashboard() {
-  const [user, setUser] = useState({});
+  const [data, setData] = useState({});
 
   // GET PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
 
   // GET URL PARAMS
   let params = useParams();
+  let userId = params.id;
+  // La propriété 'id' n'existe pas sur le type '{}'
+
+  // const getData = async () => {
+  //   const user = await getUserById(userId);
+  //   return setData(user);
+  // };
 
   useEffect(() => {
-    // eslint-disable-next-line
-   let userId = params.id;
-    // React Hook useEffect has a missing dependency: 'params.id'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-
-    getUserById(userId).then((data) => setUser(data));
-    // eslint-disable-next-line
+    getUserById(userId).then((user) => setData(user));
+    // getData();
+    // React Hook useEffect has a missing dependency: 'getData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
   }, []);
 
-  console.log(user);
+  console.log(data);
 
   return (
     <>
@@ -42,7 +47,7 @@ export default function Dashboard() {
         <Route path={`${path}`}>
           <Sidebar />
           <main>
-            <Header name={user.userInfos.firstName} />
+            <Header name={data.userInfos.firstName} />
             <section className="performances">
               <Health />
               {/* <KeyData data={user.keyData.calorieCount} /> */}
@@ -52,4 +57,10 @@ export default function Dashboard() {
       </Switch>
     </>
   );
+}
+
+Dashboard.propTypes = {
+  params: PropTypes.object.isRequired,
+  userId: PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired
 }
