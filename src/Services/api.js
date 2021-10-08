@@ -1,36 +1,36 @@
 export const getUserById = (userId) => {
-  // return new Promise((resolve, reject) => {
-  fetch(`http://localhost:3000/user/${userId}`)
-    .then((result) => result.json())
-    .then((data) => {
-      data.find((data) => data.id === userId);
-      // data.map(({...data}) => data.userId)
-    });
-  // .then((data) => console.log(data));
-  // .then(
-  //   (data) => {
-  //     data.ok ? resolve(data) : reject(new Error('error'));
-  //   },
-  //   (error) => {
-  //     reject(new Error(error.message));
-  //   }
-  // ); // undefined
-  // });
+  return new Promise((resolve, reject) => {
+    fetch(`http://localhost:3000/user/${userId}`)
+      .then((result) => result.json())
+      // .then((data) => resolve(data))
+      .then((data) => resolve(data.data))
+      .catch((error) => reject(error));
+  });
 };
 
-// import React, { useEffect, useState } from 'react';
+export const getUserActivity = (userId) => {
+  return new Promise((resolve, reject) => {
+    fetch(`http://localhost:3000/user/${userId}/activity`)
+      .then((result) => result.json())
+      .then((data) => resolve(data.data))
+      .catch((error) => reject(error));
+  });
+};
 
-// const GetUserById = (userId) => {
-//     const [data, setData] = useState(null);
-//     useEffect(() => {
-//       const fetchData = async () => {
-//         const response = await fetch(`http://localhost:3000/user/${userId}`);
-//         const newData = await response.json();
-//         setData(newData);
-//       };
-//       fetchData();
-//     }, [userId, userId.id]);
-//     return data ? <div>{data.name}</div> : null;
-// };
+export const getUserAverage = (userId) => {
+  return new Promise((resolve, reject) => {
+    fetch(`http://localhost:3000/user/${userId}/average-sessions`)
+      .then((result) => result.json())
+      .then((data) => resolve(data.data))
+      .catch((error) => reject(error));
+  });
+};
 
-// export default GetUserById;
+export const getUserPerformance = (userId) => {
+  return new Promise((resolve, reject) => {
+    fetch(`http://localhost:3000/user/${userId}/performance`)
+      .then((result) => result.json())
+      .then((data) => resolve(data.data))
+      .catch((error) => reject(error));
+  });
+};
