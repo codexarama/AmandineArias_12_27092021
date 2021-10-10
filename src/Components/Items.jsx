@@ -11,8 +11,6 @@ import React from 'react';
 
  export default function Items({ index, id, icon, alt }) {
   return (
-    <div key={index} className="sidebar-item aside-item">
-      <img id={id} className="sidebar-icon aside-icon" src={icon} alt={alt} />
-    </div>
+      <img key={index} id={id} className="sidebar-icon aside-icon" src={icon} alt={alt} />
   );
 }

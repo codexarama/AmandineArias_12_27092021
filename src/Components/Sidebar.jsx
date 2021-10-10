@@ -15,7 +15,9 @@ export default function Sidebar({ activityName, copyright }) {
   return (
     <nav className="sidebar">
       {activities.map((icon, index) => (
-        <Items key={index} icon={icon} alt={'icone ' + activityName[index]} />
+        <div className="sidebar-item">
+          <Items key={index} icon={icon} alt={'icone ' + activityName[index]} />
+        </div>
       ))}
       <span className="copyright">{copyright}</span>
     </nav>

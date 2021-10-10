@@ -1,29 +1,10 @@
-// TypeError: keyData.map is not a function
 import React from 'react';
 
-export default function KeyData({ keyData }) {
+export default function KeyData(index, unitType, nutrimentName) {
   return (
-    <ul>
-      {keyData.map((data, index) => (
-        <>
-          <li key={index}>{data} </li>
-        </>
-      ))}
-    </ul>
+    <div key={index} className="aside-keyData">
+      <p>{index + ' ' + unitType}</p>
+      <p>{nutrimentName}</p>
+    </div>
   );
 }
-
-// import React from 'react';
-
-// export default function KeyData({ keyData }) {
-//   return (
-//     <ul>
-//       {keyData.map((data, unit, index) => (
-//         <>
-//           <li key={index}>{data} </li>
-//           <li key={index}>{unit} </li>
-//         </>
-//       ))}
-//     </ul>
-//   );
-// }
