@@ -2,8 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Accueil from '../Pages/Accueil';
 import Dashboard from '../Pages/Dashboard';
-// import Bientot from '../Pages/EnConstruction';
-import Erreur from '../Components/Erreur404';
+import Erreur from '../Pages/Erreur404';
 import './App.css';
 
 function App() {
