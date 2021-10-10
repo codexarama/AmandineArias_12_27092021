@@ -11,13 +11,17 @@ import KeyData from './KeyData';
 
 const nutriments = [Calories, Proteines, Glucides, Lipides];
 
-export default function Health({ nutrimentName, keyData, unitType }) {
+export default function Health({ nutrimentName, keyData, userId, unitType, unit }) {
   nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
-  keyData = mock.map((data) => data.keyData);
-  console.log(keyData);
+
+  // keyData = mock[userId].keyData;
+  // keyData = mock.map((userId) => userId.keyData);
+  // console.log(keyData);
+
   unitType = ['kCal', 'g', 'g', 'g'];
+
   // unitType  = (index, unit) =>  !index === 0 ? (unit === 'g') : (unit === 'kCal')
-  // console.log(unitType());
+  // console.log(unitType(0, unit));
 
   return (
     <aside className="aside">
@@ -28,15 +32,19 @@ export default function Health({ nutrimentName, keyData, unitType }) {
             icon={icon}
             alt={'icone ' + nutrimentName[index]}
           />
+
           {/* < KeyData
             index={index}
             unitType={unitType[index]}
             nutrimentName={nutrimentName[index]}
             /> */}
+
           <div className="aside-keyData">
             <p>{index + ' ' + unitType[index]}</p>
-            {/* <p>{index + ' ' + unitType(index, unit)}</p> */}
             <p>{nutrimentName[index]}</p>
+
+            {/* <p>{index + ' ' + unitType(index, unit)}</p> */}
+            
           </div>
         </div>
       ))}

@@ -10,6 +10,7 @@ import { getUserById } from '../Services/api';
 import '../Styles/dashboard.css';
 
 export default function Dashboard() {
+
   const [data, setData] = useState({});
 
   // GET PATH FOR NESTED ROUTES
@@ -22,7 +23,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getUserById(userId).then((user) => setData(user));
-  }, []);
+  }, [userId]);
 
   console.log(data);
 
@@ -39,7 +40,7 @@ export default function Dashboard() {
         <Route path={`${path}`}>
           <Sidebar />
           <main>
-            <Header name={data.userInfos.firstName} />
+            {/* <Header name={data.userInfos.firstName} /> */}
             <section className="performances">
               <Health />
               {/* <Health data={data.keyData}/> */}
