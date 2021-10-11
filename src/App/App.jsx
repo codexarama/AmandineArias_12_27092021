@@ -16,7 +16,7 @@ function App() {
         <Route path="/user/:id" component={Dashboard} />
 
         {/* page NOT FOUND */}
-        <Route component={Erreur} />
+        <Route path="*" component={Erreur} />
       </Switch>
     </BrowserRouter>
   );
