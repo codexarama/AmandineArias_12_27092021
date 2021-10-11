@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from '../Assets/avatar.svg';
-import '../Styles/accueil.css';
+import Avatar from '../../Assets/avatar.svg';
+import '../../Styles/accueil.css';
 
 export default function User({ id, name }) {
 

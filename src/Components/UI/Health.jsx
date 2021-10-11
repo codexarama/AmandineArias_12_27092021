@@ -1,10 +1,10 @@
 import React from 'react';
 import Icons from './Icons';
-import caloriesIcon from '../Assets/icon_calories.svg';
-import proteinesIcon from '../Assets/icon_proteins.svg';
-import glucidesIcon from '../Assets/icon_carbohydrates.svg';
-import lipidesIcon from '../Assets/icon_lipids.svg';
-import '../Styles/aside.css';
+import caloriesIcon from '../../Assets/icon_calories.svg';
+import proteinesIcon from '../../Assets/icon_proteins.svg';
+import glucidesIcon from '../../Assets/icon_carbohydrates.svg';
+import lipidesIcon from '../../Assets/icon_lipids.svg';
+import '../../Styles/aside.css';
 
 import KeyData from './KeyData';
 
