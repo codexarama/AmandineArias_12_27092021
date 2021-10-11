@@ -1,5 +1,5 @@
 import React from 'react';
-import Items from './Items';
+import Items from './Icons';
 import Yoga from '../Assets/icon_yoga.svg';
 import Swim from '../Assets/icon_swim.svg';
 import Cycling from '../Assets/icon_cycling.svg';
@@ -15,8 +15,8 @@ export default function Sidebar({ activityName, copyright }) {
   return (
     <nav className="sidebar">
       {activities.map((icon, index) => (
-        <div className="sidebar-item">
-          <Items key={index} icon={icon} alt={'icone ' + activityName[index]} />
+        <div key={index} className="sidebar-item">
+          <Items icon={icon} alt={'icone ' + activityName[index]} />
         </div>
       ))}
       <span className="copyright">{copyright}</span>
