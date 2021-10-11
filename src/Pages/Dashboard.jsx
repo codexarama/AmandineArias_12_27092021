@@ -6,7 +6,7 @@ import EnConstruction from './EnConstruction';
 import Navbar from '../Components/UI/Navbar';
 import Sidebar from '../Components/UI/Sidebar';
 import Header from '../Components/UI/Header';
-import DailyActivity from '../Components/USER/DailyActivity';
+import DailyActivity from '../Components/USER/Activity';
 import Health from '../Components/UI/Health';
 
 import { useFetch } from '../Services/api';
