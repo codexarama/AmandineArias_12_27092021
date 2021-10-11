@@ -2,12 +2,12 @@ import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import Erreur404 from './Erreur404';
-import Navbar from '../Components/Navbar';
 import EnConstruction from './EnConstruction';
-import Sidebar from '../Components/Sidebar';
-import Header from '../Components/Header';
-import DailyActivity from '../Components/DailyActivity';
-import Health from '../Components/Health';
+import Navbar from '../Components/UI/Navbar';
+import Sidebar from '../Components/UI/Sidebar';
+import Header from '../Components/UI/Header';
+import DailyActivity from '../Components/USER/DailyActivity';
+import Health from '../Components/UI/Health';
 
 import { useFetch } from '../Services/api';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../Services/api';
-import '../Styles/graphs.css';
+import { useFetch } from '../../Services/api';
+import '../../Styles/graphs.css';
 
 import {
   ResponsiveContainer,
@@ -21,8 +21,8 @@ export default function DailyActivity() {
 
   if (!isLoading) {
     data.sessions.forEach((date) => {
+      // eslint-disable-next-line no-unused-vars
       const [yyyy, mm, dd] = date.day.split('-');
-      // console.log([yyyy]);
       date.name = `${dd}/${mm}`;
     });
     console.log(data);
@@ -50,14 +50,14 @@ export default function DailyActivity() {
             dx={-10}
             dy={-4}
           />
-          <Tooltip wrapperStyle={{ width: 90 }} content={<CustomTooltip />} />
+          <Tooltip wrapperStyle={{ width: 100 }} content={<CustomTooltip />} />
           <Legend
             width={'60%'}
             iconType={'circle'}
             iconSize={'.5rem'}
             wrapperStyle={{
               top: '-15%',
-              right: 0,
+              right: "1rem",
               lineHeight: '40px',
             }}
           />
@@ -87,8 +87,8 @@ export default function DailyActivity() {
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <div className="custom-tooltip">
-      <p className="custom-tooltip--poids">{`${payload[0].value} kg`}</p>
-      <p className="custom-tooltip--calories">{`${payload[1].value} kCal`}</p>
+      <p className="custom-tooltip--calories">{`${payload[1].value} kg`}</p>
+      <p className="custom-tooltip--poids">{`${payload[0].value} kCal`}</p>
     </div>
   ) : null;
 }

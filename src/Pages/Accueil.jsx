@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../Assets/logo.svg';
 import { mock } from '../Services/genericData';
-import User from '../Components/User';
+import User from '../Components/USER/User';
 import '../Styles/accueil.css';
 
 export default function Accueil() {

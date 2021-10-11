@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink, useRouteMatch } from 'react-router-dom';
-import logo from '../Assets/logo.svg';
-import '../Styles/navbar.css';
+import logo from '../../Assets/logo.svg';
+import '../../Styles/navbar.css';
 
 export default function Menu() {
   let { url } = useRouteMatch();
