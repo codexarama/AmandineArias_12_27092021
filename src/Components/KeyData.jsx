@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function KeyData(index, unitType, nutrimentName) {
+export default function KeyData({ keyData, unit, nutrimentName, index }) {
   return (
-    <div key={index} className="aside-keyData">
-      <p>{index + ' ' + unitType}</p>
-      <p>{nutrimentName}</p>
-    </div>
+    <ul className="aside-keyData">
+      <li key={index}>{keyData + ' ' + unit}</li>
+      <li key={nutrimentName}>{nutrimentName}</li>
+    </ul>
   );
 }

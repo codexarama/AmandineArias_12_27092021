@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   margin: 2rem 0;
-  padding: 1.5rem;
+  padding: 2rem;
   background: var(--icon-bg-health);
   border-radius: var(--icon-border-radius);
 }
@@ -28,8 +28,9 @@
 }
 
 .aside-keyData {
-margin-left: 1.5rem;
-margin-right: 2rem;
+margin: 0 2rem;
+padding: 0;
+text-decoration: none;
 }
 
 .aside-keyData p {

@@ -1,0 +1,22 @@
+/* DAYLY ACTIVITY */
+.daily-activity--title {
+  font-size: large;
+  margin-bottom: 1rem;
+}
+.recharts-default-legend {
+  text-align: right !important;
+}
+
+.custom-tooltip p {
+  color: white;
+}
+.custom-tooltip--poids {
+  background: black !important;
+  margin: 0;
+  padding: 1rem;
+}
+.custom-tooltip--calories {
+  background: red !important;
+  margin: 0;
+  padding: 1rem;
+}

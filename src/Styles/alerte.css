@@ -28,15 +28,20 @@ color: var(--alert);
 }
 
 .error-message {
+  text-align: center;
   font-size: x-large;
+}
+
+.oups{
+  font-size: xxx-large;
 }
 
 .error-back {
   width: fit-content;
-  height: 2.5rem;
+  height: 2.5rem !important;
   margin: auto;
   padding: 0 0 !important;
-  border-bottom: solid 2px var(--alert);
-  color: var(--alert);
+  border-bottom: solid 2px var(--text-link);
+  color: var(--text-link);
   font-size: x-small;
 }

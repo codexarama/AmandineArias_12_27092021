@@ -1,13 +1,15 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 // import PropTypes from 'prop-types';
+
+import Erreur404 from './Erreur404';
 import Navbar from '../Components/Navbar';
 import EnConstruction from './EnConstruction';
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
+import DailyActivity from '../Components/DailyActivity';
 import Health from '../Components/Health';
 
 import { useFetch } from '../Services/api';
-import Erreur404 from './Erreur404';
 
 import '../Styles/dashboard.css';
 
@@ -17,12 +19,15 @@ export default function Dashboard() {
 
   // GET URL PARAMS
   let userId = useParams().id;
-  console.log(userId);
 
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
 
-  console.log(data);
+  // console.log(data);
+
+    // USER INFOS
+    const userInfos = data.userInfos
+    const keyData = data.keyData
 
   return (
     <>
@@ -45,10 +50,10 @@ export default function Dashboard() {
             <Route path={`${path}`}>
               <Sidebar />
               <main>
-                <Header name={data.userInfos.firstName} />
+                <Header name={userInfos.firstName} />
                 <section className="performances">
-                  <Health />
-                  {/* <Health data={data.keyData}/> */}
+                  <DailyActivity />
+                  <Health keyData={keyData}/>
                 </section>
               </main>
             </Route>
