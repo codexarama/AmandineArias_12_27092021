@@ -16,7 +16,7 @@ import { useFetch } from '../Services/api';
 import '../Styles/dashboard.css';
 
 export default function Dashboard() {
-  // GET PATH FOR NESTED ROUTES
+  // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
 
   // GET USER ID FROM URL PARAMS
@@ -33,6 +33,7 @@ export default function Dashboard() {
 
   return (
     <>
+      {/* MANAGE loading CASES */}
       {isLoading ? (
         <span>Chargement en cours...</span>
       ) : hasError ? (
@@ -43,12 +44,11 @@ export default function Dashboard() {
         <>
           <Navbar />
           {/* NESTED ROUTES */}
-
           <Switch>
-            {/* ALERT FOR UNDERCONSTRUCTION PAGES */}
+            {/* DISPLAY ALERT FOR UNDERCONSTRUCTION PAGES */}
             <Route path={`${path}/:topicId`} component={EnConstruction} />
 
-            {/* DASHBOARD CONTENT */}
+            {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <Sidebar />
               <main>

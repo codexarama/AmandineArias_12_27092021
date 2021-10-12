@@ -13,14 +13,16 @@ import {
 import '../../Styles/graphs.css';
 
 export default function Average() {
-  // GET user AVERAGE SESSIONS data
+  // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
+
+  // GET user AVERAGE SESSIONS data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(
     `${url}${userId}/average-sessions`
   );
 
-  // CONVERT days numeric value TO string first letter
+  // CONVERT days numeric value INTO string first letter
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
   function getSessions() {
     for (let i = 0; i < data.sessions.length; i++) {
@@ -31,60 +33,58 @@ export default function Average() {
 
   return (
     <>
-    {/* MANAGE loading cases */}
+      {/* MANAGE loading CASES */}
       {isLoading ? (
-        <span>Chargement en cours...</span>
+        <span className="alert-msg">Chargement en cours...</span>
       ) : hasError ? (
         <Erreur404 />
       ) : data === undefined ? (
-        <span>L'utilisateur que vous recherchez n'est pas enregistré</span>
+        <span className="alert-msg">
+          L'utilisateur que vous recherchez n'est pas enregistré
+        </span>
       ) : (
-        <>
-          <div
-            className="average-sessions"
-            style={{ width: '30%', height: 300 }}
-          >
-            <h3 className="average-sessions--title">
-              Durée moyenne <br /> des sessions
-            </h3>
-            <ResponsiveContainer>
-              <LineChart
-                height={300}
-                margin={{ top: 0, right: 20, left: 20, bottom: 20 }}
-                data={getSessions()}
-              >
-                <XAxis
-                  dataKey="day"
-                  stroke="rgba(255, 255, 255, 0.6)"
-                  tickLine={false}
-                  dy={10}
-                />
-                <YAxis
-                  dataKey="sessionLength"
-                  stroke="rgba(255, 255, 255, 0.6)"
-                  hide={true}
-                  domain={[0, 'dataMax + 75']}
-                />
-                <Tooltip
-                  content={<CustomTooltip />}
-                  cursor={{ stroke: 'rgba(255,255,255, 0.6)' }}
-                />
-                <Line
-                  dataKey="sessionLength"
-                  type="monotone"
-                  stroke="rgba(255, 255, 255, 0.6)"
-                  strokeWidth={2}
-                  dot={false}
-                  activeDot={{
-                    stroke: 'rgba(255,255,255, 0.6)',
-                    strokeWidth: 10,
-                    r: 5,
-                  }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </>
+        // DISPLAY AVERAGE SESSIONS CONTENT
+        <div className="average-sessions" style={{ width: '30%', height: 300 }}>
+          <h3 className="average-sessions--title">
+            Durée moyenne <br /> des sessions
+          </h3>
+          <ResponsiveContainer>
+            <LineChart
+              height={300}
+              margin={{ top: 0, right: 20, left: 20, bottom: 20 }}
+              data={getSessions()}
+            >
+              <XAxis
+                dataKey="day"
+                stroke="rgba(255, 255, 255, 0.6)"
+                tickLine={false}
+                dy={10}
+              />
+              <YAxis
+                dataKey="sessionLength"
+                stroke="rgba(255, 255, 255, 0.6)"
+                hide={true}
+                domain={[0, 'dataMax + 75']}
+              />
+              <Tooltip
+                content={<CustomTooltip />}
+                cursor={{ stroke: 'rgba(255,255,255, 0.6)' }}
+              />
+              <Line
+                dataKey="sessionLength"
+                type="monotone"
+                stroke="rgba(255, 255, 255, 0.6)"
+                strokeWidth={2}
+                dot={false}
+                activeDot={{
+                  stroke: 'rgba(255,255,255, 0.6)',
+                  strokeWidth: 10,
+                  r: 5,
+                }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       )}
     </>
   );
