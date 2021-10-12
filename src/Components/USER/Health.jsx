@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from './Icons';
+import Icons from '../UI/Icons';
 import caloriesIcon from '../../Assets/icon_calories.svg';
 import proteinesIcon from '../../Assets/icon_proteins.svg';
 import glucidesIcon from '../../Assets/icon_carbohydrates.svg';
