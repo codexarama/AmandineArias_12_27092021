@@ -44,7 +44,7 @@ export default function Average() {
         </span>
       ) : (
         // DISPLAY AVERAGE SESSIONS CONTENT
-        <div className="average-sessions" style={{ width: '30%', height: 300 }}>
+        <div className="average-sessions">
           <h3 className="average-sessions--title">
             Durée moyenne <br /> des sessions
           </h3>
