@@ -8,16 +8,15 @@
   text-align: right !important;
 }
 
-.custom-tooltip p {
-  color: white;
-}
-.custom-tooltip--poids {
-  background: black !important;
+.custom-tooltip li {
   margin: 0;
   padding: 1rem;
+  color: white;
+}
+
+.custom-tooltip--poids {
+  background: black !important;
 }
 .custom-tooltip--calories {
   background: red !important;
-  margin: 0;
-  padding: 1rem;
 }

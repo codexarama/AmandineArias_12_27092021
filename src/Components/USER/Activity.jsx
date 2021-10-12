@@ -33,12 +33,13 @@ export default function DailyActivity() {
       <h3 className="daily-activity--title" >Activité quotidienne</h3>
       <ResponsiveContainer>
         <BarChart data={data.sessions} barGap={8}>
-          <XAxis dataKey="name" stroke="grey" dy={10} />
+          <XAxis dataKey="name" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
             domain={['dataMin -2', 'dataMax + 1']}
             orientation="right"
             axisLine={false}
+            tickLine={false}
             dx={10}
             dy={-4}
           />
@@ -47,10 +48,11 @@ export default function DailyActivity() {
             domain={['dataMin -25', 'dataMax + 25']}
             orientation="left"
             axisLine={false}
+            tickLine={false}
             dx={-10}
             dy={-4}
           />
-          <Tooltip wrapperStyle={{ width: 100 }} content={<CustomTooltip />} />
+          <Tooltip wrapperStyle={{ width: 130 }} content={<CustomTooltip />} />
           <Legend
             width={'60%'}
             iconType={'circle'}
@@ -86,9 +88,9 @@ export default function DailyActivity() {
 
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
-    <div className="custom-tooltip">
-      <p className="custom-tooltip--calories">{`${payload[1].value} kg`}</p>
-      <p className="custom-tooltip--poids">{`${payload[0].value} kCal`}</p>
-    </div>
+    <ul className="custom-tooltip">
+      <li className="custom-tooltip--calories">{`${payload[1].value} kg`}</li>
+      <li className="custom-tooltip--poids">{`${payload[0].value} kCal`}</li>
+    </ul>
   ) : null;
 }
