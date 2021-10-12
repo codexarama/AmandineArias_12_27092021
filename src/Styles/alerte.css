@@ -1,23 +1,12 @@
 .alert-msg {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .info-redirection {
-margin-top: 5rem;
-color: var(--alert);
-}
-
-.error {
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 0;
+  margin-top: 5rem;
   color: var(--alert);
 }
 
@@ -25,6 +14,7 @@ color: var(--alert);
   font-size: 10em;
   font-weight: 800;
   text-align: center;
+  color: var(--alert);
 }
 
 .error-message {
@@ -32,7 +22,7 @@ color: var(--alert);
   font-size: x-large;
 }
 
-.oups{
+.oups {
   font-size: xxx-large;
 }
 
