@@ -14,7 +14,7 @@ setTimeout(() => {
 
   return (
     <main>
-      <h1 className="alert-msg">Page {topicId} en cours de construction</h1>
+      <h1 className="alert-msg">Page " {topicId} " en cours de construction</h1>
       <p className="alert-msg info-redirection">Redirection vers le tableau de bord dans 2s.</p>
     </main>
   );
