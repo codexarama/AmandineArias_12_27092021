@@ -2,7 +2,7 @@ import React from 'react';
 import Erreur404 from '../../Pages/Erreur404';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
-import { ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 export default function Score() {
   // GET USER ID FROM URL PARAMS
@@ -12,6 +12,11 @@ export default function Score() {
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
   console.log(data);
+  const score = data.todayScore || data.score;
+  // REMARK !!!
+  // THE API HAS AN ERROR IN DATA NAMING
+  // ONCE "todayScore" ONCE "score"
+  const userScore = [{ value: score }, { value: 1 - score }];
 
   return (
     <>
@@ -28,20 +33,24 @@ export default function Score() {
         // DISPLAY SCORES CONTENT
         <div className="score">
           <h2 className="score-title">Score</h2>
-          <p className="score-result">{data.todayScore * 100}%</p>
-          {/* RETURN NaN FOR userId : 18 (Cécilia) */}
+          <p className="score-result">{score * 100}%</p>
+          <p className="score-comment">de votre <br/> objectif</p>
 
           <ResponsiveContainer>
             <PieChart width={730} height={250}>
               <Pie
-                data={data.todayScore}
-                dataKey="todayScore"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={50}
-                fill="#8884d8"
-              />
+                data={userScore}
+                dataKey="value"
+                innerRadius={70}
+                outerRadius={80}
+                startAngle={90} // centre haut
+                endAngle={450} // 360° + 90°
+                fill="transparent"
+                stroke="transparent"
+                animationDuration={700}
+              >
+                <Cell fill="red" cornerRadius={50} />
+              </Pie>
             </PieChart>
           </ResponsiveContainer>
         </div>
