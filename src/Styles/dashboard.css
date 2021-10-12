@@ -4,7 +4,7 @@
 
 /* HEADER */
 .user-name {
-  color: var(--text-user-name);
+  color: var(--primary);
 }
 
 .welcome-message {

@@ -1,4 +1,4 @@
-/* DAYLY ACTIVITY */
+/* DAILY ACTIVITY */
 .daily-activity {
   width: 100%;
   height: 300px;
@@ -17,22 +17,24 @@
 .custom-tooltip li {
   margin: 0;
   padding: 1rem;
-  color: white;
+  color: var(--secondary);
 }
 
 .custom-tooltip--poids {
-  background: black !important;
+  background: var(--dark) !important;
 }
 .custom-tooltip--calories {
-  background: red !important;
+  background: var(--primary) !important;
 }
 
 /* AVERAGE SESSIONS */
 .average-sessions {
   position: relative;
+  width: 30%;
+  height: 300px;
   margin-top: 5rem;
-  background: red;
-  border-radius: 0.5rem;
+  background: var(--primary);
+  border-radius: var(--border-radius);
   padding: 1rem;
 }
 
@@ -48,14 +50,43 @@
 
 .custom-tooltip--min {
   padding: 1rem;
-  background: white !important;
-  color: black
+  background: var(--secondary) !important;
+  color: black;
 }
 
 /* PERFORMANCE */
 .performance {
+  width: 30%;
+  height: 300px;
   margin-top: 5rem;
-  background: var(--dark-bg-color);
-  border-radius: 0.5rem;
+  background: var(--dark-bg);
+  border-radius: var(--border-radius);
   padding: 1rem;
+}
+
+/* SCORE */
+.score {
+  position: relative;
+  width: 30%;
+  height: 300px;
+  margin-top: 5rem;
+  background: var(--lightGrey-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.score-title {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: medium;
+}
+
+.score-result{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: x-large;
+  font-weight: bold;
 }

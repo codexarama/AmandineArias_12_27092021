@@ -31,7 +31,7 @@
   height: 2.5rem !important;
   margin: auto;
   padding: 0 0 !important;
-  border-bottom: solid 2px var(--text-link);
-  color: var(--text-link);
+  border-bottom: solid 2px var(--link);
+  color: var(--link);
   font-size: x-small;
 }

@@ -1,5 +1,5 @@
 .dark {
-  background: var(--dark-bg-color);
+  background: var(--dark-bg);
 }
 
 .accueil {
@@ -12,7 +12,7 @@
   align-items: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  background: var(--dark-bg-color);
+  background: var(--dark-bg);
 }
 
 .logo {
@@ -23,7 +23,7 @@
   position: absolute;
   margin-bottom: 0;
   width: 100%;
-  color: white;
+  color: var(--secondary);
   text-align: center;
 }
 
@@ -48,5 +48,5 @@
 
 .user-name {
   margin-top: 1rem;
-  color: var(--text-active-link);
+  color: var(--active-link);
 }

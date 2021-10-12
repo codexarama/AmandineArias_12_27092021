@@ -1,24 +1,25 @@
 :root {
   /* BACKGROUND COLORS */
-  --dark-bg-color : rgb(33, 37, 41);
-  --light-bg-color : #fff;
-  --icon-bg-activity: #fff;
-  --icon-bg-health: rgba(0, 0, 0, 0.025);
+  --dark-bg : rgb(33, 37, 41);
+  --lightGrey-bg : rgba(0, 0, 0, 0.025);;
+  --white-bg: #fff;
   --icon-bg-calories: rgba(255, 0, 0, 0.1);
   --icon-bg-proteins: rgba(74, 184, 255, 0.15);
   --icon-bg-carbohydrates: rgba(249, 206, 35, 0.2);
   --icon-bg-lipids: rgba(255, 127, 0, 0.1);
 
   /* SHAPE */
-  --icon-border-radius: 0.5rem;
+  --border-radius: 0.5rem;
 
   /* SIZES */
   --icon-64: 64px;
   --icon-32: 32px;
 
   /* TEXT COLORS */
-  --text-user-name: #ff0000;
+  --primary: #ff0000;
+  --secondary: #fff;
+  --dark: rgb(33, 37, 41);
+  --active-link: #fff;
+  --link: grey;
   --alert: #ff0000;
-  --text-active-link: #fff;
-  --text-link: grey;
 }

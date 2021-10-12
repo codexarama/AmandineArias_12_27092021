@@ -3,12 +3,12 @@
   align-items: center;
   margin: 2rem 0;
   padding: 2rem;
-  background: var(--icon-bg-health);
-  border-radius: var(--icon-border-radius);
+  background: var(--lightGrey-bg);
+  border-radius: var(--border-radius);
 }
 
 .aside-content img {
-  border-radius: var(--icon-border-radius);
+  border-radius: var(--border-radius);
 }
 
 #icone-Calories {
