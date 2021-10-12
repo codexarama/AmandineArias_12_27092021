@@ -1,7 +1,12 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .aside-content {
   display: flex;
   align-items: center;
-  margin: 2rem 0;
   padding: 2rem;
   background: var(--lightGrey-bg);
   border-radius: var(--border-radius);
@@ -28,9 +33,9 @@
 }
 
 .aside-keyData {
-margin: 0 1.5rem;
-padding: 0;
-text-decoration: none;
+  margin: 0 1.5rem;
+  padding: 0;
+  text-decoration: none;
 }
 
 .aside-keyData p {
