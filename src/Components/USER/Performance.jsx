@@ -4,22 +4,40 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 import {
   ResponsiveContainer,
-  Legend,
+  RadarChart,
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
   Radar,
-  RadarChart,
 } from 'recharts';
 
 export default function Performance() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
+
   // GET user PERFORMANCES data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}/performance`);
+  //   console.log(data);
 
-  if (!isLoading) console.log(data);
+  // ATTRIBUTE topic values to data main array
+  const performance = data.data;
+  const kind = [
+    'Intensité',
+    'Vitesse',
+    'Force',
+    'Endurance',
+    'Energie',
+    'Cardio',
+  ];
+  function getData() {
+    for (let i = 0; i < performance.length; i++) {
+      performance[i].kind = kind[i];
+      // performance[i].kind = data.kind[i + 1];
+      // values from fetched data are in english and lower case...
+      // it doesn't match with expected values from the dashboard prototype
+    }
+    return performance;
+  }
 
   return (
     <>
@@ -36,27 +54,16 @@ export default function Performance() {
         // DISPLAY PERFORMANCES CONTENT
         <div className="performance" style={{ width: '30%', height: 300 }}>
           <ResponsiveContainer>
-            {/* <RadarChart outerRadius={90} data={data}> */}
-            <RadarChart outerRadius={90} width={300} height={300} data={data}>
-              {/* <RadarChart outerRadius={90} width={"100%"} height={"100%"} data={data}> */}
-              <PolarGrid />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={30} domain={[0, 150]} />
-              <Radar
-                name="Mike"
-                dataKey="A"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
+            <RadarChart outerRadius={90} data={getData()}>
+              <PolarGrid radialLines={false} />
+              <PolarAngleAxis
+                dataKey="kind"
+                domain={[0, 150]}
+                dy={5}
+                tickLine={false}
+                stroke="white"
               />
-              <Radar
-                name="Lily"
-                dataKey="B"
-                stroke="#82ca9d"
-                fill="#82ca9d"
-                fillOpacity={0.6}
-              />
-              <Legend />
+              <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
             </RadarChart>
           </ResponsiveContainer>
         </div>
