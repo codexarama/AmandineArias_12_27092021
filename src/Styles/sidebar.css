@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   width: 6.5em;
-  background: var(--dark-bg-color);
+  background: var(--dark-bg);
 }
 
 .sidebar-item {
@@ -16,18 +16,19 @@
   margin: 1em auto;
   width: var(--icon-64);
   height: var(--icon-64);
-  background: var(--icon-bg-activity);
-  border-radius: var(--icon-border-radius);
+  background: var(--white-bg);
+  border-radius: var(--border-radius);
 }
 
 .copyright {
-  margin: 0;
-  color: white;
-  transform: rotate(-90deg);
-  width: 200px;
-  text-align: center;
   position: absolute;
   left: -3rem;
   bottom: 12.5%;
+  width: 200px;
+  margin: 0;
+  transform: rotate(-90deg);
+  text-align: center;
+  color: var(--secondary);
+  font-size: x-small;
 }
 

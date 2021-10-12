@@ -6,31 +6,35 @@ import EnConstruction from './EnConstruction';
 import Navbar from '../Components/UI/Navbar';
 import Sidebar from '../Components/UI/Sidebar';
 import Header from '../Components/UI/Header';
-import DailyActivity from '../Components/USER/Activity';
-import Health from '../Components/UI/Health';
+import Activity from '../Components/USER/Activity';
+import Average from '../Components/USER/Average';
+import Health from '../Components/USER/Health';
+import Performance from '../Components/USER/Performance';
 
 import { useFetch } from '../Services/api';
 
 import '../Styles/dashboard.css';
+import Score from '../Components/USER/Score';
 
 export default function Dashboard() {
-  // GET PATH FOR NESTED ROUTES
+  // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
 
-  // GET URL PARAMS
+  // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
 
+  // GET FETCHED DATA
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
-
   // console.log(data);
 
-    // USER INFOS
-    const userInfos = data.userInfos
-    const keyData = data.keyData
+  // GET USER INFOS
+  const userInfos = data.userInfos;
+  const keyData = data.keyData;
 
   return (
     <>
+      {/* MANAGE loading CASES */}
       {isLoading ? (
         <span>Chargement en cours...</span>
       ) : hasError ? (
@@ -41,19 +45,23 @@ export default function Dashboard() {
         <>
           <Navbar />
           {/* NESTED ROUTES */}
-
           <Switch>
-            {/* ALERT FOR UNDERCONSTRUCTION PAGES */}
+            {/* DISPLAY ALERT FOR UNDERCONSTRUCTION PAGES */}
             <Route path={`${path}/:topicId`} component={EnConstruction} />
 
-            {/* DASHBOARD CONTENT */}
+            {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <Sidebar />
               <main>
                 <Header name={userInfos.firstName} />
                 <section className="performances">
-                  <DailyActivity />
-                  <Health keyData={keyData}/>
+                  <section className="performances-details">
+                    <Activity />
+                    <Average />
+                    <Performance />
+                    <Score />
+                  </section>
+                  <Health keyData={keyData} />
                 </section>
               </main>
             </Route>

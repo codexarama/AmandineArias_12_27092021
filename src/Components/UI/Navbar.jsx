@@ -19,21 +19,21 @@ export default function Menu() {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to={`${url}/profil`}
+              to={`${url}/Profil`}
             >
               Profil
             </NavLink>
             <NavLink
               className="nav-link"
               activeClassName={'active'}
-              to={`${url}/réglages`}
+              to={`${url}/Réglages`}
             >
               Réglages
             </NavLink>
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to={`${url}/communauté`}
+              to={`${url}/Communauté`}
             >
               Communauté
             </NavLink>
