@@ -14,6 +14,7 @@ import Performance from '../Components/USER/Performance';
 import { useFetch } from '../Services/api';
 
 import '../Styles/dashboard.css';
+import Score from '../Components/USER/Score';
 
 export default function Dashboard() {
   // GET url PATH FOR NESTED ROUTES
@@ -57,7 +58,8 @@ export default function Dashboard() {
                   <section className="performances-details">
                     <Activity />
                     <Average />
-                    <Performance/>
+                    <Performance />
+                    <Score />
                   </section>
                   <Health keyData={keyData} />
                 </section>

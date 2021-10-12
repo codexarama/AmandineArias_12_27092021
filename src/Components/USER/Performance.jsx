@@ -52,7 +52,7 @@ export default function Performance() {
         </span>
       ) : (
         // DISPLAY PERFORMANCES CONTENT
-        <div className="performance" style={{ width: '30%', height: 300 }}>
+        <div className="performance">
           <ResponsiveContainer>
             <RadarChart outerRadius={90} data={getData()}>
               <PolarGrid radialLines={false} />
