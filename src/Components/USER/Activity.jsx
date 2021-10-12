@@ -62,7 +62,7 @@ export default function DailyActivity() {
               />
               <YAxis
                 yAxisId="calories"
-                domain={['dataMin -25', 'dataMax + 25']}
+                domain={['dataMin -20', 'dataMax + 20']}
                 orientation="left"
                 axisLine={false}
                 tickLine={false}
