@@ -1,66 +1,53 @@
-# AmandineArias_12_27092021
-## Available Scripts
+# SportSee
 
-In the project directory, you can run:
+(projet fictif de formation)
 
-### `npm start`
+## INTEGRATION
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Tableau de bord analytique de performances sportives et indicateurs physiologiques
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## BIBLIOTHEQUES
 
-### `npm test`
+### React
+### Rechart
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## COMPETENCES DEVELOPPEES
 
-### `npm run build`
+- [x] Récupérer les données depuis l'API
+- [x] Manipuler / Corriger les données selon le besoin
+- [x] Afficher les données sous forme de graphique (types variés)
+- [x] Développer des Routes imbriquées
+- [x] Gérer les différents cas liés au chargement de la page (en cours, erreur, ok)
+- [x] Développer une logique de code partitionné dans des composants réutilisables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## INSTALLATION
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prérequis
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [React](https://reactjs.org/)
+* [nodeJS](https://nodejs.org/fr/)
+* [npm](https://www.npmjs.com/)
+* [Yarn](https://yarnpkg.com/)
 
-### `npm run eject`
+### Dépendances
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* [Recharts](https://recharts.org/en-US/)
+* [react-router-dom](https://reactrouter.com/web/guides/quick-start)
+* [Prop-types](https://www.npmjs.com/package/prop-types)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Etape 1 : Lancement du back-end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Cloner le repo : `https://github.com/codexarama/Sportsee-Back-end`
+- Installer ses dépendances : `yarn`
+- Le lancer sur le port 3000 (par défaut) : `yarn dev`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Etape 2 : Lancement du front-end
+- Cloner ce repo : `https://github.com/codexarama/AmandineArias_12_27092021`
+- Installer ses dépendances : `npm install`
+- Le lancer sur le port 3001 : `npm start`
 
-## Learn More
+### Important :
 
-[React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-[https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-[https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-[https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-[https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-[https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-[https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> URL de visualisation du rendu web : `http://localhost:3001`
+> l'API de _SportSee_ ne fournit des données que pour les utilisateurs d'id 12 et 18.
 
