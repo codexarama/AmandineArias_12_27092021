@@ -1,6 +1,6 @@
 # SportSee
 
-(projet fictif de formation)
+(projet fictif de formation n°12/14 avec OpenClassrooms)
 
 ## INTEGRATION
 
@@ -49,5 +49,6 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 ### Important :
 
 > URL de visualisation du rendu web : `http://localhost:3001`
+
 > l'API de _SportSee_ ne fournit des données que pour les utilisateurs d'id 12 et 18.
 
