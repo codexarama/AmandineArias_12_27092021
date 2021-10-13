@@ -2,6 +2,9 @@
 .daily-activity {
   width: 100%;
   height: 300px;
+  background: var(--lightGrey-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem 1rem;
 }
 
 .daily-activity--title {
@@ -33,7 +36,7 @@
   position: relative;
   width: 30%;
   height: 300px;
-  margin-top: 5rem;
+  margin-top: 2rem;
   background: var(--primary);
   border-radius: var(--border-radius);
   padding: 1rem;
@@ -60,7 +63,7 @@
 .performance {
   width: 30%;
   height: 300px;
-  margin-top: 5rem;
+  margin-top: 2rem;
   background: var(--dark-bg);
   border-radius: var(--border-radius);
   padding: 1rem;
@@ -71,7 +74,7 @@
   position: relative;
   width: 30%;
   height: 300px;
-  margin-top: 5rem;
+  margin-top: 2rem;
   background: var(--lightGrey-bg);
   border-radius: var(--border-radius);
   padding: 1rem;

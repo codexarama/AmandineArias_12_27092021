@@ -12,7 +12,7 @@
    viewBox="0 0 62 62"
    version="1.1"
    id="svg29"
-   sodipodi:docname="avatar.svg"
+   sodipodi:docname="avatar-red-bg.svg"
    style="fill:none"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    inkscape:export-filename="C:\Users\Amandine Arias\Documents\Git\AmandineArias_12_27092021\src\Assets\avatar.png"
@@ -62,25 +62,23 @@
        id="path18"
        d="m 29.5982,59.7027 c 15.7943,0 28.5981,-12.9172 28.5981,-28.8513 C 58.1963,14.9172 45.3925,2 29.5982,2 13.8038,2 1,14.9172 1,30.8514 1,46.7855 13.8038,59.7027 29.5982,59.7027 Z" />
     <g
-       style="fill:#ffffff;fill-opacity:1"
+       style="fill:none"
        id="g842"
        transform="translate(-107.84033,-34.283115)">
       <g
          transform="translate(1.8718513,-1.4668845)"
-         id="g847-8"
-         style="fill:#ffffff;fill-opacity:1">
+         id="g847-8">
         <path
            d="m 135.56668,95.4527 c 15.7943,0 28.5981,-12.9172 28.5981,-28.8513 0,-15.9342 -12.8038,-28.8514 -28.5981,-28.8514 -15.7944,0 -28.5982,12.917201 -28.5982,28.8514 0,15.9341 12.8038,28.8513 28.5982,28.8513 z"
            id="path18-0"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff;fill-opacity:1" />
+           style="fill:#ff0101" />
       </g>
     </g>
     <g
        transform="translate(0,1)"
        id="g27"
-       mask="none"
-       style="stroke:#333741;stroke-opacity:1">
+       mask="none">
       <path
          style="fill:#ffffff;fill-opacity:1;stroke:#333741;stroke-opacity:1"
          inkscape:connector-curvature="0"

@@ -48,5 +48,12 @@
 
 .user-name {
   margin-top: 1rem;
-  color: var(--active-link);
+  color: var(--primary);
+}
+
+.user-name:hover {
+  background: var(--primary);
+  border-radius: var(--border-radius);
+  color: var(--secondary);
+  padding-left: 0.5rem;
 }

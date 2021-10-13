@@ -11,7 +11,7 @@ export default function Score() {
   // GET user SCORES data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
-  console.log(data);
+
   const score = data.todayScore || data.score;
   // REMARK !!!
   // THE API HAS AN ERROR IN DATA NAMING
