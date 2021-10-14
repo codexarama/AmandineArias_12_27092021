@@ -1,7 +1,11 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -10,7 +14,22 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
+
 import '../../Styles/graphs.css';
+
+/**
+ * Render Average component
+ * @function Average
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user average sessions infos
+ * @param {boolean} props.data > if props.data exists
+ * @param {boolean} isLoading > if props.data is an error object
+ * @param {boolean} hasError > if props.data loading has failed
+ * @returns {JSX}
+ */
+
+// LINE CHART //////////
 
 export default function Average() {
   // GET USER ID FROM URL PARAMS
@@ -98,3 +117,11 @@ function CustomTooltip({ active, payload }) {
   }
   return null;
 }
+
+/**
+ * PropTypes for the Greeting component
+ */
+CustomTooltip.propTypes = {
+  active: propTypes.bool,
+  payload: propTypes.array,
+};

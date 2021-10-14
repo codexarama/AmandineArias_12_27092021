@@ -1,8 +1,30 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
-import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+import Erreur404 from '../../Pages/Erreur404';
+
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell
+} from 'recharts';
+
+/**
+ * Render Performance component
+ * @function DailyActivity
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user score infos
+ * @param {boolean} props.data > if props.data exists
+ * @param {boolean} isLoading > if props.data is an error object
+ * @param {boolean} hasError > if props.data loading has failed
+ * @returns {JSX}
+ */
+
+// PIE CHART //////////
 
 export default function Score() {
   // GET USER ID FROM URL PARAMS
@@ -34,7 +56,9 @@ export default function Score() {
         <div className="score">
           <h2 className="score-title">Score</h2>
           <p className="score-result">{score * 100}%</p>
-          <p className="score-comment">de votre <br/> objectif</p>
+          <p className="score-comment">
+            de votre <br /> objectif
+          </p>
 
           <ResponsiveContainer>
             <PieChart width={730} height={250}>

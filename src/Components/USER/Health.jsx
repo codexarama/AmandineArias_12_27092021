@@ -1,12 +1,24 @@
 import React from 'react';
-import Icons from '../UI/Icons';
+import propTypes from 'prop-types';
+
 import caloriesIcon from '../../Assets/icon_calories.svg';
 import proteinesIcon from '../../Assets/icon_proteins.svg';
 import glucidesIcon from '../../Assets/icon_carbohydrates.svg';
 import lipidesIcon from '../../Assets/icon_lipids.svg';
 import '../../Styles/aside.css';
 
+import Icons from '../UI/Icons';
 import KeyData from './KeyData';
+
+/**
+ * Render Health component
+ * @function Health
+ * @param {object} props
+ * @param {string} props.nutrimentName
+ * @param {blob} props.icon > icon src
+ * @param {object} keyData
+ * @returns {JSX}
+ */
 
 const nutriments = [caloriesIcon, proteinesIcon, glucidesIcon, lipidesIcon];
 
@@ -32,3 +44,11 @@ export default function Health({ nutrimentName, keyData }) {
     </aside>
   );
 }
+
+/**
+ * PropTypes for the Greeting component
+ */
+Health.propTypes = {
+  nutrimentName: propTypes.arrayOf(propTypes.string).isRequired,
+  keyData: propTypes.objectOf(propTypes.number).isRequired,
+};

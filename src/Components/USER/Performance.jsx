@@ -1,7 +1,9 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
 import {
   ResponsiveContainer,
   RadarChart,
@@ -9,6 +11,20 @@ import {
   PolarGrid,
   Radar,
 } from 'recharts';
+
+/**
+ * Render Performance component
+ * @function Performance
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user performances infos
+ * @param {boolean} props.data > if props.data exists
+ * @param {boolean} isLoading > if props.data is an error object
+ * @param {boolean} hasError > if props.data loading has failed
+ * @returns {JSX}
+ */
+
+// RADAR CHART //////////
 
 export default function Performance() {
   // GET USER ID FROM URL PARAMS

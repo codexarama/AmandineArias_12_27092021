@@ -1,7 +1,11 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
+
 import '../../Styles/graphs.css';
 
 import {
@@ -14,6 +18,20 @@ import {
   Legend,
   CartesianGrid,
 } from 'recharts';
+
+/**
+ * Render DailyActivity component
+ * @function DailyActivity
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user daily activity infos
+ * @param {boolean} props.data > if props.data exists
+ * @param {boolean} isLoading > if props.data is an error object
+ * @param {boolean} hasError > if props.data loading has failed
+ * @returns {JSX}
+ */
+
+// BAR CHART //////////
 
 export default function DailyActivity() {
   // GET USER ID FROM URL PARAMS
@@ -108,6 +126,14 @@ export default function DailyActivity() {
   );
 }
 
+/**
+ * Render CustomTooltip component
+ * @function CustomTooltip
+ * @param {bollean} active > hover ? y/n
+ * @param {array} payload > data to display
+ * @returns {?JSX}
+ */
+
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">
@@ -116,3 +142,11 @@ function CustomTooltip({ active, payload }) {
     </ul>
   ) : null;
 }
+
+/**
+ * PropTypes for the Greeting component
+ */
+CustomTooltip.propTypes = {
+  active: propTypes.bool,
+  payload: propTypes.array,
+};
