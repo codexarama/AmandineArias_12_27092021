@@ -1,12 +1,18 @@
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .navbar {
   padding-top: 0;
   padding-bottom: 0;
 }
 
 .navbar-brand {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   margin-right: 0;
+  padding-top: 1rem;
+  width: 6.5rem;
+  text-align: center;
 }
 
 .nav-link {
@@ -18,9 +24,10 @@
 .active {
   color: var(--active-link);
   border-bottom: 5px solid var(--primary);
+  padding: 0;
 }
 
-.nav-link:focus, .nav-link:hover {
-  /* color: unset; */
+.nav-link:focus,
+.nav-link:hover {
   color: var(--link);
 }
