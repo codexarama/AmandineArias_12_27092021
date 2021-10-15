@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import propTypes from 'prop-types';
 
 import '../Styles/alerte.css'
 
@@ -32,11 +31,3 @@ setTimeout(() => {
     </main>
   );
 }
-
-/**
- * PropTypes EnConstruction component
- */
- EnConstruction.propTypes = {
-  id: propTypes.number,
-  topicId: propTypes.string,
-};

@@ -10,6 +10,11 @@
   color: var(--alert);
 }
 
+/* ERROR PAGE */
+.error {
+  margin: 0 0;
+}
+
 .error-number {
   font-size: 10em;
   font-weight: 800;
@@ -22,7 +27,7 @@
   font-size: x-large;
 }
 
-.oups {
+.error-oups {
   font-size: xxx-large;
 }
 
@@ -34,4 +39,9 @@
   border-bottom: solid 2px var(--link);
   color: var(--link);
   font-size: x-small;
+}
+
+/* LOADING PAGE */
+.loader {
+  margin: 0 0;
 }

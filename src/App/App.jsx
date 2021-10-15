@@ -2,21 +2,26 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Accueil from '../Pages/Accueil';
 import Dashboard from '../Pages/Dashboard';
-import Erreur from '../Pages/Erreur404';
+import Erreur404 from '../Pages/Erreur404';
+import Chargement from '../Pages/Chargement';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter className="App">
       <Switch>
-        {/* page ACCUEIL */}
+        {/* HOME page */}
         <Route exact path="/" component={Accueil} />
 
-        {/* page DASHBOARD */}
+        {/* DASHBOARD page */}
         <Route path="/user/:id" component={Dashboard} />
 
-        {/* page NOT FOUND */}
-        <Route path="*" component={Erreur} />
+        {/* LOADING page */}
+        <Route path="/chargement" component={Chargement} />
+        
+        {/* NOT FOUND page */}
+        <Route path="*" component={Erreur404} />
+
       </Switch>
     </BrowserRouter>
   );

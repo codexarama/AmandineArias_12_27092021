@@ -1,30 +1,5 @@
-.dark {
-  background: var(--dark-bg);
-}
-
 .accueil {
   margin: 0 0;
-}
-
-.accueil header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  background: var(--dark-bg);
-}
-
-.logo {
-  margin-left: 2rem;
-}
-
-.welcome-msg {
-  position: absolute;
-  margin-bottom: 0;
-  width: 100%;
-  color: var(--secondary);
-  text-align: center;
 }
 
 .users {
@@ -48,13 +23,40 @@
 
 .user-name {
   margin-top: 1rem;
-  color: var(--primary);
+  margin-left: -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: left;
+  border-radius: var(--border-radius);
+  transition: all 0.5s;
+}
+
+.user-name:before {
+  right: -50px;
+  border-right: 50px solid transparent;
+  transform: translateX(-100%);
+}
+
+.user-name:after {
+  right: -50px;
+  border-right: 50px solid transparent;
+  transform: translateX(100%);
 }
 
 .user-name:hover {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  transform: translateX(3rem);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   background: var(--primary);
   border-radius: var(--border-radius);
   color: var(--secondary);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  text-align: right;
+}
+
+.user-name:hover:before {
+  transform: translateX(-40%);
+}
+.user-name:hover:after {
+  transform: translateX(40%);
 }

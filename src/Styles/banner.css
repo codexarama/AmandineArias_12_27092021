@@ -1,0 +1,20 @@
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: var(--dark-bg);
+  }
+
+  .logo {
+    margin-left: 2rem;
+  }
+
+  .msg {
+    position: absolute;
+    margin-bottom: 0;
+    width: 100%;
+    color: var(--secondary);
+    text-align: center;
+  }
