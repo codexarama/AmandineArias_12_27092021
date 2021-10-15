@@ -8,15 +8,15 @@ import Avatar from '../../Assets/avatar.svg';
 import '../../Styles/accueil.css';
 
 /**
- * Render Greeting component
- * @function Greeting
+ * Render User component
+ * @function User
  * @param {object} props
  * @param {string} props.id
  * @param {string} props.name
- * @returns {JSX}
+ * @returns {Reactnode} jsx injected in DOM
  */
 
-export default function Greeting({ id, name }) {
+export default function User({ id, name }) {
 
   return (
     <Link to={`/user/${id}`} className='user'>
@@ -27,8 +27,10 @@ export default function Greeting({ id, name }) {
 }
 
 /**
- * PropTypes for the Greeting component
+ * PropTypes User component
  */
-Greeting.propTypes = {
-  firstName: propTypes.string.isRequired,
+User.propTypes = {
+  id: propTypes.number,
+  Avatar: propTypes.string,
+  name: propTypes.string.isRequired,
 };
