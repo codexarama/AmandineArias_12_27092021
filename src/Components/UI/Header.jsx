@@ -4,7 +4,9 @@ import propTypes from 'prop-types';
 /**
  * Render the Header component
  * @function Header
- * @param {object} props - user firstName
+ * @param {object} props
+ * @param {string} props.name > user firstName
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 export default function Header({ name }) {
@@ -20,7 +22,9 @@ export default function Header({ name }) {
   );
 }
 
-// PROPTYPES
-Header.propTypes = {
-  name: propTypes.string.isRequired,
+/**
+ * PropTypes Header component
+ */
+ Header.propTypes = {
+  name: propTypes.string,
 };

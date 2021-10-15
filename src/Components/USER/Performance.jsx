@@ -17,11 +17,11 @@ import {
  * @function Performance
  * @param {number} userId
  * @param {object} props
- * @param {object} props.data > user performances infos
- * @param {boolean} props.data > if props.data exists
- * @param {boolean} isLoading > if props.data is an error object
- * @param {boolean} hasError > if props.data loading has failed
- * @returns {JSX}
+ * @param {object} props.data > user performances infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 // RADAR CHART //////////
@@ -33,7 +33,6 @@ export default function Performance() {
   // GET user PERFORMANCES data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}/performance`);
-  //   console.log(data);
 
   // ATTRIBUTE topic values to data main array
   const performance = data.data;
@@ -45,6 +44,7 @@ export default function Performance() {
     'Energie',
     'Cardio',
   ];
+
   function getData() {
     for (let i = 0; i < performance.length; i++) {
       performance[i].kind = kind[i];

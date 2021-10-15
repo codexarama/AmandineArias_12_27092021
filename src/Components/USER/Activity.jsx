@@ -24,11 +24,11 @@ import {
  * @function DailyActivity
  * @param {number} userId
  * @param {object} props
- * @param {object} props.data > user daily activity infos
- * @param {boolean} props.data > if props.data exists
- * @param {boolean} isLoading > if props.data is an error object
- * @param {boolean} hasError > if props.data loading has failed
- * @returns {JSX}
+ * @param {object} props.data > user daily activity infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 // BAR CHART //////////
@@ -40,12 +40,13 @@ export default function DailyActivity() {
   // GET user DAILY ACTIVITY data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}/activity`);
+  // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {
     data.sessions.forEach((date) => {
       // eslint-disable-next-line no-unused-vars
-      const [yyyy, mm, dd] = date.day.split('-');
+      let [yyyy, mm, dd] = date.day.split('-');
       date.name = `${dd}/${mm}`;
     });
     // console.log(data);
@@ -144,7 +145,7 @@ function CustomTooltip({ active, payload }) {
 }
 
 /**
- * PropTypes for the Greeting component
+ * PropTypes Activity component
  */
 CustomTooltip.propTypes = {
   active: propTypes.bool,

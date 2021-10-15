@@ -5,9 +5,9 @@ import propTypes from 'prop-types';
  * Render the Banner component
  * @function Banner
  * @param {object} props
- * @param {blob} props.logo > logo src
+ * @param {string} props.logo > logo src
  * @param {string} props.message > welcome message
- * @returns {JSX}
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 export default function Banner({logo, message}) {
@@ -19,7 +19,10 @@ export default function Banner({logo, message}) {
     )
 }
 
-// PROPTYPES
-Banner.propTypes = {
+/**
+ * PropTypes Banner component
+ */
+ Banner.propTypes = {
+  logo: propTypes.string.isRequired,
   message: propTypes.string.isRequired,
 };

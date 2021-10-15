@@ -22,11 +22,11 @@ import '../../Styles/graphs.css';
  * @function Average
  * @param {number} userId
  * @param {object} props
- * @param {object} props.data > user average sessions infos
- * @param {boolean} props.data > if props.data exists
- * @param {boolean} isLoading > if props.data is an error object
- * @param {boolean} hasError > if props.data loading has failed
- * @returns {JSX}
+ * @param {object} props.data > user average sessions infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 // LINE CHART //////////
@@ -40,6 +40,7 @@ export default function Average() {
   const { data, isLoading, hasError } = useFetch(
     `${url}${userId}/average-sessions`
   );
+  // console.log(data);
 
   // CONVERT days numeric value INTO string first letter
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -49,6 +50,7 @@ export default function Average() {
     }
     return data.sessions;
   }
+  // console.log(data);
 
   return (
     <>
@@ -119,7 +121,7 @@ function CustomTooltip({ active, payload }) {
 }
 
 /**
- * PropTypes for the Greeting component
+ * PropTypes Average component
  */
 CustomTooltip.propTypes = {
   active: propTypes.bool,

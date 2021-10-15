@@ -5,23 +5,18 @@ import { useFetch } from '../../Services/api';
 
 import Erreur404 from '../../Pages/Erreur404';
 
-import {
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell
-} from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 /**
  * Render Performance component
  * @function DailyActivity
  * @param {number} userId
  * @param {object} props
- * @param {object} props.data > user score infos
- * @param {boolean} props.data > if props.data exists
- * @param {boolean} isLoading > if props.data is an error object
- * @param {boolean} hasError > if props.data loading has failed
- * @returns {JSX}
+ * @param {object} props.data > user score infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
  */
 
 // PIE CHART //////////
@@ -33,6 +28,7 @@ export default function Score() {
   // GET user SCORES data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
+  // console.log(data);
 
   const score = data.todayScore || data.score;
   // REMARK !!!
