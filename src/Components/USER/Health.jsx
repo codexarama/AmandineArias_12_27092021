@@ -14,20 +14,20 @@ import KeyData from './KeyData';
  * Render Health component
  * @function Health
  * @param {object} props
- * @param {string} props.nutrimentName
+ * @param {string} props.nutrimentName > nutriment name
  * @param {blob} props.icon > icon src
- * @param {object} keyData
- * @returns {JSX}
+ * @param {string} props.index > key number
+ * @param {object} keyData > nutriment count
+ * @returns {Reactnode} jsx injected in DOM
  */
 
-const nutriments = [caloriesIcon, proteinesIcon, glucidesIcon, lipidesIcon];
-
-export default function Health({ nutrimentName, keyData }) {
+export default function Health({ nutrimentIcon, nutrimentName, keyData }) {
+  nutrimentIcon = [caloriesIcon, proteinesIcon, glucidesIcon, lipidesIcon];
   nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
   return (
     <aside className="aside">
-      {nutriments.map((icon, index) => (
+      {nutrimentIcon.map((icon, index) => (
         <div key={index} className="aside-content">
           <Icons
             id={'icone-' + nutrimentName[index]}
@@ -46,9 +46,12 @@ export default function Health({ nutrimentName, keyData }) {
 }
 
 /**
- * PropTypes for the Greeting component
+ * PropTypes Health component
  */
 Health.propTypes = {
-  nutrimentName: propTypes.arrayOf(propTypes.string).isRequired,
+  nutrimentIcon: propTypes.string,
+  nutrimentName: propTypes.string,
+  icon: propTypes.string,
+  index: propTypes.number,
   keyData: propTypes.objectOf(propTypes.number).isRequired,
 };

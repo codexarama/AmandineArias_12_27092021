@@ -22,7 +22,7 @@ import {
 /**
  * Render DailyActivity component
  * @function DailyActivity
- * @param {number} userId
+ * @param {number} userId > user id number
  * @param {object} props
  * @param {object} props.data > user daily activity infos || error object || error (data loading failure)
  * @param {boolean} props.data > props.data exists ? y/n

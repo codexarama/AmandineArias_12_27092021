@@ -1,5 +1,4 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 import Erreur404 from './Erreur404';
 import EnConstruction from './EnConstruction';
@@ -16,21 +15,36 @@ import { useFetch } from '../Services/api';
 import '../Styles/dashboard.css';
 import Score from '../Components/USER/Score';
 
-export default function Dashboard() {
+/**
+ * Render Dashboard page component
+ * @function Dashboard
+ * @param {number} userId > user id number
+ * @param {string} path > url current path
+ * @param {string} url > url new path
+ * @param {object} props
+ * @param {object} props.data > user infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @param {string} userInfos > user firstName
+ * @param {number} keyData > user health indicators
+ * @returns {Reactnode} jsx injected in DOM
+ */
+
+export default function Dashboard(userId, url, userInfos, keyData) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
 
   // GET USER ID FROM URL PARAMS
-  let userId = useParams().id;
+  userId = useParams().id;
 
   // GET FETCHED DATA
-  const url = 'http://localhost:3000/user/';
+  url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
-  // console.log(data);
 
   // GET USER INFOS
-  const userInfos = data.userInfos;
-  const keyData = data.keyData;
+  userInfos = data.userInfos;
+  keyData = data.keyData;
 
   return (
     <>
@@ -71,9 +85,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-// Dashboard.propTypes = {
-//   params: PropTypes.object.isRequired,
-//   userId: PropTypes.number.isRequired,
-//   data: PropTypes.object.isRequired
-// }
