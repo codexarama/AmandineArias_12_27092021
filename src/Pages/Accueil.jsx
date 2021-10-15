@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
 import logo from '../Assets/logo.svg';
 import Banner from '../Components/UI/Banner';
@@ -8,6 +7,7 @@ import User from '../Components/USER/User';
 import { mock } from '../Services/mockedData';
 
 import '../Styles/accueil.css';
+import '../Styles/banner.css';
 
 /**
  * Render Accueil page component
@@ -34,12 +34,3 @@ export default function Accueil() {
     </main>
   );
 }
-
-/**
- * PropTypes Accueil component
- */
- Accueil.propTypes = {
-  logo: propTypes.string,
-  id: propTypes.number,
-  userInfos: propTypes.string,
-};
