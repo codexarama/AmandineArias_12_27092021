@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
+
 import Banner from '../Components/UI/Banner';
 import logo from '../Assets/logo.svg';
+
 import '../Styles/accueil.css';
 import '../Styles/alerte.css';
 
 /**
- * Render Error component
- * @extends Component
+ * Render Error404 component
+ * @function Erreur404
+ * @param {object} props
+ * @param {string} props.logo > logo src
  * @returns {Reactnode} jsx injected in DOM
  */
 
@@ -26,3 +31,10 @@ export default function Erreur404() {
     </main>
   );
 }
+
+/**
+ * PropTypes Erreur404 component
+ */
+ Erreur404.propTypes = {
+  logo: propTypes.string,
+};

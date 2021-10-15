@@ -1,10 +1,23 @@
 import React from 'react';
 import { Link, NavLink, useRouteMatch } from 'react-router-dom';
+import propTypes from 'prop-types';
+
 import logo from '../../Assets/logo.svg';
+
 import '../../Styles/navbar.css';
 
-export default function Menu() {
+/**
+ * Render the Navbar component
+ * @function Navbar
+ * @param {object} props
+ * @param {string} props.logo > logo src
+ * @param {string} props.url > url path
+ * @returns {Reactnode} jsx injected in DOM
+ */
+
+export default function Navbar() {
   let { url } = useRouteMatch();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -43,3 +56,11 @@ export default function Menu() {
     </nav>
   );
 }
+
+/**
+ * PropTypes Navbar component
+ */
+ Navbar.propTypes = {
+  url: propTypes.string,
+  logo: propTypes.string,
+};

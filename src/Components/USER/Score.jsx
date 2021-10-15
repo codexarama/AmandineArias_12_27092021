@@ -1,8 +1,25 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
+
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+/**
+ * Render Performance component
+ * @function DailyActivity
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user score infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
+ */
+
+// PIE CHART //////////
 
 export default function Score() {
   // GET USER ID FROM URL PARAMS
@@ -11,6 +28,7 @@ export default function Score() {
   // GET user SCORES data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
+  // console.log(data);
 
   const score = data.todayScore || data.score;
   // REMARK !!!
@@ -34,7 +52,9 @@ export default function Score() {
         <div className="score">
           <h2 className="score-title">Score</h2>
           <p className="score-result">{score * 100}%</p>
-          <p className="score-comment">de votre <br/> objectif</p>
+          <p className="score-comment">
+            de votre <br /> objectif
+          </p>
 
           <ResponsiveContainer>
             <PieChart width={730} height={250}>

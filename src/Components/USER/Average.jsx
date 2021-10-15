@@ -1,7 +1,11 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -10,7 +14,22 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
+
 import '../../Styles/graphs.css';
+
+/**
+ * Render Average component
+ * @function Average
+ * @param {number} userId
+ * @param {object} props
+ * @param {object} props.data > user average sessions infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
+ */
+
+// LINE CHART //////////
 
 export default function Average() {
   // GET USER ID FROM URL PARAMS
@@ -21,6 +40,7 @@ export default function Average() {
   const { data, isLoading, hasError } = useFetch(
     `${url}${userId}/average-sessions`
   );
+  // console.log(data);
 
   // CONVERT days numeric value INTO string first letter
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -30,6 +50,7 @@ export default function Average() {
     }
     return data.sessions;
   }
+  // console.log(data);
 
   return (
     <>
@@ -98,3 +119,11 @@ function CustomTooltip({ active, payload }) {
   }
   return null;
 }
+
+/**
+ * PropTypes Average component
+ */
+CustomTooltip.propTypes = {
+  active: propTypes.bool,
+  payload: propTypes.array,
+};

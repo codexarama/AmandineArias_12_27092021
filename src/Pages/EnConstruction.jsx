@@ -1,6 +1,19 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import propTypes from 'prop-types';
+
 import '../Styles/alerte.css'
+
+/**
+ * Render EnConstruction component
+ * @function EnConstruction
+ * @param {object} props
+ * @param {id} props.id > user id number
+ * @param {topicId} props.topicId > navbar topic name
+
+
+ * @returns {Reactnode} jsx injected in DOM
+ */
 
 export default function EnConstruction(props) {
 
@@ -19,3 +32,11 @@ setTimeout(() => {
     </main>
   );
 }
+
+/**
+ * PropTypes EnConstruction component
+ */
+ EnConstruction.propTypes = {
+  id: propTypes.number,
+  topicId: propTypes.string,
+};

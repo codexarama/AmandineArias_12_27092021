@@ -1,7 +1,11 @@
 import React from 'react';
-import Erreur404 from '../../Pages/Erreur404';
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
+import Erreur404 from '../../Pages/Erreur404';
+
 import '../../Styles/graphs.css';
 
 import {
@@ -15,6 +19,20 @@ import {
   CartesianGrid,
 } from 'recharts';
 
+/**
+ * Render DailyActivity component
+ * @function DailyActivity
+ * @param {number} userId > user id number
+ * @param {object} props
+ * @param {object} props.data > user daily activity infos || error object || error (data loading failure)
+ * @param {boolean} props.data > props.data exists ? y/n
+ * @param {boolean} isLoading > props.data is an error object ? y/n
+ * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @returns {Reactnode} jsx injected in DOM
+ */
+
+// BAR CHART //////////
+
 export default function DailyActivity() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
@@ -22,12 +40,13 @@ export default function DailyActivity() {
   // GET user DAILY ACTIVITY data from FETCH
   const url = 'http://localhost:3000/user/';
   const { data, isLoading, hasError } = useFetch(`${url}${userId}/activity`);
+  // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {
     data.sessions.forEach((date) => {
       // eslint-disable-next-line no-unused-vars
-      const [yyyy, mm, dd] = date.day.split('-');
+      let [yyyy, mm, dd] = date.day.split('-');
       date.name = `${dd}/${mm}`;
     });
     // console.log(data);
@@ -108,6 +127,14 @@ export default function DailyActivity() {
   );
 }
 
+/**
+ * Render CustomTooltip component
+ * @function CustomTooltip
+ * @param {bollean} active > hover ? y/n
+ * @param {array} payload > data to display
+ * @returns {?JSX}
+ */
+
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">
@@ -116,3 +143,11 @@ function CustomTooltip({ active, payload }) {
     </ul>
   ) : null;
 }
+
+/**
+ * PropTypes Activity component
+ */
+CustomTooltip.propTypes = {
+  active: propTypes.bool,
+  payload: propTypes.array,
+};
