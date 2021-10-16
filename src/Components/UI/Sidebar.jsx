@@ -20,7 +20,7 @@ import '../../Styles/sidebar.css';
  * @returns {Reactnode} jsx injected in DOM
  */
 
-export default function Sidebar({ activities, activityName, copyright }) {
+export default function Sidebar(activities, activityName, copyright) {
   activities = [Yoga, Swim, Cycling, Bobybuilding];
   activityName = ['yoga', 'natation', 'cyclisme', 'musculation'];
   copyright = 'Copyright, SportSee 2020';
@@ -40,10 +40,7 @@ export default function Sidebar({ activities, activityName, copyright }) {
 /**
  * PropTypes Icons component
  */
- Icons.propTypes = {
-  activities: propTypes.string,
-  activityName: propTypes.string,
-  copyright: propTypes.string,
+Icons.propTypes = {
   icon: propTypes.string.isRequired,
   index: propTypes.number,
 };
