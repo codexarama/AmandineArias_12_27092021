@@ -1,5 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import propTypes from 'prop-types';
+
+import SportSee from '../../Assets/SportSee.svg';
 
 /**
  * Render the Banner component
@@ -13,7 +17,10 @@ import propTypes from 'prop-types';
 export default function Banner({ logo, message }) {
   return (
     <header className="banner">
-      <img className="logo" src={logo} alt="logo sport see" />
+      <Link className="banner-brand" to="/">
+        <img className="logo" src={logo} alt="logo sport see" />
+        <img className="brand" src={SportSee} alt="logo Sport See" />
+      </Link>
       <h1 className="msg">{message}</h1>
     </header>
   );
