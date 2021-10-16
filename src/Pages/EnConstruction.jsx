@@ -9,11 +9,8 @@ import '../Styles/alerte.css'
  * @param {object} props
  * @param {id} props.id > user id number
  * @param {topicId} props.topicId > navbar topic name
-
-
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function EnConstruction(props) {
 
   // console.log(props);
