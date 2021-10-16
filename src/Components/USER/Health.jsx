@@ -15,12 +15,11 @@ import KeyData from './KeyData';
  * @function Health
  * @param {object} props
  * @param {string} props.nutrimentName > nutriment name
- * @param {blob} props.icon > icon src
- * @param {string} props.index > key number
+ * @param {string} props.icon > icon src
+ * @param {number} props.index > key number
  * @param {object} keyData > nutriment count
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Health({ nutrimentIcon, nutrimentName, keyData }) {
   nutrimentIcon = [caloriesIcon, proteinesIcon, glucidesIcon, lipidesIcon];
   nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];

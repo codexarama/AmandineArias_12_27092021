@@ -15,7 +15,6 @@ import '../../Styles/accueil.css';
  * @param {string} props.name
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function User({ id, name }) {
 
   return (

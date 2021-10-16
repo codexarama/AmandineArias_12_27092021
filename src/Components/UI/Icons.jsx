@@ -21,8 +21,8 @@ import propTypes from 'prop-types';
  * PropTypes Icons component
  */
  Icons.propTypes = {
-  key: propTypes.number,
-  id: propTypes.string,
+  key: propTypes.number.isRequired,
+  id: propTypes.number.isRequired,
   icon: propTypes.string.isRequired,
   alt: propTypes.string.isRequired,
 };

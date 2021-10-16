@@ -3,9 +3,13 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
+import Chargement from '../../Pages/Chargement';
+import Inconnu from '../../Pages/Inconnu';
 import Erreur404 from '../../Pages/Erreur404';
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+// PIE CHART //////////
 
 /**
  * Render Performance component
@@ -18,9 +22,6 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-
-// PIE CHART //////////
-
 export default function Score() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
@@ -40,13 +41,11 @@ export default function Score() {
     <>
       {/* MANAGE loading CASES */}
       {isLoading ? (
-        <span className="alert-msg">Chargement en cours...</span>
+        <Chargement />
       ) : hasError ? (
         <Erreur404 />
       ) : data === undefined ? (
-        <span className="alert-msg">
-          L'utilisateur que vous recherchez n'est pas enregistré
-        </span>
+        <Inconnu />
       ) : (
         // DISPLAY SCORES CONTENT
         <div className="score">

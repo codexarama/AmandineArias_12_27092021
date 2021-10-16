@@ -13,10 +13,9 @@ import '../Styles/alerte.css';
  * @param {string} props.logo > logo src
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Erreur404() {
   return (
-    <main className="error">
+    <main>
       <Banner logo={logo} message="Code erreur" />
       <section className="alert-msg error-content">
         <p className="error-number">404</p>

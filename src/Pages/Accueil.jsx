@@ -21,10 +21,9 @@ import '../Styles/banner.css';
  * @param {string} userInfos > user firstName
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Accueil() {
   return (
-    <main className="accueil">
+    <main>
       <Banner logo={logo} message="Bonjour, qui est-ce ?" />
       <section className="users">
         {mock.map(({ id, userInfos }) => (

@@ -7,8 +7,16 @@
     background: var(--dark-bg);
   }
 
+  .banner-brand {
+    width: 15rem;
+  }
+
   .logo {
     margin-left: 2rem;
+  }
+
+  .brand {
+    margin-left: 1rem;
   }
 
   .msg {
