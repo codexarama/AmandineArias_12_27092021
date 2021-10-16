@@ -4,6 +4,9 @@ import propTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
+
+import Chargement from '../../Pages/Chargement';
+import Inconnu from '../../Pages/Inconnu';
 import Erreur404 from '../../Pages/Erreur404';
 
 import '../../Styles/graphs.css';
@@ -19,6 +22,8 @@ import {
   CartesianGrid,
 } from 'recharts';
 
+// BAR CHART //////////
+
 /**
  * Render DailyActivity component
  * @function DailyActivity
@@ -30,9 +35,6 @@ import {
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-
-// BAR CHART //////////
-
 export default function DailyActivity() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
@@ -56,13 +58,11 @@ export default function DailyActivity() {
     <>
       {/* MANAGE loading CASES */}
       {isLoading ? (
-        <span className="alert-msg">Chargement en cours...</span>
+        <Chargement />
       ) : hasError ? (
         <Erreur404 />
       ) : data === undefined ? (
-        <span className="alert-msg">
-          L'utilisateur que vous recherchez n'est pas enregistré
-        </span>
+        <Inconnu />
       ) : (
         // DISPLAY DAILY ACTIVITY CONTENT
         <div className="daily-activity">

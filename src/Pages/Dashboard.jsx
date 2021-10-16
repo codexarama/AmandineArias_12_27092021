@@ -1,6 +1,9 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 
+import Chargement from './Chargement';
+import Inconnu from './Inconnu';
 import Erreur404 from './Erreur404';
+
 import EnConstruction from './EnConstruction';
 import Navbar from '../Components/UI/Navbar';
 import Sidebar from '../Components/UI/Sidebar';
@@ -30,7 +33,6 @@ import Score from '../Components/USER/Score';
  * @param {number} keyData > user health indicators
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Dashboard(userId, url, userInfos, keyData) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
@@ -50,11 +52,13 @@ export default function Dashboard(userId, url, userInfos, keyData) {
     <>
       {/* MANAGE loading CASES */}
       {isLoading ? (
-        <span>Chargement en cours...</span>
+        <Chargement />
       ) : hasError ? (
-        <span>Oups, une erreur s'est produite.</span>
-      ) : data === undefined ? (
         <Erreur404 />
+      // ) : userId !== 12 || userId !== 18 ? (
+      ) : userId === undefined ? (
+      // ) : data === undefined ? (
+        <Inconnu />
       ) : (
         <>
           <Navbar />
@@ -66,7 +70,7 @@ export default function Dashboard(userId, url, userInfos, keyData) {
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <Sidebar />
-              <main>
+              <main className='dashboard'>
                 <Header name={userInfos.firstName} />
                 <section className="performances">
                   <section className="performances-details">

@@ -4,6 +4,8 @@ import propTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
+import Chargement from '../../Pages/Chargement';
+import Inconnu from '../../Pages/Inconnu';
 import Erreur404 from '../../Pages/Erreur404';
 
 import {
@@ -17,6 +19,8 @@ import {
 
 import '../../Styles/graphs.css';
 
+// LINE CHART //////////
+
 /**
  * Render Average component
  * @function Average
@@ -28,9 +32,6 @@ import '../../Styles/graphs.css';
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-
-// LINE CHART //////////
-
 export default function Average() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
@@ -56,13 +57,11 @@ export default function Average() {
     <>
       {/* MANAGE loading CASES */}
       {isLoading ? (
-        <span className="alert-msg">Chargement en cours...</span>
+        <Chargement />
       ) : hasError ? (
         <Erreur404 />
       ) : data === undefined ? (
-        <span className="alert-msg">
-          L'utilisateur que vous recherchez n'est pas enregistré
-        </span>
+        <Inconnu />
       ) : (
         // DISPLAY AVERAGE SESSIONS CONTENT
         <div className="average-sessions">
