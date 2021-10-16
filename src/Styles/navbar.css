@@ -10,9 +10,14 @@
 
 .navbar-brand {
   margin-right: 0;
+  margin-left: 1.25rem;
   padding-top: 1rem;
-  width: 6.5rem;
+  width: 12rem;
   text-align: center;
+}
+
+.brand {
+  margin-left: 1rem;
 }
 
 .nav-link {

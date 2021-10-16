@@ -11,10 +11,6 @@
 }
 
 /* ERROR PAGE */
-.error {
-  margin: 0 0;
-}
-
 .error-number {
   font-size: 10em;
   font-weight: 800;
@@ -37,11 +33,13 @@
   margin: auto;
   padding: 0 0 !important;
   border-bottom: solid 2px var(--link);
+  text-align: center;
   color: var(--link);
   font-size: x-small;
 }
 
-/* LOADING PAGE */
-.loader {
-  margin: 0 0;
+/* UNKNOWN USER PAGE */
+.avatar {
+  width: 10rem;
+  height: 10rem;
 }

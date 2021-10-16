@@ -1,6 +1,3 @@
-.light {
-  background: var(--light-bg-color);
-}
 
 /* HEADER */
 .user-name {
@@ -14,6 +11,10 @@
 }
 
 /* MAIN */
+.dashboard {
+  margin: 5% 12%;
+}
+
 .performances {
   justify-content: space-between;
   display: flex;
