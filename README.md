@@ -22,6 +22,7 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 - [x] Manipuler / Corriger les données selon le besoin
 - [x] Repésenter graphiquement les données : 
   - diagramme en barres
+  - diagramme linéaire
   - diagramme radar
   - diagramme circulaire
 - [x] Développer des Routes imbriquées
