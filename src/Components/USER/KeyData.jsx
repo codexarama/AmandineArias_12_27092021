@@ -27,5 +27,5 @@ export default function KeyData({ keyData, unit, nutrimentName, index }) {
   keyData: propTypes.number.isRequired,
   unit: propTypes.string.isRequired,
   nutrimentName: propTypes.string.isRequired,
-  index: propTypes.number.isRequired,
+  index: propTypes.number,
 };

@@ -2,7 +2,6 @@ import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 
 import Chargement from './Chargement';
 import Inconnu from './Inconnu';
-import Erreur404 from './Erreur404';
 
 import EnConstruction from './EnConstruction';
 import Navbar from '../Components/UI/Navbar';
@@ -12,11 +11,11 @@ import Activity from '../Components/USER/Activity';
 import Average from '../Components/USER/Average';
 import Health from '../Components/USER/Health';
 import Performance from '../Components/USER/Performance';
+import Score from '../Components/USER/Score';
 
 import { useFetch } from '../Services/api';
 
 import '../Styles/dashboard.css';
-import Score from '../Components/USER/Score';
 
 /**
  * Render Dashboard page component
@@ -41,25 +40,19 @@ export default function Dashboard(userId, url, userInfos, keyData) {
   userId = useParams().id;
 
   // GET FETCHED DATA
-  url = 'http://localhost:3000/user/';
-  const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
+  // url = 'http://localhost:3000/user/';
+  // const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
+  const { data, isLoading, hasError } = useFetch(`${userId}`);
 
   // GET USER INFOS
   userInfos = data.userInfos;
   keyData = data.keyData;
 
-  return (
-    <>
-      {/* MANAGE loading CASES */}
-      {isLoading ? (
-        <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      // ) : userId !== 12 || userId !== 18 ? (
-      ) : userId === undefined ? (
-      // ) : data === undefined ? (
-        <Inconnu />
-      ) : (
+  return <>
+    {/* MANAGE loading CASES */}
+    {isLoading ? (
+      <Chargement />
+      ) : !(hasError || !userId) ? (
         <>
           <Navbar />
           {/* NESTED ROUTES */}
@@ -85,7 +78,8 @@ export default function Dashboard(userId, url, userInfos, keyData) {
             </Route>
           </Switch>
         </>
-      )}
-    </>
-  );
+    ) : (
+      <Inconnu />
+    )}
+  </>;
 }

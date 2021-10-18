@@ -5,7 +5,6 @@ import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
 import Inconnu from '../../Pages/Inconnu';
-import Erreur404 from '../../Pages/Erreur404';
 
 import {
   ResponsiveContainer,
@@ -33,8 +32,7 @@ export default function Performance() {
   let userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
-  const url = 'http://localhost:3000/user/';
-  const { data, isLoading, hasError } = useFetch(`${url}${userId}/performance`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
 
   // ATTRIBUTE topic values to data main array
   const performance = data.data;
@@ -57,33 +55,29 @@ export default function Performance() {
     return performance;
   }
 
-  return (
-    <>
-      {/* MANAGE loading CASES */}
-      {isLoading ? (
-        <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      ) : data === undefined ? (
-        <Inconnu />
-      ) : (
-        // DISPLAY PERFORMANCES CONTENT
-        <div className="performance">
-          <ResponsiveContainer>
-            <RadarChart outerRadius={90} data={getData()}>
-              <PolarGrid radialLines={false} />
-              <PolarAngleAxis
-                dataKey="kind"
-                domain={[0, 150]}
-                dy={5}
-                tickLine={false}
-                stroke="white"
-              />
-              <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
-      )}
-    </>
-  );
+  return <>
+    {/* MANAGE loading CASES */}
+    {isLoading ? (
+      <Chargement />
+    ) : !(hasError || !userId) ? (
+      // DISPLAY PERFORMANCES CONTENT
+      <div className="performance">
+        <ResponsiveContainer>
+          <RadarChart outerRadius={90} data={getData()}>
+            <PolarGrid radialLines={false} />
+            <PolarAngleAxis
+              dataKey="kind"
+              domain={[0, 150]}
+              dy={5}
+              tickLine={false}
+              stroke="white"
+            />
+            <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
+    ) : (
+      <Inconnu />
+    )}
+  </>;
 }
