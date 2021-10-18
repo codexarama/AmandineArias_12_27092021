@@ -4,10 +4,8 @@ import propTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
-
 import Chargement from '../../Pages/Chargement';
 import Inconnu from '../../Pages/Inconnu';
-import Erreur404 from '../../Pages/Erreur404';
 
 import '../../Styles/graphs.css';
 
@@ -40,8 +38,7 @@ export default function DailyActivity() {
   let userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const url = 'http://localhost:3000/user/';
-  const { data, isLoading, hasError } = useFetch(`${url}${userId}/activity`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
   // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
@@ -59,11 +56,7 @@ export default function DailyActivity() {
       {/* MANAGE loading CASES */}
       {isLoading ? (
         <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      ) : data === undefined ? (
-        <Inconnu />
-      ) : (
+      ) : !(hasError || !userId) ? (
         // DISPLAY DAILY ACTIVITY CONTENT
         <div className="daily-activity">
           <h3 className="daily-activity--title">Activité quotidienne</h3>
@@ -122,6 +115,8 @@ export default function DailyActivity() {
             </BarChart>
           </ResponsiveContainer>
         </div>
+      ) : (
+        <Inconnu />
       )}
     </>
   );

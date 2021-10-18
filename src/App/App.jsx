@@ -21,7 +21,7 @@ function App() {
         <Route path="/chargement" component={Chargement} />
 
         {/* UNKNOWN USER page */}
-        <Route path="/inconnu" component={Inconnu} />
+        <Route path="/user/:id?" component={Inconnu} />
 
         {/* NOT FOUND page */}
         <Route path="*" component={Erreur404} />

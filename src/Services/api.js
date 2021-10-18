@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 
-export function useFetch(url) {
-  const [data, setData] = useState({});
+export function useFetch(userId) {
+  const [data, setData] = useState([]);
+  // const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
-  const [hasError, setError] = useState(false);
+  const [hasError, setError] = useState(null);
+  // const [hasError, setError] = useState(false);
 
   useEffect(() => {
-    if (!url) return setLoading(true);
+    if (!userId) return setLoading(true);
 
     async function fetchData() {
       try {
-        const response = await fetch(url);
+        const response = await fetch('http://localhost:3000/user/' + userId);
         const data = await response.json();
         setData(data.data);
       } catch (error) {
@@ -22,14 +24,12 @@ export function useFetch(url) {
     }
 
     fetchData();
-  }, [url]);
+  }, [userId]);
 
   return { data, isLoading, hasError };
 }
 
-////////// Failed to execute 'fetch' on 'Window' ////////////////
-////////// 1 argument required, but only 0 present ////////////////
-
+////////// Cannot read properties of undefined (reading 'data') ////////////////
 // import { useEffect, useState } from 'react';
 
 // export function useFetch(url) {
@@ -42,17 +42,21 @@ export function useFetch(url) {
 
 //     fetch(url)
 //       .then((result) => result.json())
-//       .then((resolve) => {
-//         setData(resolve(data.data));
+//       .then(() => {
+//         setData((data.data));
 //         setLoading(false);
 //       })
+//       // .then((resolve) => {
+//       //   setData(resolve(data.data));
+//       //   setLoading(false);
+//       // })
 //       .catch(() => {
 //         setError(true);
 //         setLoading(false);
 //       });
 
 //     fetch(url);
-//   }, [url]);
+//   }, [url, data.data]);
 
 //   return { data, isLoading, hasError };
 // }

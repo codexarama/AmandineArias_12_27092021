@@ -5,7 +5,6 @@ import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
 import Inconnu from '../../Pages/Inconnu';
-import Erreur404 from '../../Pages/Erreur404';
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -26,9 +25,8 @@ export default function Score() {
   // GET USER ID FROM URL PARAMS
   let userId = useParams().id;
 
-  // GET user SCORES data from FETCH
-  const url = 'http://localhost:3000/user/';
-  const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
+  // GET user SCORE data from FETCH
+  const { data, isLoading, hasError } = useFetch(`${userId}`);
   // console.log(data);
 
   const score = data.todayScore || data.score;
@@ -42,11 +40,7 @@ export default function Score() {
       {/* MANAGE loading CASES */}
       {isLoading ? (
         <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      ) : data === undefined ? (
-        <Inconnu />
-      ) : (
+      ) : !(hasError || !userId) ? (
         // DISPLAY SCORES CONTENT
         <div className="score">
           <h2 className="score-title">Score</h2>
@@ -73,6 +67,8 @@ export default function Score() {
             </PieChart>
           </ResponsiveContainer>
         </div>
+      ) : (
+        <Inconnu />
       )}
     </>
   );
