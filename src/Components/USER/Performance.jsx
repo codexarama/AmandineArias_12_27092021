@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
+import Erreur404 from '../../Pages/Erreur404';
 import Inconnu from '../../Pages/Inconnu';
 
 import {
@@ -27,9 +28,9 @@ import {
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Performance() {
+export default function Performance(userId) {
   // GET USER ID FROM URL PARAMS
-  let userId = useParams().id;
+  userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
@@ -58,8 +59,10 @@ export default function Performance() {
   return <>
     {/* MANAGE loading CASES */}
     {isLoading ? (
-      <Chargement />
-    ) : !(hasError || !userId) ? (
+        <Chargement />
+      ) : hasError ? (
+        <Erreur404 />
+      ) : data ? (
       // DISPLAY PERFORMANCES CONTENT
       <div className="performance">
         <ResponsiveContainer>

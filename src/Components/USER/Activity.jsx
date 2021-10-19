@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
+import Erreur404 from '../../Pages/Erreur404';
 import Inconnu from '../../Pages/Inconnu';
 
 import '../../Styles/graphs.css';
@@ -33,9 +34,9 @@ import {
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function DailyActivity() {
+export default function DailyActivity(userId) {
   // GET USER ID FROM URL PARAMS
-  let userId = useParams().id;
+  userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
@@ -56,7 +57,9 @@ export default function DailyActivity() {
       {/* MANAGE loading CASES */}
       {isLoading ? (
         <Chargement />
-      ) : !(hasError || !userId) ? (
+      ) : hasError ? (
+        <Erreur404 />
+      ) : data ? (
         // DISPLAY DAILY ACTIVITY CONTENT
         <div className="daily-activity">
           <h3 className="daily-activity--title">Activité quotidienne</h3>

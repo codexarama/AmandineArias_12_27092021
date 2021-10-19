@@ -1,6 +1,7 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
 
 import Chargement from './Chargement';
+import Erreur404 from './Erreur404';
 import Inconnu from './Inconnu';
 
 import EnConstruction from './EnConstruction';
@@ -32,39 +33,37 @@ import '../Styles/dashboard.css';
  * @param {number} keyData > user health indicators
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Dashboard(userId, url, userInfos, keyData) {
+export default function Dashboard(userId, userInfos, keyData) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
+  // console.log(useRouteMatch());
 
   // GET USER ID FROM URL PARAMS
   userId = useParams().id;
+  // console.log(useParams());
 
   // GET FETCHED DATA
-  // url = 'http://localhost:3000/user/';
-  // const { data, isLoading, hasError } = useFetch(`${url}${userId}`);
   const { data, isLoading, hasError } = useFetch(`${userId}`);
 
-  // GET USER INFOS
-  userInfos = data.userInfos;
-  keyData = data.keyData;
-
-  return <>
-    {/* MANAGE loading CASES */}
-    {isLoading ? (
-      <Chargement />
-      ) : !(hasError || !userId) ? (
+  return (
+    <>
+      {/* MANAGE loading CASES */}
+      {isLoading ? (
+        <Chargement />
+      ) : hasError ? (
+        <Erreur404 />
+      ) : data ? (
         <>
           <Navbar />
+          <Sidebar />
           {/* NESTED ROUTES */}
           <Switch>
             {/* DISPLAY ALERT FOR UNDERCONSTRUCTION PAGES */}
             <Route path={`${path}/:topicId`} component={EnConstruction} />
-
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
-              <Sidebar />
-              <main className='dashboard'>
-                <Header name={userInfos.firstName} />
+              <main className="dashboard">
+                <Header userName={data} />
                 <section className="performances">
                   <section className="performances-details">
                     <Activity />
@@ -72,14 +71,16 @@ export default function Dashboard(userId, url, userInfos, keyData) {
                     <Performance />
                     <Score />
                   </section>
-                  <Health keyData={keyData} />
+                  <Health userKeyData={data} />
                 </section>
               </main>
             </Route>
           </Switch>
         </>
-    ) : (
-      <Inconnu />
-    )}
-  </>;
+      ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
+        <Inconnu />
+      )}
+    </>
+  );
 }
