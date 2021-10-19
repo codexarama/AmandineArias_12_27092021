@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
+import Erreur404 from '../../Pages/Erreur404';
 import Inconnu from '../../Pages/Inconnu';
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
@@ -21,9 +22,9 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Score() {
+export default function Score(userId) {
   // GET USER ID FROM URL PARAMS
-  let userId = useParams().id;
+  userId = useParams().id;
 
   // GET user SCORE data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}`);
@@ -34,13 +35,16 @@ export default function Score() {
   // THE API HAS AN ERROR IN DATA NAMING
   // ONCE "todayScore" ONCE "score"
   const userScore = [{ value: score }, { value: 1 - score }];
+  // console.log(userScore);
 
   return (
     <>
       {/* MANAGE loading CASES */}
       {isLoading ? (
         <Chargement />
-      ) : !(hasError || !userId) ? (
+      ) : hasError ? (
+        <Erreur404 />
+      ) : data ? (
         // DISPLAY SCORES CONTENT
         <div className="score">
           <h2 className="score-title">Score</h2>
@@ -48,7 +52,6 @@ export default function Score() {
           <p className="score-comment">
             de votre <br /> objectif
           </p>
-
           <ResponsiveContainer>
             <PieChart width={730} height={250}>
               <Pie
@@ -68,6 +71,7 @@ export default function Score() {
           </ResponsiveContainer>
         </div>
       ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
         <Inconnu />
       )}
     </>

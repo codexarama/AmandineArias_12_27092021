@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
 import Chargement from '../../Pages/Chargement';
+import Erreur404 from '../../Pages/Erreur404';
 import Inconnu from '../../Pages/Inconnu';
 
 import {
@@ -27,9 +28,9 @@ import {
  * @param {boolean} hasError > props.data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Performance() {
+export default function Performance(userId) {
   // GET USER ID FROM URL PARAMS
-  let userId = useParams().id;
+  userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
@@ -55,29 +56,34 @@ export default function Performance() {
     return performance;
   }
 
-  return <>
-    {/* MANAGE loading CASES */}
-    {isLoading ? (
-      <Chargement />
-    ) : !(hasError || !userId) ? (
-      // DISPLAY PERFORMANCES CONTENT
-      <div className="performance">
-        <ResponsiveContainer>
-          <RadarChart outerRadius={90} data={getData()}>
-            <PolarGrid radialLines={false} />
-            <PolarAngleAxis
-              dataKey="kind"
-              domain={[0, 150]}
-              dy={5}
-              tickLine={false}
-              stroke="white"
-            />
-            <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
-    ) : (
-      <Inconnu />
-    )}
-  </>;
+  return (
+    <>
+      {/* MANAGE loading CASES */}
+      {isLoading ? (
+        <Chargement />
+      ) : hasError ? (
+        <Erreur404 />
+      ) : data ? (
+        // DISPLAY PERFORMANCES CONTENT
+        <div className="performance">
+          <ResponsiveContainer>
+            <RadarChart outerRadius={90} data={getData()}>
+              <PolarGrid radialLines={false} />
+              <PolarAngleAxis
+                dataKey="kind"
+                domain={[0, 150]}
+                dy={5}
+                tickLine={false}
+                stroke="white"
+              />
+              <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+      ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
+        <Inconnu />
+      )}
+    </>
+  );
 }

@@ -4,7 +4,7 @@ import logo from '../Assets/logo.svg';
 import Banner from '../Components/UI/Banner';
 import User from '../Components/USER/User';
 
-import { mock } from '../Services/mockedData';
+import { USER_INFOS } from '../Services/mockedData';
 
 import '../Styles/accueil.css';
 import '../Styles/banner.css';
@@ -26,7 +26,7 @@ export default function Accueil() {
     <main>
       <Banner logo={logo} message="Bonjour, qui est-ce ?" />
       <section className="users">
-        {mock.map(({ id, userInfos }) => (
+        {USER_INFOS.map(({ id, userInfos }) => (
           <User key={id} id={id} name={userInfos.firstName} />
         ))}
       </section>

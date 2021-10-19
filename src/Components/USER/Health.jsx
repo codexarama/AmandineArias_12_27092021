@@ -20,9 +20,11 @@ import KeyData from './KeyData';
  * @param {object} keyData > nutriment count
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Health({ nutrimentIcon, nutrimentName, keyData }) {
+export default function Health({ nutrimentIcon, nutrimentName, userKeyData }) {
   nutrimentIcon = [caloriesIcon, proteinesIcon, glucidesIcon, lipidesIcon];
   nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
+  // GET USER INFOS
+  userKeyData = userKeyData.keyData
 
   return (
     <aside className="aside">
@@ -34,7 +36,7 @@ export default function Health({ nutrimentIcon, nutrimentName, keyData }) {
             alt={'icone ' + nutrimentName[index]}
           />
           <KeyData
-            keyData={keyData[Object.keys(keyData)[index]]}
+            keyData={userKeyData[Object.keys(userKeyData)[index]]}
             unit={index === 0 ? "kCal" : "g"}
             nutrimentName={nutrimentName[index]}
           />

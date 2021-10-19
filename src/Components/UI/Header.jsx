@@ -9,7 +9,10 @@ import propTypes from 'prop-types';
  * @returns {Reactnode} jsx injected in DOM
  */
 
-export default function Header({ name }) {
+export default function Header({ userName }) {
+  // GET USER INFOS
+  let name = userName.userInfos.firstName;
+
   return (
     <header>
       <h1>
@@ -25,6 +28,6 @@ export default function Header({ name }) {
 /**
  * PropTypes Header component
  */
- Header.propTypes = {
+Header.propTypes = {
   name: propTypes.string.isRequired,
 };
