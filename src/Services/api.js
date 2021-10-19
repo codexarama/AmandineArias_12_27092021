@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
+import propTypes from 'prop-types';
 
 export function useFetch(userId) {
   const [data, setData] = useState([]);
-  // const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
-  const [hasError, setError] = useState(null);
-  // const [hasError, setError] = useState(false);
+  const [hasError, setError] = useState(false);
 
   useEffect(() => {
-    if (!userId) return setLoading(true);
+    if (userId === undefined) return setLoading(true);
+    // if (!userId) return setLoading(true);
 
     async function fetchData() {
       try {
@@ -28,6 +28,13 @@ export function useFetch(userId) {
 
   return { data, isLoading, hasError };
 }
+
+/**
+ * PropTypes useFetch component
+ */
+ useFetch.propTypes = {
+  userId: propTypes.number.isRequired,
+};
 
 ////////// Cannot read properties of undefined (reading 'data') ////////////////
 // import { useEffect, useState } from 'react';
