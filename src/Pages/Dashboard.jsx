@@ -33,7 +33,7 @@ import '../Styles/dashboard.css';
  * @param {number} keyData > user health indicators
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Dashboard(userId, userInfos, keyData) {
+export default function Dashboard(userId) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
   // console.log(useRouteMatch());

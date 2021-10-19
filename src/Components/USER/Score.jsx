@@ -71,6 +71,7 @@ export default function Score(userId) {
           </ResponsiveContainer>
         </div>
       ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
         <Inconnu />
       )}
     </>

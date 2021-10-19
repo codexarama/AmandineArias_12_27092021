@@ -56,31 +56,34 @@ export default function Performance(userId) {
     return performance;
   }
 
-  return <>
-    {/* MANAGE loading CASES */}
-    {isLoading ? (
+  return (
+    <>
+      {/* MANAGE loading CASES */}
+      {isLoading ? (
         <Chargement />
       ) : hasError ? (
         <Erreur404 />
       ) : data ? (
-      // DISPLAY PERFORMANCES CONTENT
-      <div className="performance">
-        <ResponsiveContainer>
-          <RadarChart outerRadius={90} data={getData()}>
-            <PolarGrid radialLines={false} />
-            <PolarAngleAxis
-              dataKey="kind"
-              domain={[0, 150]}
-              dy={5}
-              tickLine={false}
-              stroke="white"
-            />
-            <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
-    ) : (
-      <Inconnu />
-    )}
-  </>;
+        // DISPLAY PERFORMANCES CONTENT
+        <div className="performance">
+          <ResponsiveContainer>
+            <RadarChart outerRadius={90} data={getData()}>
+              <PolarGrid radialLines={false} />
+              <PolarAngleAxis
+                dataKey="kind"
+                domain={[0, 150]}
+                dy={5}
+                tickLine={false}
+                stroke="white"
+              />
+              <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+      ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
+        <Inconnu />
+      )}
+    </>
+  );
 }

@@ -119,6 +119,7 @@ export default function DailyActivity(userId) {
           </ResponsiveContainer>
         </div>
       ) : (
+        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
         <Inconnu />
       )}
     </>
