@@ -6,6 +6,7 @@ import DailyActivity from '../Components/USER/Activity';
 import Average from '../Components/USER/Average';
 import Performance from '../Components/USER/Performance';
 import Score from '../Components/USER/Score';
+import Health from '../Components/USER/Health';
 
 import Dashboard from '../Pages/Dashboard';
 
@@ -15,7 +16,7 @@ import Erreur404 from '../Pages/Erreur404';
 
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter className="App">
       <Switch>
@@ -43,6 +44,11 @@ function App() {
             <Score />
           </main>
         </Route>
+        <Route exact path="/user/:id/key-data">
+          <main className="data-focused">
+            <Health />
+          </main>
+        </Route>
 
         {/* DASHBOARD page */}
         <Route path="/user/:id" component={Dashboard} />
@@ -59,5 +65,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
