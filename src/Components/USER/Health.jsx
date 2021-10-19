@@ -5,10 +5,11 @@ import caloriesIcon from '../../Assets/icon_calories.svg';
 import proteinesIcon from '../../Assets/icon_proteins.svg';
 import glucidesIcon from '../../Assets/icon_carbohydrates.svg';
 import lipidesIcon from '../../Assets/icon_lipids.svg';
-import '../../Styles/aside.css';
 
 import Icons from '../UI/Icons';
 import KeyData from './KeyData';
+
+import '../../Styles/aside.css';
 
 /**
  * Render Health component
@@ -54,5 +55,5 @@ Health.propTypes = {
   nutrimentName: propTypes.string,
   icon: propTypes.string,
   index: propTypes.number,
-  keyData: propTypes.objectOf(propTypes.number).isRequired,
+  keyData: propTypes.objectOf(propTypes.number),
 };

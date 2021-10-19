@@ -15,8 +15,6 @@ import {
   Radar,
 } from 'recharts';
 
-// RADAR CHART //////////
-
 /**
  * Render Performance component
  * @function Performance
@@ -56,6 +54,7 @@ export default function Performance(userId) {
     return performance;
   }
 
+  // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
     <>
       {/* MANAGE loading CASES */}
@@ -64,7 +63,7 @@ export default function Performance(userId) {
       ) : hasError ? (
         <Erreur404 />
       ) : data ? (
-        // DISPLAY PERFORMANCES CONTENT
+        // PERFORMANCES CONTENT
         <div className="performance">
           <ResponsiveContainer>
             <RadarChart outerRadius={90} data={getData()}>

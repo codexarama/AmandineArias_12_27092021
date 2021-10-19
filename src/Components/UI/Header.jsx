@@ -29,5 +29,5 @@ export default function Header({ userName }) {
  * PropTypes Header component
  */
 Header.propTypes = {
-  name: propTypes.string.isRequired,
+  name: propTypes.string,
 };

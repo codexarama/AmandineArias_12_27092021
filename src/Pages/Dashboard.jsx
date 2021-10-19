@@ -10,9 +10,9 @@ import Sidebar from '../Components/UI/Sidebar';
 import Header from '../Components/UI/Header';
 import Activity from '../Components/USER/Activity';
 import Average from '../Components/USER/Average';
-import Health from '../Components/USER/Health';
 import Performance from '../Components/USER/Performance';
 import Score from '../Components/USER/Score';
+import Health from '../Components/USER/Health';
 
 import { useFetch } from '../Services/api';
 
