@@ -23,22 +23,22 @@ function App() {
         <Route exact path="/" component={Accueil} />
 
         {/* DATA FOCUSED page */}
-        <Route path="/user/:id/activity">
+        <Route exact path="/user/:id/activity">
           <main className="data-focused data-focused--activity">
             <DailyActivity />
           </main>
         </Route>
-        <Route path="/user/:id/average-sessions">
+        <Route exact path="/user/:id/average-sessions">
           <main className="data-focused">
             <Average />
           </main>
         </Route>
-        <Route path="/user/:id/activities">
+        <Route exact path="/user/:id/activities">
           <main className="data-focused">
             <Performance />
           </main>
         </Route>
-        <Route path="/user/:id/today-score">
+        <Route exact path="/user/:id/today-score">
           <main className="data-focused">
             <Score />
           </main>
@@ -52,7 +52,6 @@ function App() {
 
         {/* UNKNOWN USER page */}
         <Route path="/user/:id?" component={Inconnu} />
-        {/* <Route path="/user/inconnu" component={Inconnu} /> */}
 
         {/* NOT FOUND page */}
         <Route path="*" component={Erreur404} />

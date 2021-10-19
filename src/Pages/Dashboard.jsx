@@ -59,7 +59,7 @@ export default function Dashboard(userId) {
           {/* NESTED ROUTES */}
           <Switch>
             {/* DISPLAY ALERT FOR UNDERCONSTRUCTION PAGES */}
-            <Route path={`${path}/:topicId`} component={EnConstruction} />
+            <Route exact path={`${path}/:topicId`} component={EnConstruction} />
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <main className="dashboard">

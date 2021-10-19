@@ -34,21 +34,21 @@ export default function Navbar() {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to={`${url}/Profil`}
+              strict to={`${url}/Profil`}
             >
               Profil
             </NavLink>
             <NavLink
               className="nav-link"
               activeClassName={'active'}
-              to={`${url}/Réglages`}
+              strict to={`${url}/Réglages`}
             >
               Réglages
             </NavLink>
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to={`${url}/Communauté`}
+              strict to={`${url}/Communauté`}
             >
               Communauté
             </NavLink>
