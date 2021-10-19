@@ -4,9 +4,9 @@ import propTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
-import Chargement from '../../Pages/Chargement';
-import Erreur404 from '../../Pages/Erreur404';
-import Inconnu from '../../Pages/Inconnu';
+// import Chargement from '../../Pages/Chargement';
+// import Erreur404 from '../../Pages/Erreur404';
+// import Inconnu from '../../Pages/Inconnu';
 
 import '../../Styles/graphs.css';
 
@@ -39,7 +39,9 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
+  const { data, isLoading } = useFetch(`${userId}/activity`);
+  // const { data, isLoading } = useFetch(`${userId}/activity`);
+  // const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
   // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
@@ -55,12 +57,13 @@ export default function DailyActivity(userId) {
   return (
     <>
       {/* MANAGE loading CASES */}
-      {isLoading ? (
+      {/* {isLoading ? (
         <Chargement />
       ) : hasError ? (
         <Erreur404 />
-      ) : data ? (
-        // DISPLAY DAILY ACTIVITY CONTENT
+        ) : data ? ( */}
+          {/* {data ? ( */}
+        {/* // DISPLAY DAILY ACTIVITY CONTENT */}
         <div className="daily-activity">
           <h3 className="daily-activity--title">Activité quotidienne</h3>
           <ResponsiveContainer>
@@ -118,10 +121,10 @@ export default function DailyActivity(userId) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      ) : (
+      {/* ) : (
         // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
         <Inconnu />
-      )}
+      )} */}
     </>
   );
 }

@@ -23,14 +23,11 @@ import '../Styles/dashboard.css';
  * @function Dashboard
  * @param {number} userId > user id number
  * @param {string} path > url current path
- * @param {string} url > url new path
  * @param {object} props
  * @param {object} props.data > user infos || error object || error (data loading failure)
  * @param {boolean} props.data > props.data exists ? y/n
  * @param {boolean} isLoading > props.data is an error object ? y/n
  * @param {boolean} hasError > props.data loading has failed ? y/n
- * @param {string} userInfos > user firstName
- * @param {number} keyData > user health indicators
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Dashboard(userId) {
