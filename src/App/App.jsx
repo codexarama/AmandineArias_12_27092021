@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Accueil from '../Pages/Accueil';
 
+import logo from '../Assets/logo.svg';
+import Banner from '../Components/UI/Banner';
 import DailyActivity from '../Components/USER/Activity';
 import Average from '../Components/USER/Average';
 import Performance from '../Components/USER/Performance';
@@ -15,6 +17,101 @@ import Inconnu from '../Pages/Inconnu';
 import Erreur404 from '../Pages/Erreur404';
 
 import './App.css';
+import '../Styles/banner.css';
+
+const statsFocus = [
+  {
+    path: '/user/:id/activity',
+    exact: true,
+    main: () => (
+      <main className="data-focused">
+        <Banner logo={logo} message="Activité quotidienne" />
+        <section
+          style={{
+            marginTop: '12rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            width: '75%',
+          }}
+        >
+          <DailyActivity />
+        </section>
+      </main>
+    ),
+  },
+  {
+    path: '/user/:id/average-sessions',
+    exact: true,
+    main: () => (
+      <main className="data-focused">
+        <Banner logo={logo} message="Sessions moyennes" />
+        <section
+          style={{
+            marginTop: '12rem',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Average className="focus" />
+        </section>
+      </main>
+    ),
+  },
+  {
+    path: '/user/:id/activities',
+    exact: true,
+    main: () => (
+      <main className="data-focused">
+        <Banner logo={logo} message="Performances" />
+        <section
+          style={{
+            marginTop: '12rem',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Performance />
+        </section>
+      </main>
+    ),
+  },
+  {
+    path: '/user/:id/today-score',
+    exact: true,
+    main: () => (
+      <main className="data-focused">
+        <Banner logo={logo} message="Score du jour" />
+        <section
+          style={{
+            marginTop: '12rem',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Score />
+        </section>
+      </main>
+    ),
+  },
+  {
+    path: '/user/:id/key-data',
+    exact: true,
+    main: () => (
+      <main className="data-focused">
+        <Banner logo={logo} message="Indicateurs physiologiques" />
+        <section
+          style={{
+            marginTop: '12rem',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Health />
+        </section>
+      </main>
+    ),
+  },
+];
 
 export default function App() {
   return (
@@ -24,31 +121,14 @@ export default function App() {
         <Route exact path="/" component={Accueil} />
 
         {/* DATA FOCUSED page */}
-        <Route exact path="/user/:id/activity">
-          <main className="data-focused data-focused--activity">
-            <DailyActivity />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/average-sessions">
-          <main className="data-focused">
-            <Average />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/activities">
-          <main className="data-focused">
-            <Performance />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/today-score">
-          <main className="data-focused">
-            <Score />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/key-data">
-          <main className="data-focused">
-            <Health />
-          </main>
-        </Route>
+        {statsFocus.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            children={<route.main />}
+          />
+        ))}
 
         {/* DASHBOARD page */}
         <Route path="/user/:id" component={Dashboard} />
