@@ -9,6 +9,7 @@
 }
 
 .navbar-brand {
+  z-index: 1;
   margin-right: 0;
   margin-left: 1.25rem;
   padding-top: 1rem;
