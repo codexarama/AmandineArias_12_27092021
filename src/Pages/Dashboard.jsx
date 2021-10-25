@@ -23,11 +23,10 @@ import '../Styles/dashboard.css';
  * @function Dashboard
  * @param {number} userId > user id number
  * @param {string} path > url current path
- * @param {object} props
- * @param {object} props.data > user infos || error object || error (data loading failure)
- * @param {boolean} props.data > props.data exists ? y/n
- * @param {boolean} isLoading > props.data is an error object ? y/n
- * @param {boolean} hasError > props.data loading has failed ? y/n
+ * @param {object} data > user infos || error object || error (data loading failure)
+ * @param {boolean} data > data exists ? y/n
+ * @param {boolean} isLoading > data is an error object ? y/n
+ * @param {boolean} hasError > data loading has failed ? y/n
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Dashboard(userId) {
@@ -56,7 +55,7 @@ export default function Dashboard(userId) {
           {/* NESTED ROUTES */}
           <Switch>
             {/* DISPLAY ALERT FOR UNDERCONSTRUCTION PAGES */}
-            <Route exact path={`${path}/:topicId`} component={EnConstruction} />
+            <Route path={`${path}/:topicId`} component={EnConstruction} />
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <main className="dashboard">
