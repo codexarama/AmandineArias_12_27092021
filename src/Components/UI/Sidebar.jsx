@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 import propTypes from 'prop-types';
 
 import Icons from './Icons';
@@ -19,18 +20,25 @@ import '../../Styles/sidebar.css';
  * @param {string} props.index > key number
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Sidebar(activities, activityName, copyright) {
+  let { url } = useRouteMatch();
+
   activities = [Yoga, Swim, Cycling, Bobybuilding];
-  activityName = ['yoga', 'natation', 'cyclisme', 'musculation'];
+  activityName = ['Yoga', 'Natation', 'Cyclisme', 'Musculation'];
   copyright = 'Copyright, SportSee 2020';
 
+  // render : ok MAIS IMPOSSIBLE de cliquer /////////////////////////////////////////
   return (
     <nav className="sidebar">
       {activities.map((icon, index) => (
-        <div key={index} className="sidebar-items">
+        <NavLink
+          to={`${url}/${activityName[index]}`}
+          key={index}
+          className="sidebar-items"
+          activeclassname="active"
+        >
           <Icons icon={icon} alt={'icone ' + activityName[index]} />
-        </div>
+        </NavLink>
       ))}
       <span className="copyright">{copyright}</span>
     </nav>
