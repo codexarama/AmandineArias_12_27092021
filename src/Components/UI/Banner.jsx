@@ -13,7 +13,6 @@ import SportSee from '../../Assets/SportSee.svg';
  * @param {string} props.message > welcome message
  * @returns {Reactnode} jsx injected in DOM
  */
-
 export default function Banner({ logo, message }) {
   return (
     <header className="banner">

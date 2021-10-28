@@ -24,10 +24,11 @@ export default function Score(userId) {
   const { data } = useFetch(`${userId}`);
   // console.log(data);
 
-  const score = data.todayScore || data.score;
   // REMARK !!!
   // THE API HAS AN ERROR IN DATA NAMING
   // ONCE "todayScore" ONCE "score"
+  const score = data.todayScore || data.score;
+  
   const userScore = [{ value: score }, { value: 1 - score }];
   // console.log(userScore);
 

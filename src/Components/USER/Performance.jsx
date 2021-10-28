@@ -47,7 +47,6 @@ export default function Performance(userId) {
   function getData() {
     for (let i = 0; i < performance.length; i++) {
       performance[i].kind = kind[i];
-      // performance[i].kind = data.kind[i + 1];
       // values from fetched data are in english and lower case...
       // it doesn't match with expected values from the dashboard prototype
     }

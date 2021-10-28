@@ -27,7 +27,6 @@ export default function Sidebar(activities, activityName, copyright) {
   activityName = ['Yoga', 'Natation', 'Cyclisme', 'Musculation'];
   copyright = 'Copyright, SportSee 2020';
 
-  // render : ok MAIS IMPOSSIBLE de cliquer /////////////////////////////////////////
   return (
     <nav className="sidebar">
       {activities.map((icon, index) => (
