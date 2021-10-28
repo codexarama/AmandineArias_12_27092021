@@ -2,11 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Accueil from '../Pages/Accueil';
 
-import DailyActivity from '../Components/USER/Activity';
-import Average from '../Components/USER/Average';
-import Performance from '../Components/USER/Performance';
-import Score from '../Components/USER/Score';
-import Health from '../Components/USER/Health';
+import { statsFocus } from '../Components/USER/StatsFocus';
 
 import Dashboard from '../Pages/Dashboard';
 
@@ -15,6 +11,7 @@ import Inconnu from '../Pages/Inconnu';
 import Erreur404 from '../Pages/Erreur404';
 
 import './App.css';
+import '../Styles/banner.css';
 
 export default function App() {
   return (
@@ -24,31 +21,19 @@ export default function App() {
         <Route exact path="/" component={Accueil} />
 
         {/* DATA FOCUSED page */}
-        <Route exact path="/user/:id/activity">
-          <main className="data-focused data-focused--activity">
-            <DailyActivity />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/average-sessions">
-          <main className="data-focused">
-            <Average />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/activities">
-          <main className="data-focused">
-            <Performance />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/today-score">
-          <main className="data-focused">
-            <Score />
-          </main>
-        </Route>
-        <Route exact path="/user/:id/key-data">
-          <main className="data-focused">
-            <Health />
-          </main>
-        </Route>
+        {statsFocus.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            strict={route.strict}
+            children={
+              <main className="data-focused">
+                <route.focus />
+              </main>
+            }
+          />
+        ))}
 
         {/* DASHBOARD page */}
         <Route path="/user/:id" component={Dashboard} />

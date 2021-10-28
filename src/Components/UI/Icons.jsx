@@ -1,3 +1,4 @@
+
 import React from 'react';
 import propTypes from 'prop-types';
 
@@ -5,12 +6,11 @@ import propTypes from 'prop-types';
  * Render Icons component
  * @param {object} props
  * @param {number} props.index > key number
- * @param {string} props.id > icon id
- * @param {string} props.icon > icon src
- * @param {string} props.alt > icon alt text
+ * @param {string} props.id > icon identifier
+ * @param {string} props.icon > icon source
+ * @param {string} props.alt > icon alternative text
  * @returns {Reactnode} jsx injected in DOM
  */
-
  export default function Icons({ index, id, icon, alt }) {
   return (
       <img key={index} id={id} className="sidebar-icon aside-icon" src={icon} alt={alt} />

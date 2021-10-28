@@ -19,8 +19,6 @@ import {
 
 import '../../Styles/graphs.css';
 
-// LINE CHART //////////
-
 /**
  * Render Average component
  * @function Average
@@ -50,6 +48,7 @@ export default function Average(userId) {
   }
   // console.log(data);
 
+  // LINE CHART TO DISPLAY AVERAGE SESSIONS //////////
   return (
     <>
       {/* MANAGE loading CASES */}
@@ -58,7 +57,7 @@ export default function Average(userId) {
       ) : hasError ? (
         <Erreur404 />
       ) : data ? (
-        // DISPLAY AVERAGE SESSIONS CONTENT
+        // AVERAGE SESSIONS CONTENT
         <div className="average-sessions">
           <h3 className="average-sessions--title">
             Durée moyenne <br /> des sessions
