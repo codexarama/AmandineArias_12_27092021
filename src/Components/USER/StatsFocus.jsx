@@ -6,14 +6,16 @@ import DailyActivity from './Activity';
 import Average from './Average';
 import Performance from './Performance';
 import Score from './Score';
-import Health from './Health';
+import Health from './Health'
 
 import '../../Styles/banner.css';
 
 const mainStyle = {
-  marginTop: '12rem',
+  marginTop: '6rem',
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
+  height: '40rem',
 };
 
 export const statsFocus = [
