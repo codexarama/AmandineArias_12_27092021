@@ -3,10 +3,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
 
-import Chargement from '../../Pages/Chargement';
-import Erreur404 from '../../Pages/Erreur404';
-import Inconnu from '../../Pages/Inconnu';
-
 import {
   ResponsiveContainer,
   RadarChart,
@@ -31,7 +27,7 @@ export default function Performance(userId) {
   userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
+  const { data, isLoading } = useFetch(`${userId}/performance`);
 
   // ATTRIBUTE topic values to data main array
   const performance = data.data;
@@ -45,23 +41,18 @@ export default function Performance(userId) {
   ];
 
   function getData() {
-    for (let i = 0; i < performance.length; i++) {
-      performance[i].kind = kind[i];
-      // values from fetched data are in english and lower case...
-      // it doesn't match with expected values from the dashboard prototype
+    if (!isLoading) {
+      for (let i = 0; i < performance.length; i++) {
+        performance[i].kind = kind[i];
+        // values from fetched data are in english and lower case...
+        // it doesn't match with expected values from the dashboard prototype
+      }
     }
     return performance;
   }
 
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
-    <>
-      {/* MANAGE loading CASES */}
-      {isLoading ? (
-        <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      ) : data ? (
         // PERFORMANCES CONTENT
         <div className="performance">
           <ResponsiveContainer>
@@ -78,10 +69,5 @@ export default function Performance(userId) {
             </RadarChart>
           </ResponsiveContainer>
         </div>
-      ) : (
-        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
-        <Inconnu />
-      )}
-    </>
   );
 }

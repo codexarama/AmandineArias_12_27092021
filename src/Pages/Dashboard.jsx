@@ -67,7 +67,7 @@ export default function Dashboard(userId) {
                     <Performance />
                     <Score />
                   </section>
-                  <Health userKeyData={data} />
+                  <Health />
                 </section>
               </main>
             </Route>
