@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 
+// export function useFetch(userId, model) {
 export function useFetch(userId) {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -14,7 +15,9 @@ export function useFetch(userId) {
       try {
         const response = await fetch('http://localhost:3000/user/' + userId);
         const data = await response.json();
-        setData(data.data);
+        // ??? TENTATIVE...
+        // return new model(setData(data.data));
+        setData(data.data)
       } catch (error) {
         console.log(error);
         setError(true);
@@ -25,6 +28,7 @@ export function useFetch(userId) {
 
     fetchData();
   }, [userId]);
+  // }, [userId, model]);
 
   return { data, isLoading, hasError };
 }
@@ -32,7 +36,7 @@ export function useFetch(userId) {
 /**
  * PropTypes useFetch component
  */
- useFetch.propTypes = {
+useFetch.propTypes = {
   userId: propTypes.number.isRequired,
 };
 
