@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -22,13 +22,14 @@ export default function Score(userId) {
 
   // GET user SCORE data from FETCH
   const { data } = useFetch(`${userId}`);
+  // const { data } = useFetch(`${userId}`.json);
   // console.log(data);
 
   // REMARK !!!
   // THE API HAS AN ERROR IN DATA NAMING
   // ONCE "todayScore" ONCE "score"
   const score = data.todayScore || data.score;
-  
+
   const userScore = [{ value: score }, { value: 1 - score }];
   // console.log(userScore);
 

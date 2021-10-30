@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import {
   ResponsiveContainer,
@@ -32,6 +32,7 @@ export default function Average(userId) {
 
   // GET user AVERAGE SESSIONS data from FETCH
   const { data, isLoading } = useFetch(`${userId}/average-sessions`);
+  // const { data, isLoading } = useFetch(`${userId}/average-sessions`.json);
   // console.log(data);
 
   // CONVERT days numeric value INTO string first letter

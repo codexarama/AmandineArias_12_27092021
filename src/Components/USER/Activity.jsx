@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import '../../Styles/graphs.css';
 
@@ -34,6 +34,7 @@ export default function DailyActivity(userId) {
 
   // GET user DAILY ACTIVITY data from FETCH
   const { data, isLoading } = useFetch(`${userId}/activity`);
+  // const { data, isLoading } = useFetch(`${userId}/activity`.json);
   // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm

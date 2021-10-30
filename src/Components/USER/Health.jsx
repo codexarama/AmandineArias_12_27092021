@@ -14,7 +14,7 @@ import lipidesIcon from '../../Assets/icon_lipids.svg';
 import Icons from '../UI/Icons';
 import KeyData from './KeyData';
 
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import '../../Styles/aside.css';
 
@@ -41,6 +41,7 @@ export default function KeyDataFocus() {
   const userId = useParams().id;
   // GET FETCHED DATA
   const { data, isLoading, hasError } = useFetch(`${userId}`);
+  // const { data, isLoading, hasError } = useFetch(`${userId}`.json);
   const userKeyData = data.keyData;
 
   return (

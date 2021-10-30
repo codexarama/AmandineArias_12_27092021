@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import {
   ResponsiveContainer,
@@ -28,6 +28,7 @@ export default function Performance(userId) {
 
   // GET user PERFORMANCES data from FETCH
   const { data, isLoading } = useFetch(`${userId}/performance`);
+  // const { data, isLoading } = useFetch(`${userId}/performance`.json);
 
   // ATTRIBUTE topic values to data main array
   const performance = data.data;
