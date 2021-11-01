@@ -33,8 +33,8 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/activity`);
-  // const { data, isLoading } = useFetch(`${userId}/activity`.json);
+  // const { data, isLoading } = useFetch(`${userId}/activity`);
+  const { data, isLoading } = useFetch(`${userId}/activity`.json);
   // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm

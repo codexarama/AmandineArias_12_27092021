@@ -31,8 +31,8 @@ export default function Average(userId) {
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/average-sessions`);
-  // const { data, isLoading } = useFetch(`${userId}/average-sessions`.json);
+  // const { data, isLoading } = useFetch(`${userId}/average-sessions`);
+  const { data, isLoading } = useFetch(`${userId}/average-sessions`.json);
   // console.log(data);
 
   // CONVERT days numeric value INTO string first letter

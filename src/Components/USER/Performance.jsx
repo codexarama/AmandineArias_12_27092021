@@ -27,8 +27,8 @@ export default function Performance(userId) {
   userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/performance`);
-  // const { data, isLoading } = useFetch(`${userId}/performance`.json);
+  // const { data, isLoading } = useFetch(`${userId}/performance`);
+  const { data, isLoading } = useFetch(`${userId}/performance`.json);
 
   // ATTRIBUTE topic values to data main array
   const performance = data.data;
