@@ -15,8 +15,6 @@ import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
 
 import { useFetch } from '../Services/mockedApi';
-import UserInfosModel from '../ClassModels/userInfosModel';
-import {USER_INFOS} from '../Services/mockedData'
 
 import '../Styles/dashboard.css';
 
@@ -38,19 +36,11 @@ export default function Dashboard(userId) {
 
   // GET USER ID FROM URL PARAMS
   userId = useParams().id;
-  userId === 12 ? (userId = USER_INFOS[0]) : (userId = USER_INFOS[1])
-  console.log(userId) //ok mais tres moche
 
   // GET FETCHED DATA
-  // const { data, isLoading, hasError } = useFetch(`${userId}`); // ERREUR 404
+  const { data, isLoading, hasError } = useFetch(`${userId}`); // ERREUR 404
   // const { data, isLoading, hasError } = useFetch(`${userId}`.json); // CHARGEMENT INFINI - Array.lenght = 0
-  // let { data, isLoading, hasError } = useFetch(`${userId}`); // ERREUR 404
-  let { data, isLoading, hasError } = useFetch(`${userId}`.json); // CHARGEMENT INFINI - Array.lenght = 0
-  data = userId
   console.log(data);
-  // data = UserInfosModel; // CHARGEMENT INFINI - affiche en console la totalité du composant
-  // const model = UserInfosModel
-  // console.log(model);
 
   return (
     <>
