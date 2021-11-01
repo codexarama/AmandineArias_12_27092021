@@ -22,7 +22,8 @@ export default function Score(userId) {
 
   // GET user SCORE data from FETCH
   // const { data } = useFetch(`${userId}`);
-  const { data } = useFetch(`${userId}`.json);
+  // const { data } = useFetch(`${userId}`.json);
+  const { data } = useFetch(`${userId}.json`);
   // console.log(data);
 
   // REMARK !!!

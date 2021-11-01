@@ -41,7 +41,8 @@ export default function KeyDataFocus() {
   const userId = useParams().id;
   // GET FETCHED DATA
   // const { data, isLoading, hasError } = useFetch(`${userId}`);
-  const { data, isLoading, hasError } = useFetch(`${userId}`.json);
+  // const { data, isLoading, hasError } = useFetch(`${userId}`.json);
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
   const userKeyData = data.keyData;
 
   return (
