@@ -32,10 +32,10 @@ export default function DailyActivity(userId) {
   // GET USER ID FROM URL PARAMS
   userId = useParams().id;
 
-  // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/activity`);
-  // const { data, isLoading } = useFetch(`${userId}/activity.json`);
-  console.log(data);
+
+  // // GET user DAILY ACTIVITY data from FETCH
+  const { data, isLoading } = useFetch(`${userId}/activity.json`);
+  // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {

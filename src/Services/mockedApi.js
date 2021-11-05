@@ -10,8 +10,7 @@ export function useFetch(userId) {
     if (!userId) return setLoading(true);
 
     const getData = () => {
-      // fetch('user/' + userId, {
-      fetch('../../public/user/' + userId, {
+      fetch('http://localhost:3001/user/' + userId, {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
@@ -19,8 +18,7 @@ export function useFetch(userId) {
       })
         .then((response) => response.json())
         .then((data) => {
-          setData((data.data));
-          // setData(JSON.stringify(data.data));
+          setData(data.data);
           setLoading(false);
         })
         .catch(() => {
