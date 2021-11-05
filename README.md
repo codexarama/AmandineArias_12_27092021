@@ -2,21 +2,15 @@
 
 (projet fictif de formation n°12/14 avec OpenClassrooms)
 
-## INTEGRATION
+> PROBLEMATIQUE
 
-Tableau de bord analytique de performances sportives et indicateurs physiologiques
+Créer un tableau de bord analytique de performances sportives et indicateurs physiologiques
 
-## RESSOURCES FOURNIES
+> BESOIN
 
-* [Maquette](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR)
-* [Kanban](https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)  
+Afficher les données utlisateur sous forme de graphique
 
-## BIBLIOTHEQUES
-
-    REACT   
-    RECHART
-
-## COMPETENCES DEVELOPPEES
+## Compétences développées
 
 - [x] Récupérer les données depuis l'API
 - [x] Manipuler / Corriger les données selon le besoin
@@ -29,7 +23,17 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 - [x] Gérer les différents cas liés au chargement de la page (en cours, erreur, ok)
 - [x] Développer une logique de code partitionné dans des composants réutilisables
 
-## INSTALLATION 
+## Ressources fournies
+
+* [Maquette](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR)
+* [Kanban](https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)  
+
+## Bibliothèques
+
+    REACT   
+    RECHART
+
+## Installation 
 
 ### Editeur recommandé
 
@@ -103,5 +107,5 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 - Launch front-end on port 3001: `npm start`
 
 > Front-end is now rendered at URL `http://localhost:3001`
-
+> 
 > _SportSee_ API only contains data for users with id 12 and 18
