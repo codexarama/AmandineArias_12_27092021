@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
 
@@ -33,8 +34,13 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/activity`);
-  // console.log(data);
+  // const { data, isLoading } = useFetch(`${userId}/activity`);
+  // // console.log(data);
+
+  // USE CLASSMODEL >>> OK BUT ERROR BEFORE COMPONENT MOUNTING
+  let { data, isLoading } = useFetch(`${userId}/activity`);
+  data = new ActivityModel(data)
+  console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {
