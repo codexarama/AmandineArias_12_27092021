@@ -5,13 +5,10 @@ import propTypes from 'prop-types';
  * Render the Header component
  * @function Header
  * @param {object} props
- * @param {string} props.userName > user firstName
+ * @param {string} props.name > user name
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Header({ userName }) {
-  // GET USER INFOS
-  let name = userName.userInfos.firstName;
-
+export default function Header({ name }) {
   return (
     <header>
       <h1>

@@ -40,6 +40,7 @@ export default function Dashboard(userId) {
   // GET FETCHED DATA
   const { data, isLoading, hasError } = useFetch(`${userId}.json`); // CHARGEMENT INFINI - Array.lenght = 0
   console.log(data);
+  const userName = data.userInfos
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function Dashboard(userId) {
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <main className="dashboard">
-                <Header userName={data} />
+                <Header name={userName.firstName} />
                 <section className="performances">
                   <section className="performances-details">
                     <Activity />
