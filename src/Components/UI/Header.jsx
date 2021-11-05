@@ -25,5 +25,5 @@ import propTypes from 'prop-types';
  * PropTypes Header component
  */
 Header.propTypes = {
-  userName: propTypes.object.isRequired,
+  name: propTypes.string.isRequired,
 };
