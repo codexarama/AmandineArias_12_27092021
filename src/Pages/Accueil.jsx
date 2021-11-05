@@ -4,7 +4,7 @@ import logo from '../Assets/logo.svg';
 import Banner from '../Components/UI/Banner';
 import User from '../Components/USER/User';
 
-import { USER_INFOS } from '../Services/mockedData';
+import { users } from '../Services/users';
 
 import '../Styles/accueil.css';
 import '../Styles/banner.css';
@@ -26,8 +26,8 @@ export default function Accueil() {
     <main>
       <Banner logo={logo} message="Bonjour, qui est-ce ?" />
       <section className="users">
-        {USER_INFOS.map(({ id, userInfos }) => (
-          <User key={id} id={id} name={userInfos.firstName} />
+        {users.map(({ id, name }) => (
+          <User key={id} id={id} name={name} />
         ))}
       </section>
     </main>
