@@ -38,9 +38,7 @@ export default function Dashboard(userId) {
   userId = useParams().id;
 
   // GET FETCHED DATA
-  // const { data, isLoading, hasError } = useFetch(`${userId}`); // ERREUR 404
   const { data, isLoading, hasError } = useFetch(`${userId}.json`); // CHARGEMENT INFINI - Array.lenght = 0
-  // const { data, isLoading, hasError } = useFetch(`${userId}`.json); // CHARGEMENT INFINI - Array.lenght = 0
   console.log(data);
 
   return (
