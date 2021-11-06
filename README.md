@@ -66,9 +66,8 @@ Afficher les données utlisateur sous forme de graphique
 - Installer ses dépendances : `npm install`
 - Le lancer sur le port 3001 : `npm start`
 
->  URL de visualisation du rendu web : `http://localhost:3001`
->  
->  l'API de _SportSee_ ne fournit des données que pour les utilisateurs d'id 12 et 18.
+URL de visualisation du rendu web : `http://localhost:3001` <br />
+l'API de _SportSee_ fournit des `données pour les utilisateurs d'id 12 et 18`
 
 ---------------------------
 
@@ -106,6 +105,5 @@ Afficher les données utlisateur sous forme de graphique
 - Install dependencies : `npm install`
 - Launch front-end on port 3001: `npm start`
 
-> Front-end is now rendered at URL `http://localhost:3001`
-> 
-> _SportSee_ API only contains data for users with id 12 and 18
+Front-end is now rendered at URL `http://localhost:3001` <br />
+_SportSee_ API only contains `data for users with id 12 and 18`
