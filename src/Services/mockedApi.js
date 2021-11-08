@@ -10,7 +10,7 @@ export function useFetch(userId) {
     if (!userId) return setLoading(true);
 
     const getData = () => {
-      fetch('http://localhost:3001/user/' + userId, {
+      fetch('/user/' + userId, {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
