@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+import PerformanceModel from '../../ClassModels/performanceModel';
 
 import {
   ResponsiveContainer,
@@ -23,14 +24,16 @@ import {
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Performance(userId) {
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
   const { data, isLoading } = useFetch(`${userId}/performance`);
+  // FORMATE user PERFORMANCES data with CLASS MODEL
+  const formatedData = new PerformanceModel(data);
 
   // ATTRIBUTE topic values to data main array
-  const performance = data.data;
+  const performance = formatedData.data;
   const kind = [
     'Intensité',
     'Vitesse',
@@ -53,21 +56,21 @@ export default function Performance(userId) {
 
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
-        // PERFORMANCES CONTENT
-        <div className="performance">
-          <ResponsiveContainer>
-            <RadarChart outerRadius={90} data={getData()}>
-              <PolarGrid radialLines={false} />
-              <PolarAngleAxis
-                dataKey="kind"
-                domain={[0, 150]}
-                dy={5}
-                tickLine={false}
-                stroke="white"
-              />
-              <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
+    // PERFORMANCES CONTENT
+    <div className="performance">
+      <ResponsiveContainer>
+        <RadarChart outerRadius={90} data={getData()}>
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis
+            dataKey="kind"
+            domain={[0, 150]}
+            dy={5}
+            tickLine={false}
+            stroke="white"
+          />
+          <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

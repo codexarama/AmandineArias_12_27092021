@@ -15,6 +15,7 @@ import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
 
 import { useFetch } from '../Services/api';
+import InfosModel from '../ClassModels/infosModel';
 
 import '../Styles/dashboard.css';
 
@@ -32,15 +33,15 @@ import '../Styles/dashboard.css';
 export default function Dashboard(userId) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
-  // console.log(useRouteMatch());
 
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
-  // console.log(useParams());
 
-  // GET FETCHED DATA
+  // GET user INFOS data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}`);
-  const userName = data.userInfos
+  // FORMATE user INFOS data with CLASS MODEL
+  const formatedData = new InfosModel(data);
+  const userName = formatedData.userInfos;
 
   return (
     <>
