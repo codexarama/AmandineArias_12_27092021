@@ -15,6 +15,7 @@ import Icons from '../UI/Icons';
 import KeyData from './KeyData';
 
 import { useFetch } from '../../Services/mockedApi';
+import InfosModel from '../../ClassModels/infosModel';
 
 import '../../Styles/aside.css';
 
@@ -37,11 +38,13 @@ export default function KeyDataFocus() {
   ];
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
-  // GET USER INFOS
+  // GET user ID
   const userId = useParams().id;
-  // GET FETCHED DATA
+  // GET user INFOS data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}.json`);
-  const userKeyData = data.keyData;
+  // FORMATE user INFOS data with CLASS MODEL
+  const formatedData = new InfosModel(data);
+  const userKeyData = formatedData.keyData;
 
   return (
     <>

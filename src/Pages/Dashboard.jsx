@@ -15,6 +15,7 @@ import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
 
 import { useFetch } from '../Services/mockedApi';
+import InfosModel from '../ClassModels/infosModel';
 
 import '../Styles/dashboard.css';
 
@@ -34,13 +35,14 @@ export default function Dashboard(userId) {
   let { path } = useRouteMatch();
   // console.log(useRouteMatch());
 
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
-  // GET FETCHED DATA
+  // GET user INFOS data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}.json`); // CHARGEMENT INFINI - Array.lenght = 0
-  console.log(data);
-  const userName = data.userInfos
+  // FORMATE user INFOS data with CLASS MODEL
+  const formatedData = new InfosModel(data);
+  const userName = formatedData.userInfos;
 
   return (
     <>

@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+import ActivityModel from'../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
 
@@ -29,23 +30,25 @@ import {
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function DailyActivity(userId) {
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
-
-  // // GET user DAILY ACTIVITY data from FETCH
+  // GET user DAILY ACTIVITY data from FETCH
   const { data, isLoading } = useFetch(`${userId}/activity.json`);
   // console.log(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
-  if (!isLoading) {
-    data.sessions.forEach((date) => {
-      // eslint-disable-next-line no-unused-vars
-      let [yyyy, mm, dd] = date.day.split('-');
-      date.name = `${dd}/${mm}`;
-    });
-    // console.log(data);
-  }
+    if (!isLoading) {
+      // FORMATE user DAILY ACTIVITY data with CLASS MODEL
+      const formatedData = new ActivityModel(data);
+      // console.log(formatedData);
+     formatedData.sessions.forEach((date) => {
+        // eslint-disable-next-line no-unused-vars
+        let [yyyy, mm, dd] = date.day.split('-');
+        date.frenchDay = `${dd}/${mm}`;
+        // console.log(date.frenchDay);
+      });
+    }
 
   // BAR CHART TO DISPLAY DAILY ACTIVITY //////////
   return (
@@ -53,7 +56,7 @@ export default function DailyActivity(userId) {
       <h3 className="daily-activity--title">Activité quotidienne</h3>
       <ResponsiveContainer>
         <BarChart data={data.sessions} barGap={8}>
-          <XAxis dataKey="name" stroke="grey" tickLine={false} dy={10} />
+          <XAxis dataKey="frenchDay" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
             domain={['dataMin -2', 'dataMax + 1']}

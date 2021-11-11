@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 
 import {
   ResponsiveContainer,
@@ -27,25 +28,27 @@ import '../../Styles/graphs.css';
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Average(userId) {
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
   const { data, isLoading } = useFetch(`${userId}/average-sessions.json`);
-  // console.log(data);
 
   // CONVERT days numeric value INTO string first letter
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
   function getSessions() {
     if (!isLoading) {
-      for (let i = 0; i < data.sessions.length; i++) {
-        data.sessions[i].day = days[i];
+      // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
+      const formatedData = new AverageSessionsModel(data);
+      console.log(formatedData);
+
+      for (let i = 0; i < formatedData.sessions.length; i++) {
+        formatedData.sessions[i].day = days[i];
       }
     }
     return data.sessions;
   }
-  // console.log(data);
 
   // LINE CHART TO DISPLAY AVERAGE SESSIONS //////////
   return (
