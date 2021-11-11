@@ -37,7 +37,7 @@ export default function KeyDataFocus() {
   ];
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
-  // GET USER INFOS
+  // GET user ID from URL PARAMS
   const userId = useParams().id;
   // GET FETCHED DATA
   const { data, isLoading, hasError } = useFetch(`${userId}`);

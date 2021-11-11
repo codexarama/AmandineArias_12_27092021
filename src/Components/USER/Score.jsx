@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+import InfosModel from '../../ClassModels/infosModel';
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -17,20 +18,19 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Score(userId) {
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
   // GET user SCORE data from FETCH
   const { data } = useFetch(`${userId}`);
-  // console.log(data);
+  // FORMATE user INFOS data with CLASS MODEL
+  const formatedData = new InfosModel(data);
 
   // REMARK !!!
   // THE API HAS AN ERROR IN DATA NAMING
   // ONCE "todayScore" ONCE "score"
-  const score = data.todayScore || data.score;
-  
+  const score = formatedData.todayScore || formatedData.score;
   const userScore = [{ value: score }, { value: 1 - score }];
-  // console.log(userScore);
 
   // PIE CHART TO DISPLAY TODAY SCORE //////////
   return (

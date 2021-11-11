@@ -30,26 +30,21 @@ import {
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function DailyActivity(userId) {
-  // GET USER ID FROM URL PARAMS
+  // GET user ID from URL PARAMS
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  // const { data, isLoading } = useFetch(`${userId}/activity`);
-  // // console.log(data);
-
-  // USE CLASSMODEL >>> OK BUT ERROR BEFORE COMPONENT MOUNTING
-  let { data, isLoading } = useFetch(`${userId}/activity`);
-  data = new ActivityModel(data)
-  console.log(data);
+  const { data, isLoading } = useFetch(`${userId}/activity`);
+  // FORMATE user DAILY ACTIVITY data with CLASS MODEL
+  const formatedData = new ActivityModel(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {
-    data.sessions.forEach((date) => {
+    formatedData.sessions.forEach((date) => {
       // eslint-disable-next-line no-unused-vars
       let [yyyy, mm, dd] = date.day.split('-');
       date.name = `${dd}/${mm}`;
     });
-    // console.log(data);
   }
 
   // BAR CHART TO DISPLAY DAILY ACTIVITY //////////
