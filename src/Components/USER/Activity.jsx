@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
-import ActivityModel from'../../ClassModels/activityModel';
+import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
 
@@ -35,20 +35,17 @@ export default function DailyActivity(userId) {
 
   // GET user DAILY ACTIVITY data from FETCH
   const { data, isLoading } = useFetch(`${userId}/activity.json`);
-  // console.log(data);
+  // FORMATE user DAILY ACTIVITY data with CLASS MODEL
+  const formatedData = new ActivityModel(data);
 
   // CONVERT yyyy-mm-dd date format INTO jj/mm
-    if (!isLoading) {
-      // FORMATE user DAILY ACTIVITY data with CLASS MODEL
-      const formatedData = new ActivityModel(data);
-      // console.log(formatedData);
-     formatedData.sessions.forEach((date) => {
-        // eslint-disable-next-line no-unused-vars
-        let [yyyy, mm, dd] = date.day.split('-');
-        date.frenchDay = `${dd}/${mm}`;
-        // console.log(date.frenchDay);
-      });
-    }
+  if (!isLoading) {
+    formatedData.sessions.forEach((date) => {
+      // eslint-disable-next-line no-unused-vars
+      let [yyyy, mm, dd] = date.day.split('-');
+      date.frenchDay = `${dd}/${mm}`;
+    });
+  }
 
   // BAR CHART TO DISPLAY DAILY ACTIVITY //////////
   return (

@@ -33,16 +33,14 @@ export default function Average(userId) {
 
   // GET user AVERAGE SESSIONS data from FETCH
   const { data, isLoading } = useFetch(`${userId}/average-sessions.json`);
+  // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
+  const formatedData = new AverageSessionsModel(data);
 
   // CONVERT days numeric value INTO string first letter
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
   function getSessions() {
     if (!isLoading) {
-      // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
-      const formatedData = new AverageSessionsModel(data);
-      console.log(formatedData);
-
       for (let i = 0; i < formatedData.sessions.length; i++) {
         formatedData.sessions[i].day = days[i];
       }
