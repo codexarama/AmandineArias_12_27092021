@@ -60,7 +60,8 @@ export default function DailyActivity(userId) {
       dateFr = dateFr.slice(0, 5);
       let [aa, bb] = dateFr.split('/');
       // french format date dd/mm for one week
-      dateFr = `${parseInt(aa) + index}/${bb}`;
+      dateFr = `${Number(aa) + index}/${Number(bb)}`;
+      // dateFr = `${parseInt(aa) + index}/${parseInt(bb)}`;
       // console.log(dateFr); // ok
 
       // REPLACE fr VALUES by DATES from TODAY to TODAY + 6 days
@@ -79,6 +80,7 @@ export default function DailyActivity(userId) {
           <XAxis dataKey="fr" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
+            dataKey="kilogram"
             domain={['dataMin -2', 'dataMax + 1']}
             orientation="right"
             axisLine={false}
@@ -88,6 +90,7 @@ export default function DailyActivity(userId) {
           />
           <YAxis
             yAxisId="calories"
+            dataKey="calories"
             domain={['dataMin -20', 'dataMax + 20']}
             orientation="left"
             axisLine={false}
