@@ -48,7 +48,7 @@ export default function DailyActivity(userId) {
       let [yyyy, mm, dd] = date.day.split('-');
       // ADD key : fr
       date.fr = `${dd}/${mm}`;
-      console.log(date.fr);
+      // console.log(date.fr);
 
       // GET TODAY DATE
       let dateFr;
@@ -76,7 +76,7 @@ export default function DailyActivity(userId) {
       <h3 className="daily-activity--title">Activité quotidienne</h3>
       <ResponsiveContainer>
         <BarChart data={data.sessions} barGap={8}>
-          <XAxis dataKey="name" stroke="grey" tickLine={false} dy={10} />
+          <XAxis dataKey="fr" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
             domain={['dataMin -2', 'dataMax + 1']}
