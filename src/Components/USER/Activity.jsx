@@ -38,14 +38,37 @@ export default function DailyActivity(userId) {
   // FORMATE user DAILY ACTIVITY data with CLASS MODEL
   const formatedData = new ActivityModel(data);
 
-  // CONVERT yyyy-mm-dd date format INTO jj/mm
   if (!isLoading) {
-    formatedData.sessions.forEach((date) => {
+    formatedData.sessions.forEach((date, index) => {
+      // console.log(date);
+      // console.log(date.day);
+
+      // CONVERT yyyy-mm-dd FORMAT DATE INTO jj/mm (key : day)
       // eslint-disable-next-line no-unused-vars
       let [yyyy, mm, dd] = date.day.split('-');
-      date.name = `${dd}/${mm}`;
+      // ADD key : fr
+      date.fr = `${dd}/${mm}`;
+      // console.log(date.fr);
+
+      // GET TODAY DATE
+      let dateFr;
+      // complete anglo-saxon format date
+      dateFr = new Date(Date.now());
+      // french format date dd/mm/yyyy
+      dateFr = new Intl.DateTimeFormat('fr').format(dateFr);
+      // french format date dd/mm
+      dateFr = dateFr.slice(0, 5);
+      let [aa, bb] = dateFr.split('/');
+      // french format date dd/mm for one week
+      dateFr = `${parseInt(aa) + index}/${bb}`;
+      // console.log(dateFr); // ok
+
+      // REPLACE fr VALUES by DATES from TODAY to TODAY + 6 days
+      Object.assign(date, { fr: dateFr });
     });
   }
+
+  // console.log(data.sessions);
 
   // BAR CHART TO DISPLAY DAILY ACTIVITY //////////
   return (
@@ -53,7 +76,7 @@ export default function DailyActivity(userId) {
       <h3 className="daily-activity--title">Activité quotidienne</h3>
       <ResponsiveContainer>
         <BarChart data={data.sessions} barGap={8}>
-          <XAxis dataKey="name" stroke="grey" tickLine={false} dy={10} />
+          <XAxis dataKey="fr" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
             domain={['dataMin -2', 'dataMax + 1']}
