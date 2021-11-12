@@ -48,7 +48,7 @@ export default function DailyActivity(userId) {
       let [yyyy, mm, dd] = date.day.split('-');
       // ADD key : fr
       date.fr = `${dd}/${mm}`;
-      console.log(date.fr);
+      // console.log(date.fr);
 
       // GET TODAY DATE
       let dateFr;
