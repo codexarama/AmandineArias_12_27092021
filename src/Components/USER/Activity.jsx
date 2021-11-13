@@ -37,47 +37,37 @@ export default function DailyActivity(userId) {
   const { data, isLoading } = useFetch(`${userId}/activity`);
   // FORMATE user DAILY ACTIVITY data with CLASS MODEL
   const formatedData = new ActivityModel(data);
+  const activity = formatedData.sessions;
 
-  if (!isLoading) {
-    formatedData.sessions.forEach((date, index) => {
-      // console.log(date);
-      // console.log(date.day);
+  function getActivity() {
+    if (!isLoading) {
+      activity.forEach((item, index) => {
+        // GET DATE OF LAST SEVEN DAYS (today included)
+        // complete anglo-saxon format date
+        item.day = new Date();
+        // date of the last seven days (today included)
+        item.day.setDate(item.day.getDate() - index);
 
-      // CONVERT yyyy-mm-dd FORMAT DATE INTO jj/mm (key : day)
-      // eslint-disable-next-line no-unused-vars
-      let [yyyy, mm, dd] = date.day.split('-');
-      // ADD key : fr
-      date.fr = `${dd}/${mm}`;
-      // console.log(date.fr);
+        const options = {
+          month: '2-digit',
+          day: '2-digit',
+        };
 
-      // GET TODAY DATE
-      let dateFr;
-      // complete anglo-saxon format date
-      dateFr = new Date(Date.now());
-      // french format date dd/mm/yyyy
-      dateFr = new Intl.DateTimeFormat('fr').format(dateFr);
-      // french format date dd/mm
-      dateFr = dateFr.slice(0, 5);
-      let [aa, bb] = dateFr.split('/');
-      // french format date dd/mm for one week
-      dateFr = `${Number(aa) + index}/${Number(bb)}`;
-      // dateFr = `${parseInt(aa) + index}/${parseInt(bb)}`;
-      // console.log(dateFr); // ok
-
-      // REPLACE fr VALUES by DATES from TODAY to TODAY + 6 days
-      Object.assign(date, { fr: dateFr });
-    });
+        // french format date matched with options (jj/mm)
+        item.day = new Intl.DateTimeFormat('fr', options).format(item.day);
+        // console.log(item.day);
+      });
+      return activity.reverse();
+    }
   }
-
-  // console.log(data.sessions);
 
   // BAR CHART TO DISPLAY DAILY ACTIVITY //////////
   return (
     <div className="daily-activity">
       <h3 className="daily-activity--title">Activité quotidienne</h3>
       <ResponsiveContainer>
-        <BarChart data={data.sessions} barGap={8}>
-          <XAxis dataKey="fr" stroke="grey" tickLine={false} dy={10} />
+        <BarChart data={getActivity()} barGap={8}>
+          <XAxis dataKey="day" stroke="grey" tickLine={false} dy={10} />
           <YAxis
             yAxisId="poids"
             dataKey="kilogram"
