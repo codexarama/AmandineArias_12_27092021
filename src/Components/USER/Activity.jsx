@@ -129,7 +129,6 @@ export default function DailyActivity(userId) {
  * @param {array} payload > data to display
  * @returns {?JSX}
  */
-
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">

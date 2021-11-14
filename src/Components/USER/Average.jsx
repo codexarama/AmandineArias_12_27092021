@@ -66,7 +66,6 @@ export default function Average(userId) {
 
   // LINE CHART TO DISPLAY AVERAGE SESSIONS //////////
   return (
-    // AVERAGE SESSIONS CONTENT
     <div className="average-sessions">
       <h3 className="average-sessions--title">
         Durée moyenne <br /> des sessions
