@@ -4,7 +4,7 @@ import logo from '../Assets/logo.svg';
 import Banner from '../Components/UI/Banner';
 import User from '../Components/USER/User';
 
-import { users } from '../Services/users';
+import { users } from '../Services/usersIdName';
 
 import '../Styles/accueil.css';
 import '../Styles/banner.css';
