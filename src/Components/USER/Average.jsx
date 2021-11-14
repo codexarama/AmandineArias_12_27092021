@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/mockedApi';
+import { useFetch } from '../../Services/api';
 import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 
 import {
@@ -32,20 +32,36 @@ export default function Average(userId) {
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/average-sessions.json`);
+  const { data, isLoading } = useFetch(`${userId}/average-sessions`);
+  // console.log(data);
   // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
   const formatedData = new AverageSessionsModel(data);
+  const average = formatedData.sessions;
 
   // CONVERT days numeric value INTO string first letter
-  const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-
   function getSessions() {
     if (!isLoading) {
-      for (let i = 0; i < formatedData.sessions.length; i++) {
-        formatedData.sessions[i].day = days[i];
-      }
+      average.forEach((item, index) => {
+        // GET DATE OF LAST SEVEN DAYS (today included)
+        // complete anglo-saxon format date
+        item.day = new Date();
+        // date of the last seven days (today included)
+        item.day.setDate(item.day.getDate() - index);
+
+        const options = {
+          year: '2-digit',
+          month: '2-digit',
+          day: '2-digit',
+          weekday: 'narrow',
+        };
+
+        // french format date matched with options (day first letter, jj/mm/aa)
+        item.day = new Intl.DateTimeFormat('fr', options).format(item.day);
+        // french day first letter
+        item.day = item.day[0];
+      });
+      return average.reverse();
     }
-    return data.sessions;
   }
 
   // LINE CHART TO DISPLAY AVERAGE SESSIONS //////////
@@ -63,13 +79,13 @@ export default function Average(userId) {
         >
           <XAxis
             dataKey="day"
-            stroke="rgba(255, 255, 255, 0.6)"
+            stroke="rgba(255, 255, 255, 0.9)"
             tickLine={false}
             dy={10}
           />
           <YAxis
             dataKey="sessionLength"
-            stroke="rgba(255, 255, 255, 0.6)"
+            stroke="rgba(255, 255, 255, 0.9)"
             hide={true}
             domain={[0, 'dataMax + 75']}
           />
@@ -80,7 +96,7 @@ export default function Average(userId) {
           <Line
             dataKey="sessionLength"
             type="monotone"
-            stroke="rgba(255, 255, 255, 0.6)"
+            stroke="rgba(255, 255, 255, 0.9)"
             strokeWidth={2}
             dot={false}
             activeDot={{
@@ -93,63 +109,6 @@ export default function Average(userId) {
       </ResponsiveContainer>
     </div>
   );
-
-  // return (
-  //   <>
-  //     {/* MANAGE loading CASES */}
-  //     {isLoading ? (
-  //       <Chargement />
-  //     ) : hasError ? (
-  //       <Erreur404 />
-  //     ) : data ? (
-  //       // AVERAGE SESSIONS CONTENT
-  //       <div className="average-sessions">
-  //         <h3 className="average-sessions--title">
-  //           Durée moyenne <br /> des sessions
-  //         </h3>
-  //         <ResponsiveContainer>
-  //           <LineChart
-  //             height={300}
-  //             margin={{ top: 0, right: 20, left: 20, bottom: 20 }}
-  //             data={getSessions()}
-  //           >
-  //             <XAxis
-  //               dataKey="day"
-  //               stroke="rgba(255, 255, 255, 0.6)"
-  //               tickLine={false}
-  //               dy={10}
-  //             />
-  //             <YAxis
-  //               dataKey="sessionLength"
-  //               stroke="rgba(255, 255, 255, 0.6)"
-  //               hide={true}
-  //               domain={[0, 'dataMax + 75']}
-  //             />
-  //             <Tooltip
-  //               content={<CustomTooltip />}
-  //               cursor={{ stroke: 'rgba(255,255,255, 0.6)' }}
-  //             />
-  //             <Line
-  //               dataKey="sessionLength"
-  //               type="monotone"
-  //               stroke="rgba(255, 255, 255, 0.6)"
-  //               strokeWidth={2}
-  //               dot={false}
-  //               activeDot={{
-  //                 stroke: 'rgba(255,255,255, 0.6)',
-  //                 strokeWidth: 10,
-  //                 r: 5,
-  //               }}
-  //             />
-  //           </LineChart>
-  //         </ResponsiveContainer>
-  //       </div>
-  //     ) : (
-  //       // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
-  //       <Inconnu />
-  //     )}
-  //   </>
-  // );
 }
 
 function CustomTooltip({ active, payload }) {
