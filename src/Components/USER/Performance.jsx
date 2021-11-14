@@ -56,7 +56,6 @@ export default function Performance(userId) {
 
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
-    // PERFORMANCES CONTENT
     <div className="performance">
       <ResponsiveContainer>
         <RadarChart outerRadius={90} data={getData()}>
