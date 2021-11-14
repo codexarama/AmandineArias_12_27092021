@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
@@ -34,7 +34,7 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/activity`);
+  const { data, isLoading } = useFetch(`${userId}/activity.json`);
   // FORMATE user DAILY ACTIVITY data with CLASS MODEL
   const formatedData = new ActivityModel(data);
   const activity = formatedData.sessions;

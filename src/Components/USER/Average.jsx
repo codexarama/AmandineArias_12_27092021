@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 
 import {
@@ -32,7 +32,7 @@ export default function Average(userId) {
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/average-sessions`);
+  const { data, isLoading } = useFetch(`${userId}/average-sessions.json`);
   // console.log(data);
   // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
   const formatedData = new AverageSessionsModel(data);
