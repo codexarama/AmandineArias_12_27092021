@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import InfosModel from '../../ClassModels/infosModel';
+import propTypes from "prop-types";
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -18,7 +17,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Score(userId) {
-  // GET user ID from URL PARAMS
+  // GET USER ID FROM URL PARAMS
   userId = useParams().id;
 
   // GET user SCORE data from FETCH
@@ -31,6 +30,7 @@ export default function Score(userId) {
   // ONCE "todayScore" ONCE "score"
   const score = formatedData.todayScore || formatedData.score;
   const userScore = [{ value: score }, { value: 1 - score }];
+  // console.log(userScore);
 
   // PIE CHART TO DISPLAY TODAY SCORE //////////
   return (
@@ -60,3 +60,10 @@ export default function Score(userId) {
     </div>
   );
 }
+
+/**
+ * PropTypes Score component
+ */
+ Score.propTypes = {
+  userId: propTypes.string,
+};
