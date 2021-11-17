@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
 
@@ -45,7 +44,7 @@ export default function Health(userId) {
     glucidesIcon,
     lipidesIcon,
   ];
-  
+
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
   return (
