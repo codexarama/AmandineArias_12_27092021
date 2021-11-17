@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
 import InfosModel from '../../ClassModels/infosModel';
+import propTypes from "prop-types";
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -61,3 +60,10 @@ export default function Score(userId) {
     </div>
   );
 }
+
+/**
+ * PropTypes Score component
+ */
+ Score.propTypes = {
+  userId: propTypes.string,
+};

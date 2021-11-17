@@ -29,22 +29,24 @@ import '../../Styles/aside.css';
  * @param {object} keyData > nutriment count
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function KeyDataFocus() {
+export default function Health(userId) {
+  // GET user ID
+  userId = useParams().id;
+
+  // GET user INFOS data from FETCH
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
+  // FORMATE user INFOS data with CLASS MODEL
+  const formatedData = new InfosModel(data);
+  const userKeyData = formatedData.keyData;
+
   const nutrimentIcon = [
     caloriesIcon,
     proteinesIcon,
     glucidesIcon,
     lipidesIcon,
   ];
+  
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
-
-  // GET user ID
-  const userId = useParams().id;
-  // GET user INFOS data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
-  // FORMATE user INFOS data with CLASS MODEL
-  const formatedData = new InfosModel(data);
-  const userKeyData = formatedData.keyData;
 
   return (
     <>
@@ -83,7 +85,8 @@ export default function KeyDataFocus() {
 /**
  * PropTypes Health component
  */
-KeyDataFocus.propTypes = {
+Health.propTypes = {
+  userId: propTypes.string,
   nutrimentIcon: propTypes.string,
   nutrimentName: propTypes.string,
   icon: propTypes.string,

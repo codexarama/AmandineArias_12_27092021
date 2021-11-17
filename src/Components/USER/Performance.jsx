@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
 import PerformanceModel from '../../ClassModels/performanceModel';
+import propTypes from "prop-types";
 
 import {
   ResponsiveContainer,
@@ -76,3 +75,10 @@ export default function Performance(userId) {
     </div>
   );
 }
+
+/**
+ * PropTypes Performance component
+ */
+ Performance.propTypes = {
+  userId: propTypes.string,
+};

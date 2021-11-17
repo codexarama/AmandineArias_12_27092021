@@ -140,8 +140,12 @@ function CustomTooltip({ active, payload }) {
 }
 
 /**
- * PropTypes Activity component
+ * PropTypes DailyActivity component
  */
+ DailyActivity.propTypes = {
+  userId: propTypes.string,
+};
+
 CustomTooltip.propTypes = {
   active: propTypes.bool,
   payload: propTypes.array,
