@@ -1,8 +1,7 @@
-import React from 'react';
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
@@ -129,6 +128,7 @@ export default function DailyActivity(userId) {
  * @param {array} payload > data to display
  * @returns {?JSX}
  */
+
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">
@@ -139,8 +139,12 @@ function CustomTooltip({ active, payload }) {
 }
 
 /**
- * PropTypes Activity component
+ * PropTypes DailyActivity component
  */
+ DailyActivity.propTypes = {
+  userId: propTypes.string,
+};
+
 CustomTooltip.propTypes = {
   active: propTypes.bool,
   payload: propTypes.array,

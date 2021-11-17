@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import PerformanceModel from '../../ClassModels/performanceModel';
+import propTypes from "prop-types";
 
 import {
   ResponsiveContainer,
@@ -32,8 +31,10 @@ export default function Performance(userId) {
   // FORMATE user PERFORMANCES data with CLASS MODEL
   const formatedData = new PerformanceModel(data);
 
-  // ATTRIBUTE topic values to data main array
+  // values from fetched data are in english and lower case...
+  // it doesn't match with expected values from the dashboard prototype
   const performance = formatedData.data;
+
   const name = [
     'Intensité',
     'Vitesse',
@@ -68,9 +69,16 @@ export default function Performance(userId) {
             tickLine={false}
             stroke="white"
           />
-          <Radar dataKey="value" name=" " fill="red" fillOpacity={0.7} />
+          <Radar dataKey="value" fill="red" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
     </div>
   );
 }
+
+/**
+ * PropTypes Performance component
+ */
+ Performance.propTypes = {
+  userId: propTypes.string,
+};
