@@ -34,7 +34,7 @@ export default function Performance(userId) {
 
   // ATTRIBUTE topic values to data main array
   const performance = formatedData.data;
-  const kind = [
+  const name = [
     'Intensité',
     'Vitesse',
     'Force',
@@ -43,16 +43,17 @@ export default function Performance(userId) {
     'Cardio',
   ];
 
+  // ATTRIBUTE topic values as NAME to data main array
   function getData() {
     if (!isLoading) {
       for (let i = 0; i < performance.length; i++) {
-        performance[i].kind = kind[i];
-        // values from fetched data are in english and lower case...
-        // it doesn't match with expected values from the dashboard prototype
+        performance[i].name = name[i];
       }
     }
     return performance;
   }
+
+  console.log(performance);
 
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
@@ -61,7 +62,7 @@ export default function Performance(userId) {
         <RadarChart outerRadius={90} data={getData()}>
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
-            dataKey="kind"
+            dataKey="name"
             domain={[0, 150]}
             dy={5}
             tickLine={false}
