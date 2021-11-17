@@ -54,16 +54,6 @@ export default function DailyActivity(userId) {
           day: '2-digit',
         };
 
-        // NE FONCIONNE PAS
-        // options = parseInt(options)
-
-        // french format date matched with options (jj/mm)
-
-        // NE FONCIONNE PAS
-        // item.day = new Intl.DateTimeFormat('fr', parseInt(options)).format(
-        //   item.day
-        // );
-
         item.day = new Intl.DateTimeFormat('fr', options).format(item.day);
         // console.log(item.day);
       });
@@ -78,11 +68,6 @@ export default function DailyActivity(userId) {
       <ResponsiveContainer>
         <BarChart data={getActivity()} barGap={8}>
           <XAxis dataKey="day" stroke="grey" tickLine={false} dy={10} />
-          {/* NE FONCTIONNE PAS */}
-          {/* ADD tickFormater => parseInt(day) */}
-          {/* <XAxis dataKey="day" tickFormatter={(day) => parseInt(day)} stroke="grey" tickLine={false} dy={10} /> */}
-          {/* ADD tickFormater => Number(day) */}
-          {/* <XAxis dataKey="day" tickFormatter={(day) => Number(day)} stroke="grey" tickLine={false} dy={10} /> */}
           <YAxis
             yAxisId="poids"
             dataKey="kilogram"
