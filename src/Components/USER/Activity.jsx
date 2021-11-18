@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/mockedApi';
+import { useFetch } from '../../Services/api';
 import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';

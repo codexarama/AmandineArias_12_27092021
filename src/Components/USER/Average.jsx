@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/mockedApi';
+import { useFetch } from '../../Services/api';
 import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 import propTypes from 'prop-types';
 
