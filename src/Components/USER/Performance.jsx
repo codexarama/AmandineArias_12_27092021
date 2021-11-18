@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
 import PerformanceModel from '../../ClassModels/performanceModel';
-import propTypes from "prop-types";
+import propTypes from 'prop-types';
 
 import {
   ResponsiveContainer,
@@ -35,7 +35,7 @@ export default function Performance(userId) {
   // it doesn't match with expected values from the dashboard prototype
   const performance = formatedData.data;
 
-  const name = [
+  const category = [
     'Intensité',
     'Vitesse',
     'Force',
@@ -47,29 +47,28 @@ export default function Performance(userId) {
   // ATTRIBUTE topic values as NAME to data main array
   function getData() {
     if (!isLoading) {
-      for (let i = 0; i < performance.length; i++) {
-        performance[i].name = name[i];
-      }
+      performance.forEach((item, index) => {
+        item.category = category[index];
+      });
     }
     return performance;
   }
-
-  console.log(performance);
 
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
     <div className="performance">
       <ResponsiveContainer>
         <RadarChart outerRadius={90} data={getData()}>
-          <PolarGrid radialLines={false} />
+          <PolarGrid />
+          {/* <PolarGrid radialLines={false} /> */}
           <PolarAngleAxis
-            dataKey="name"
-            domain={[0, 150]}
+            dataKey="category"
+            domain={[0, 250]}
             dy={5}
             tickLine={false}
             stroke="white"
           />
-          <Radar dataKey="value" fill="red" fillOpacity={0.7} />
+          <Radar name="" dataKey="value" fill="red" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
     </div>
@@ -79,6 +78,6 @@ export default function Performance(userId) {
 /**
  * PropTypes Performance component
  */
- Performance.propTypes = {
+Performance.propTypes = {
   userId: propTypes.string,
 };
