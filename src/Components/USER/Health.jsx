@@ -13,7 +13,7 @@ import lipidesIcon from '../../Assets/icon_lipids.svg';
 import Icons from '../UI/Icons';
 import KeyData from './KeyData';
 
-import { useFetch } from '../../Services/mockedApi';
+import { useFetch } from '../../Services/api';
 import InfosModel from '../../ClassModels/infosModel';
 
 import '../../Styles/aside.css';

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/mockedApi';
+import { useFetch } from '../../Services/api';
 import InfosModel from '../../ClassModels/infosModel';
 import propTypes from "prop-types";
 
