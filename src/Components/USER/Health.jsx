@@ -1,9 +1,4 @@
-import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
-
-import Chargement from '../../Pages/Chargement';
-import Erreur404 from '../../Pages/Erreur404';
-import Inconnu from '../../Pages/Inconnu';
 
 import caloriesIcon from '../../Assets/icon_calories.svg';
 import proteinesIcon from '../../Assets/icon_proteins.svg';
@@ -13,7 +8,9 @@ import lipidesIcon from '../../Assets/icon_lipids.svg';
 import Icons from '../UI/Icons';
 import KeyData from './KeyData';
 
+import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+
 import InfosModel from '../../ClassModels/infosModel';
 
 import '../../Styles/aside.css';
@@ -33,10 +30,17 @@ export default function Health(userId) {
   userId = useParams().id;
 
   // GET user INFOS data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
+  const { data, isLoading } = useFetch(`${userId}.json`);
   // FORMATE user INFOS data with CLASS MODEL
   const formatedData = new InfosModel(data);
   const userKeyData = formatedData.keyData;
+
+  function getKeyData(index) {
+    if (!isLoading) {
+      // console.log(Object.values(userKeyData));
+      return Object.values(userKeyData)[index];
+    }
+  }
 
   const nutrimentIcon = [
     caloriesIcon,
@@ -48,36 +52,22 @@ export default function Health(userId) {
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
   return (
-    <>
-      {/* MANAGE loading CASES */}
-      {isLoading ? (
-        <Chargement />
-      ) : hasError ? (
-        <Erreur404 />
-      ) : data ? (
-        <>
-          <aside className="aside">
-            {nutrimentIcon.map((icon, index) => (
-              <div key={index} className="aside-content">
-                <Icons
-                  id={'icone-' + nutrimentName[index]}
-                  icon={icon}
-                  alt={'icone ' + nutrimentName[index]}
-                />
-                <KeyData
-                  keyData={userKeyData[Object.keys(userKeyData)[index]]}
-                  unit={index === 0 ? 'kCal' : 'g'}
-                  nutrimentName={nutrimentName[index]}
-                />
-              </div>
-            ))}
-          </aside>
-        </>
-      ) : (
-        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
-        <Inconnu />
-      )}
-    </>
+    <aside className="aside">
+      {nutrimentIcon.map((icon, index) => (
+        <div key={index} className="aside-content">
+          <Icons
+            id={'icone-' + nutrimentName[index]}
+            icon={icon}
+            alt={'icone ' + nutrimentName[index]}
+          />
+          <KeyData
+            keyData={getKeyData(index)}
+            unit={index === 0 ? 'kCal' : 'g'}
+            nutrimentName={nutrimentName[index]}
+          />
+        </div>
+      ))}
+    </aside>
   );
 }
 
