@@ -1,7 +1,9 @@
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+
 import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
-import propTypes from 'prop-types';
 
 import {
   ResponsiveContainer,
@@ -108,6 +110,13 @@ export default function Average(userId) {
   );
 }
 
+/**
+ * Render CustomTooltip component
+ * @function CustomTooltip
+ * @param {bollean} active > hover ? y/n
+ * @param {array} payload > data to display
+ * @returns {JSX}
+ */
 function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return (

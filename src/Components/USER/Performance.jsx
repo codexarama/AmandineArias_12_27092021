@@ -1,7 +1,9 @@
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+
 import PerformanceModel from '../../ClassModels/performanceModel';
-import propTypes from 'prop-types';
 
 import {
   ResponsiveContainer,

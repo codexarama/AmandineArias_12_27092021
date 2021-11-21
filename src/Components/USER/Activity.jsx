@@ -2,6 +2,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/mockedApi';
+
 import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
@@ -53,6 +54,7 @@ export default function DailyActivity(userId) {
           day: '2-digit',
         };
 
+        // french format date matched with options : jj/mm
         item.day = new Intl.DateTimeFormat('fr', options).format(item.day);
         // console.log(item.day);
       });
@@ -126,9 +128,8 @@ export default function DailyActivity(userId) {
  * @function CustomTooltip
  * @param {bollean} active > hover ? y/n
  * @param {array} payload > data to display
- * @returns {?JSX}
+ * @returns {JSX}
  */
-
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">

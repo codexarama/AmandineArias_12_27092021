@@ -1,4 +1,3 @@
-import React from 'react';
 import propTypes from 'prop-types';
 
 /**
@@ -24,7 +23,7 @@ export default function KeyData({ keyData, unit, nutrimentName, index }) {
  * PropTypes Health component
  */
  KeyData.propTypes = {
-  keyData: propTypes.number.isRequired,
+  keyData: propTypes.number,
   unit: propTypes.string.isRequired,
   nutrimentName: propTypes.string.isRequired,
   index: propTypes.number,

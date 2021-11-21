@@ -1,12 +1,10 @@
-import React from 'react';
-
 import logo from '../../Assets/logo.svg';
 import Banner from '../UI/Banner';
 import DailyActivity from './Activity';
 import Average from './Average';
 import Performance from './Performance';
 import Score from './Score';
-import Health from './Health'
+import Health from './Health';
 
 import '../../Styles/banner.css';
 
@@ -47,7 +45,7 @@ export const statsFocus = [
       <>
         <Banner logo={logo} message="Sessions moyennes" />
         <section style={mainStyle}>
-          <Average/>
+          <Average />
         </section>
       </>
     ),

@@ -1,4 +1,7 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { useFetch } from '../Services/mockedApi';
+
+import InfosModel from '../ClassModels/infosModel';
 
 import Chargement from './Chargement';
 import Erreur404 from './Erreur404';
@@ -13,9 +16,6 @@ import Average from '../Components/USER/Average';
 import Performance from '../Components/USER/Performance';
 import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
-
-import { useFetch } from '../Services/mockedApi';
-import InfosModel from '../ClassModels/infosModel';
 
 import '../Styles/dashboard.css';
 

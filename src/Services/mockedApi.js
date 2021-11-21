@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
+
+import { useEffect, useState } from 'react';
 
 export function useFetch(userId) {
   const [data, setData] = useState([]);
