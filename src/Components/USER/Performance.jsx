@@ -27,7 +27,7 @@ export default function Performance(userId) {
   userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/performance`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
   // FORMATE user PERFORMANCES data with CLASS MODEL
   const formatedData = new PerformanceModel(data);
 
@@ -57,19 +57,26 @@ export default function Performance(userId) {
   // RADAR CHART TO DISPLAY PERFORMANCES //////////
   return (
     <div className="performance">
-      <ResponsiveContainer>
-        <RadarChart outerRadius={90} data={getData()}>
-          <PolarGrid />
-          {/* <PolarGrid radialLines={false} /> */}
-          <PolarAngleAxis
-            dataKey="category"
-            domain={[0, 250]}
-            dy={5}
-            tickLine={false}
-            stroke="white"
-          />
-          <Radar name="" dataKey="value" fill="red" fillOpacity={0.7} />
-        </RadarChart>
+      <ResponsiveContainer className="responsive-container">
+        {/* MANAGE API response CASES */}
+        {isLoading ? (
+          <p className="loading-msg">...</p>
+        ) : hasError ? (
+          <p className="error-msg">erreur</p>
+        ) : formatedData ? (
+          <RadarChart outerRadius={90} data={getData()}>
+            <PolarGrid />
+            {/* <PolarGrid radialLines={false} /> */}
+            <PolarAngleAxis
+              dataKey="category"
+              domain={[0, 250]}
+              dy={5}
+              tickLine={false}
+              stroke="white"
+            />
+            <Radar name="" dataKey="value" fill="red" fillOpacity={0.7} />
+          </RadarChart>
+        ) : null}
       </ResponsiveContainer>
     </div>
   );

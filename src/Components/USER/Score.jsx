@@ -1,7 +1,9 @@
+import propTypes from 'prop-types';
+
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
 import InfosModel from '../../ClassModels/infosModel';
-import propTypes from "prop-types";
 
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
@@ -21,7 +23,7 @@ export default function Score(userId) {
   userId = useParams().id;
 
   // GET user SCORE data from FETCH
-  const { data } = useFetch(`${userId}`);
+  const { data, isLoading, hasError } = useFetch(`${userId}`);
   // FORMATE user INFOS data with CLASS MODEL
   const formatedData = new InfosModel(data);
 
@@ -36,27 +38,35 @@ export default function Score(userId) {
   return (
     <div className="score">
       <h2 className="score-title">Score</h2>
-      <p className="score-result">{score * 100}%</p>
-      <p className="score-comment">
-        de votre <br /> objectif
-      </p>
-      <ResponsiveContainer>
-        <PieChart width={730} height={250}>
-          <Pie
-            data={userScore}
-            dataKey="value"
-            innerRadius={70}
-            outerRadius={80}
-            startAngle={90} // centre haut
-            endAngle={450} // 360° + 90°
-            fill="transparent"
-            stroke="transparent"
-            animationDuration={700}
-          >
-            <Cell fill="red" cornerRadius={50} />
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+      {isLoading ? (
+        <p className="loading-msg">...</p>
+      ) : hasError ? (
+        <p className="error-msg">erreur</p>
+      ) : formatedData ? (
+        <>
+          <p className="score-result">{score * 100}%</p>
+          <p className="score-comment">
+            de votre <br /> objectif
+          </p>
+          <ResponsiveContainer className="responsive-container">
+            <PieChart width={730} height={250}>
+              <Pie
+                data={userScore}
+                dataKey="value"
+                innerRadius={70}
+                outerRadius={80}
+                startAngle={90} // centre haut
+                endAngle={450} // 360° + 90°
+                fill="transparent"
+                stroke="transparent"
+                animationDuration={700}
+              >
+                <Cell fill="red" cornerRadius={50} />
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+        </>
+      ) : null}
     </div>
   );
 }
@@ -64,6 +74,6 @@ export default function Score(userId) {
 /**
  * PropTypes Score component
  */
- Score.propTypes = {
+Score.propTypes = {
   userId: propTypes.string,
 };
