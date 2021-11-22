@@ -8,7 +8,7 @@ import InfosModel from '../../ClassModels/infosModel';
  * Render the Header component
  * @function Header
  * @param {object} props
- * @param {string} props.userName > user firstName
+ * @param {string} props.name > user name
  * @returns {Reactnode} jsx injected in DOM
  */
 export default function Header(userId) {
@@ -19,15 +19,6 @@ export default function Header(userId) {
   const { data, isLoading, hasError } = useFetch(`${userId}`);
   // FORMATE user INFOS data with CLASS MODEL
   const formatedData = new InfosModel(data);
-  const userName = formatedData.userInfos;
-  // console.log(userName.firstName);
-
-  function getName() {
-    if (!isLoading) {
-      console.log(userName.firstName);
-      return userName.fistName;
-    }
-  }
 
   return (
     <header>
@@ -38,7 +29,7 @@ export default function Header(userId) {
       ) : formatedData ? (
         <>
           <h1>
-            Bonjour <span className="user-name" name={getName()} > </span>
+            Bonjour <span className="user-name">{formatedData.userInfos.firstName}</span>
           </h1>
           <h2 className="welcome-message">
             Félicitations ! Vous avez explosé vos objectifs hier 👏
@@ -53,35 +44,5 @@ export default function Header(userId) {
  * PropTypes Header component
  */
 Header.propTypes = {
-  name: propTypes.string,
+  userId: propTypes.number,
 };
-
-////////////////////////////////////////////////////
-// import propTypes from 'prop-types';
-
-// /**
-//  * Render the Header component
-//  * @function Header
-//  * @param {object} props
-//  * @param {string} props.name > user name
-//  * @returns {Reactnode} jsx injected in DOM
-//  */
-// export default function Header({ name }) {
-//   return (
-//     <header>
-//       <h1>
-//         Bonjour <span className="user-name">{name}</span>
-//       </h1>
-//       <h2 className="welcome-message">
-//         Félicitations ! Vous avez explosé vos objectifs hier 👏
-//       </h2>
-//     </header>
-//   );
-// }
-
-// /**
-//  * PropTypes Header component
-//  */
-// Header.propTypes = {
-//   name: propTypes.string.isRequired,
-// };
