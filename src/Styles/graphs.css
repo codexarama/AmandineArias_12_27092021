@@ -1,3 +1,8 @@
+/* CHART CONTAINER */
+.responsive-container {
+  position: relative;
+}
+
 /* DAILY ACTIVITY */
 .daily-activity {
   width: 100%;
@@ -103,4 +108,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: small;
+}
+
+/* ERROR */
+/* LOADING */
+.error-msg,
+.loading-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
