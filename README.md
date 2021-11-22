@@ -20,7 +20,11 @@ Afficher les données utlisateur sous forme de graphique
   - diagramme radar
   - diagramme circulaire
 - [x] Développer des Routes imbriquées
-- [x] Gérer les différents cas liés au chargement de la page (en cours, erreur, utilisateur inconnu, ok)
+- [x] Gérer les différents cas liés à la réponse de la requête API :
+  - chargement en cours
+  - code erreur
+  - utilisateur inconnu
+  - affichage des données
 - [x] Développer une logique de code partitionné dans des composants réutilisables
 
 ## Ressources fournies
