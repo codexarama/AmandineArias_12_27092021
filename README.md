@@ -20,7 +20,7 @@ Afficher les données utlisateur sous forme de graphique
   - diagramme radar
   - diagramme circulaire
 - [x] Développer des Routes imbriquées
-- [x] Gérer les différents cas liés au chargement de la page (en cours, erreur, ok)
+- [x] Gérer les différents cas liés au chargement de la page (en cours, erreur, utilisateur inconnu, ok)
 - [x] Développer une logique de code partitionné dans des composants réutilisables
 
 ## Ressources fournies
