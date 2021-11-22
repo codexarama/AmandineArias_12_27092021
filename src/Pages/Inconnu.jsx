@@ -16,7 +16,7 @@ import '../Styles/alerte.css';
  * @param {string} props.avatar > avatar src
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Loader() {
+export default function Inconnu() {
   return (
     <main>
       <Banner logo={logo} message="Cet utilisateur n'est pas enregistré..." />

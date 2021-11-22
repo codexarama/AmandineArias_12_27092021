@@ -46,12 +46,12 @@ export default function Dashboard(userId) {
 
   return (
     <>
-      {/* MANAGE loading CASES */}
+      {/* MANAGE API response CASES */}
       {isLoading ? (
         <Chargement />
       ) : hasError ? (
         <Erreur404 />
-      ) : data ? (
+      ) : formatedData ? (
         <>
           <Navbar />
           <Sidebar />
