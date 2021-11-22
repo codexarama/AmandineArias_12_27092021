@@ -1,7 +1,4 @@
 import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
-import { useFetch } from '../Services/mockedApi';
-
-import InfosModel from '../ClassModels/infosModel';
 
 import Chargement from './Chargement';
 import Erreur404 from './Erreur404';
@@ -16,6 +13,8 @@ import Average from '../Components/USER/Average';
 import Performance from '../Components/USER/Performance';
 import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
+
+import { useFetch } from '../Services/mockedApi';
 
 import '../Styles/dashboard.css';
 
@@ -33,25 +32,22 @@ import '../Styles/dashboard.css';
 export default function Dashboard(userId) {
   // GET url PATH FOR NESTED ROUTES
   let { path } = useRouteMatch();
-  // console.log(useRouteMatch());
 
   // GET user ID from URL PARAMS
   userId = useParams().id;
 
   // GET user INFOS data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}.json`); // CHARGEMENT INFINI - Array.lenght = 0
-  // FORMATE user INFOS data with CLASS MODEL
-  const formatedData = new InfosModel(data);
-  const userName = formatedData.userInfos;
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
+  // console.log(data);
 
   return (
     <>
-      {/* MANAGE API response CASES */}
+      {/* MANAGE loading CASES */}
       {isLoading ? (
         <Chargement />
       ) : hasError ? (
         <Erreur404 />
-      ) : formatedData ? (
+      ) : data ? (
         <>
           <Navbar />
           <Sidebar />
@@ -62,7 +58,7 @@ export default function Dashboard(userId) {
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <main className="dashboard">
-                <Header name={userName.firstName} />
+                <Header />
                 <section className="performances">
                   <section className="performances-details">
                     <Activity />
