@@ -32,7 +32,9 @@ export default function Average(userId) {
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/average-sessions.json`);
+  const { data, isLoading, hasError } = useFetch(
+    `${userId}/average-sessions.json`
+  );
   // console.log(data);
   // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
   const formatedData = new AverageSessionsModel(data);
@@ -70,41 +72,48 @@ export default function Average(userId) {
       <h3 className="average-sessions--title">
         Durée moyenne <br /> des sessions
       </h3>
-      <ResponsiveContainer>
-        <LineChart
-          height={300}
-          margin={{ top: 0, right: 20, left: 20, bottom: 20 }}
-          data={getSessions()}
-        >
-          <XAxis
-            dataKey="day"
-            stroke="rgba(255, 255, 255, 0.9)"
-            tickLine={false}
-            dy={10}
-          />
-          <YAxis
-            dataKey="sessionLength"
-            stroke="rgba(255, 255, 255, 0.9)"
-            hide={true}
-            domain={[0, 'dataMax + 75']}
-          />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={{ stroke: 'rgba(255,255,255, 0.6)' }}
-          />
-          <Line
-            dataKey="sessionLength"
-            type="monotone"
-            stroke="rgba(255, 255, 255, 0.9)"
-            strokeWidth={2}
-            dot={false}
-            activeDot={{
-              stroke: 'rgba(255,255,255, 0.6)',
-              strokeWidth: 10,
-              r: 5,
-            }}
-          />
-        </LineChart>
+      <ResponsiveContainer className="responsive-container">
+        {/* MANAGE API response CASES */}
+        {isLoading ? (
+          <p className="loading-msg">...</p>
+        ) : hasError ? (
+          <p className="error-msg">erreur</p>
+        ) : formatedData ? (
+          <LineChart
+            height={300}
+            margin={{ top: 0, right: 20, left: 20, bottom: 20 }}
+            data={getSessions()}
+          >
+            <XAxis
+              dataKey="day"
+              stroke="rgba(255, 255, 255, 0.9)"
+              tickLine={false}
+              dy={10}
+            />
+            <YAxis
+              dataKey="sessionLength"
+              stroke="rgba(255, 255, 255, 0.9)"
+              hide={true}
+              domain={[0, 'dataMax + 75']}
+            />
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{ stroke: 'rgba(255,255,255, 0.6)' }}
+            />
+            <Line
+              dataKey="sessionLength"
+              type="monotone"
+              stroke="rgba(255, 255, 255, 0.9)"
+              strokeWidth={2}
+              dot={false}
+              activeDot={{
+                stroke: 'rgba(255,255,255, 0.6)',
+                strokeWidth: 10,
+                r: 5,
+              }}
+            />
+          </LineChart>
+        ) : null}
       </ResponsiveContainer>
     </div>
   );
@@ -129,7 +138,7 @@ function CustomTooltip({ active, payload }) {
 /**
  * PropTypes Average component
  */
- Average.propTypes = {
+Average.propTypes = {
   userId: propTypes.string,
 };
 

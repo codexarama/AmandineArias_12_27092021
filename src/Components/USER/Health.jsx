@@ -30,7 +30,7 @@ export default function Health(userId) {
   userId = useParams().id;
 
   // GET user INFOS data from FETCH
-  const { data, isLoading } = useFetch(`${userId}.json`);
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
   // FORMATE user INFOS data with CLASS MODEL
   const formatedData = new InfosModel(data);
   const userKeyData = formatedData.keyData;
@@ -52,22 +52,30 @@ export default function Health(userId) {
   const nutrimentName = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
 
   return (
-    <aside className="aside">
-      {nutrimentIcon.map((icon, index) => (
-        <div key={index} className="aside-content">
-          <Icons
-            id={'icone-' + nutrimentName[index]}
-            icon={icon}
-            alt={'icone ' + nutrimentName[index]}
-          />
-          <KeyData
-            keyData={getKeyData(index)}
-            unit={index === 0 ? 'kCal' : 'g'}
-            nutrimentName={nutrimentName[index]}
-          />
-        </div>
-      ))}
-    </aside>
+    <>
+      {isLoading ? (
+        <p className="loading-msg">...</p>
+      ) : hasError ? (
+        <p className="error-msg">erreur</p>
+      ) : formatedData ? (
+        <aside className="aside">
+          {nutrimentIcon.map((icon, index) => (
+            <div key={index} className="aside-content">
+              <Icons
+                id={'icone-' + nutrimentName[index]}
+                icon={icon}
+                alt={'icone ' + nutrimentName[index]}
+              />
+              <KeyData
+                keyData={getKeyData(index)}
+                unit={index === 0 ? 'kCal' : 'g'}
+                nutrimentName={nutrimentName[index]}
+              />
+            </div>
+          ))}
+        </aside>
+      ) : null}
+    </>
   );
 }
 
