@@ -1,5 +1,3 @@
-import React from 'react';
-
 import logo from '../../Assets/logo.svg';
 import Banner from '../UI/Banner';
 import DailyActivity from './Activity';

@@ -1,9 +1,4 @@
-import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
-
-import Chargement from '../../Pages/Chargement';
-import Erreur404 from '../../Pages/Erreur404';
-import Inconnu from '../../Pages/Inconnu';
 
 import caloriesIcon from '../../Assets/icon_calories.svg';
 import proteinesIcon from '../../Assets/icon_proteins.svg';
@@ -13,7 +8,9 @@ import lipidesIcon from '../../Assets/icon_lipids.svg';
 import Icons from '../UI/Icons';
 import KeyData from './KeyData';
 
+import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
 import InfosModel from '../../ClassModels/infosModel';
 
 import '../../Styles/aside.css';
@@ -38,6 +35,13 @@ export default function Health(userId) {
   const formatedData = new InfosModel(data);
   const userKeyData = formatedData.keyData;
 
+  function getKeyData(index) {
+    if (!isLoading) {
+      // console.log(Object.values(userKeyData));
+      return Object.values(userKeyData)[index];
+    }
+  }
+
   const nutrimentIcon = [
     caloriesIcon,
     proteinesIcon,
@@ -49,34 +53,28 @@ export default function Health(userId) {
 
   return (
     <>
-      {/* MANAGE loading CASES */}
       {isLoading ? (
-        <Chargement />
+        <p className="loading-msg">...</p>
       ) : hasError ? (
-        <Erreur404 />
-      ) : data ? (
-        <>
-          <aside className="aside">
-            {nutrimentIcon.map((icon, index) => (
-              <div key={index} className="aside-content">
-                <Icons
-                  id={'icone-' + nutrimentName[index]}
-                  icon={icon}
-                  alt={'icone ' + nutrimentName[index]}
-                />
-                <KeyData
-                  keyData={userKeyData[Object.keys(userKeyData)[index]]}
-                  unit={index === 0 ? 'kCal' : 'g'}
-                  nutrimentName={nutrimentName[index]}
-                />
-              </div>
-            ))}
-          </aside>
-        </>
-      ) : (
-        // DISPLAY UNKNOWN USER PAGE if userId doesn't exist
-        <Inconnu />
-      )}
+        <p className="error-msg">erreur</p>
+      ) : formatedData ? (
+        <aside className="aside">
+          {nutrimentIcon.map((icon, index) => (
+            <div key={index} className="aside-content">
+              <Icons
+                id={'icone-' + nutrimentName[index]}
+                icon={icon}
+                alt={'icone ' + nutrimentName[index]}
+              />
+              <KeyData
+                keyData={getKeyData(index)}
+                unit={index === 0 ? 'kCal' : 'g'}
+                nutrimentName={nutrimentName[index]}
+              />
+            </div>
+          ))}
+        </aside>
+      ) : null}
     </>
   );
 }

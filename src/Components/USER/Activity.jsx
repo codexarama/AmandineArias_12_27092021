@@ -2,6 +2,7 @@ import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../Services/api';
+
 import ActivityModel from '../../ClassModels/activityModel';
 
 import '../../Styles/graphs.css';
@@ -33,7 +34,7 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading } = useFetch(`${userId}/activity`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
   // FORMATE user DAILY ACTIVITY data with CLASS MODEL
   const formatedData = new ActivityModel(data);
   const activity = formatedData.sessions;
@@ -64,58 +65,68 @@ export default function DailyActivity(userId) {
   return (
     <div className="daily-activity">
       <h3 className="daily-activity--title">Activité quotidienne</h3>
-      <ResponsiveContainer>
-        <BarChart data={getActivity()} barGap={8}>
-          <XAxis dataKey="day" stroke="grey" tickLine={false} dy={10} />
-          <YAxis
-            yAxisId="poids"
-            dataKey="kilogram"
-            domain={['dataMin -2', 'dataMax + 1']}
-            orientation="right"
-            axisLine={false}
-            tickLine={false}
-            dx={10}
-            dy={-4}
-          />
-          <YAxis
-            yAxisId="calories"
-            dataKey="calories"
-            domain={['dataMin -20', 'dataMax + 20']}
-            orientation="left"
-            axisLine={false}
-            tickLine={false}
-            dx={-10}
-            dy={-4}
-          />
-          <Tooltip wrapperStyle={{ width: 130 }} content={<CustomTooltip />} />
-          <Legend
-            width={'60%'}
-            iconType={'circle'}
-            iconSize={'.5rem'}
-            wrapperStyle={{
-              top: '-15%',
-              right: '1rem',
-              lineHeight: '40px',
-            }}
-          />
-          <CartesianGrid stroke="#ccc" vertical={false} />
-          <Bar
-            yAxisId="calories"
-            name="Calories brûlées (kCal)"
-            dataKey="calories"
-            fill="black"
-            barSize={8}
-            radius={[50, 50, 0, 0]}
-          />
-          <Bar
-            yAxisId="poids"
-            name="Poids (kg)"
-            dataKey="kilogram"
-            fill="red"
-            barSize={8}
-            radius={[50, 50, 0, 0]}
-          />
-        </BarChart>
+      <ResponsiveContainer className="responsive-container">
+        {/* MANAGE API response CASES */}
+        {isLoading ? (
+          <p className="loading-msg">...</p>
+        ) : hasError ? (
+          <p className="error-msg">erreur</p>
+        ) : formatedData ? (
+          <BarChart data={getActivity()} barGap={8}>
+            <XAxis dataKey="day" stroke="grey" tickLine={false} dy={10} />
+            <YAxis
+              yAxisId="poids"
+              dataKey="kilogram"
+              domain={['dataMin -2', 'dataMax + 1']}
+              orientation="right"
+              axisLine={false}
+              tickLine={false}
+              dx={10}
+              dy={-4}
+            />
+            <YAxis
+              yAxisId="calories"
+              dataKey="calories"
+              domain={['dataMin -20', 'dataMax + 20']}
+              orientation="left"
+              axisLine={false}
+              tickLine={false}
+              dx={-10}
+              dy={-4}
+            />
+            <Tooltip
+              wrapperStyle={{ width: 130 }}
+              content={<CustomTooltip />}
+            />
+            <Legend
+              width={'60%'}
+              iconType={'circle'}
+              iconSize={'.5rem'}
+              wrapperStyle={{
+                top: '-15%',
+                right: '1rem',
+                lineHeight: '40px',
+              }}
+            />
+            <CartesianGrid stroke="#ccc" vertical={false} />
+            <Bar
+              yAxisId="calories"
+              name="Calories brûlées (kCal)"
+              dataKey="calories"
+              fill="black"
+              barSize={8}
+              radius={[50, 50, 0, 0]}
+            />
+            <Bar
+              yAxisId="poids"
+              name="Poids (kg)"
+              dataKey="kilogram"
+              fill="red"
+              barSize={8}
+              radius={[50, 50, 0, 0]}
+            />
+          </BarChart>
+        ) : null}
       </ResponsiveContainer>
     </div>
   );

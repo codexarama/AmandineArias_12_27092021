@@ -15,7 +15,7 @@ import '../Styles/alerte.css';
  * @param {string} props.loader > loader src
  * @returns {Reactnode} jsx injected in DOM
  */
-export default function Loader() {
+export default function Chargement() {
   return (
     <main>
       <Banner logo={logo} message="En cours de chargement..." />
