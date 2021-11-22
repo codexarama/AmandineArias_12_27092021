@@ -39,9 +39,15 @@ export default function Dashboard(userId) {
 
   // GET user INFOS data from FETCH
   const { data, isLoading, hasError } = useFetch(`${userId}`);
+  // console.log(data);
+  // const userName = data.userInfos;
+
   // FORMATE user INFOS data with CLASS MODEL
-  const formatedData = new InfosModel(data);
-  const userName = formatedData.userInfos;
+  // const formatedData = new InfosModel(data);
+  // console.log(formatedData);
+  // const userName = formatedData.userInfos;
+  // console.log(formatedData.id);
+  // console.log(userName.userId);
 
   return (
     <>
@@ -61,7 +67,8 @@ export default function Dashboard(userId) {
             {/* DISPLAY DASHBOARD CONTENT */}
             <Route path={`${path}`}>
               <main className="dashboard">
-                <Header name={userName.firstName} />
+                {/* <Header name={userName.firstName} /> */}
+                <Header />
                 <section className="performances">
                   <section className="performances-details">
                     <Activity />
