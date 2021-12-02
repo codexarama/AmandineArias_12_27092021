@@ -14,17 +14,9 @@ Afficher les données utlisateur sous forme de graphique
 
 - [x] Récupérer les données depuis l'API
 - [x] Manipuler / Corriger les données selon le besoin
-- [x] Repésenter graphiquement les données : 
-  - diagramme en barres
-  - diagramme linéaire
-  - diagramme radar
-  - diagramme circulaire
+- [x] Repésenter graphiquement les données
 - [x] Développer des Routes imbriquées
-- [x] Gérer les différents cas liés à la réponse de la requête API :
-  - chargement en cours
-  - code erreur
-  - utilisateur inconnu
-  - affichage des données
+- [x] Gérer les différents cas liés à la réponse de la requête API
 - [x] Développer une logique de code partitionné dans des composants réutilisables
 
 ## Ressources fournies
