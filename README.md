@@ -57,8 +57,8 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 - Le lancer sur le port 3000 (par défaut) : `yarn dev`
 
 ### Etape 2 : Lancement du front-end
-- Cloner le repo du front-end : `git clone https://github.com/codexarama/AmandineArias_12_27092021.git`
-- Aller dans ce dossier : `cd AmandineArias_12_27092021`
+- Cloner le repo du front-end : `git clone https://github.com/codexarama/SportSee.git`
+- Aller dans ce dossier : `cd SportSee`
 - Installer ses dépendances : `npm install`
 - Le lancer sur le port 3001 : `npm start`
 
@@ -97,8 +97,8 @@ Tableau de bord analytique de performances sportives et indicateurs physiologiqu
 
 ### Step 2 : Installing and launching front-end
 
-- Clone the front-end repository : `git clone https://github.com/codexarama/AmandineArias_12_27092021.git`
-- Move to this folder : `cd AmandineArias_12_27092021`
+- Clone the front-end repository : `git clone https://github.com/codexarama/Sportsee.git`
+- Move to this folder : `cd SportSee`
 - Install dependencies : `npm install`
 - Launch front-end on port 3001: `npm start`
 
