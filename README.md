@@ -2,6 +2,9 @@
 
     Projet fictif de formation n°09/11 | OpenClassrooms
 
+**Personnal Dashboard**
+<kbd>![dashboard](./SportSee.png)</kbd>
+
 > PROBLEMATIQUE
 
 Créer un tableau de bord analytique de performances sportives et indicateurs physiologiques
