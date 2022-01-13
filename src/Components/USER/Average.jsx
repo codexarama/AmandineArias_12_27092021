@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
-import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 import propTypes from 'prop-types';
+
+import { useParams } from 'react-router-dom';
+import { useFetch } from '../../Services/mockedApi';
+
+import AverageSessionsModel from '../../ClassModels/averageSessionsModel';
 
 import {
   ResponsiveContainer,
@@ -30,7 +32,9 @@ export default function Average(userId) {
   userId = useParams().id;
 
   // GET user AVERAGE SESSIONS data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}/average-sessions`);
+  const { data, isLoading, hasError } = useFetch(
+    `${userId}/average-sessions.json`
+  );
   // console.log(data);
   // FORMATE user AVERAGE SESSIONS data with CLASS MODEL
   const formatedData = new AverageSessionsModel(data);
@@ -115,6 +119,13 @@ export default function Average(userId) {
   );
 }
 
+/**
+ * Render CustomTooltip component
+ * @function CustomTooltip
+ * @param {bollean} active > hover ? y/n
+ * @param {array} payload > data to display
+ * @returns {JSX}
+ */
 function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return (

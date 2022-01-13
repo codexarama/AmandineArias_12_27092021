@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 import InfosModel from '../../ClassModels/infosModel';
 
 /**
@@ -16,7 +16,7 @@ export default function Header(userId) {
   userId = useParams().id;
 
   // GET user SCORE data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}`);
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
   // FORMATE user INFOS data with CLASS MODEL
   const formatedData = new InfosModel(data);
 

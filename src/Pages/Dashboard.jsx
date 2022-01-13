@@ -14,7 +14,7 @@ import Performance from '../Components/USER/Performance';
 import Score from '../Components/USER/Score';
 import Health from '../Components/USER/Health';
 
-import { useFetch } from '../Services/api';
+import { useFetch } from '../Services/mockedApi';
 
 import '../Styles/dashboard.css';
 
@@ -37,7 +37,7 @@ export default function Dashboard(userId) {
   userId = useParams().id;
 
   // GET user INFOS data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}`);
+  const { data, isLoading, hasError } = useFetch(`${userId}.json`);
   // console.log(data);
 
   return (

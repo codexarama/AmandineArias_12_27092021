@@ -25,14 +25,14 @@ Afficher les données utlisateur sous forme de graphique
 ## Ressources fournies
 
 * [Maquette](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR)
-* [Kanban](https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)  
+* [Kanban](https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 
 ## Bibliothèques
 
-    REACT   
+    REACT
     RECHART
 
-## Installation 
+## Installation
 
 ### Editeur recommandé
 
@@ -101,7 +101,7 @@ l'API de SportSee fournit des données pour les utilisateurs d'id 12 et 18
 
 ### Step 2 : Installing and launching front-end
 
-- Clone the front-end repository : `git clone https://github.com/codexarama/SportSee.git`
+- Clone the front-end repository : `git clone https://github.com/codexarama/Sportsee.git`
 - Move to this folder : `cd SportSee`
 - Install dependencies : `npm install`
 - Launch front-end on port 3001: `npm start`

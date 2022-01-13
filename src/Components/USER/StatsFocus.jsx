@@ -4,7 +4,7 @@ import DailyActivity from './Activity';
 import Average from './Average';
 import Performance from './Performance';
 import Score from './Score';
-import Health from './Health'
+import Health from './Health';
 
 import '../../Styles/banner.css';
 
@@ -45,7 +45,7 @@ export const statsFocus = [
       <>
         <Banner logo={logo} message="Sessions moyennes" />
         <section style={mainStyle}>
-          <Average/>
+          <Average />
         </section>
       </>
     ),

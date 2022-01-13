@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
+import { useFetch } from '../../Services/mockedApi';
 
 import ActivityModel from '../../ClassModels/activityModel';
 
@@ -34,7 +34,7 @@ export default function DailyActivity(userId) {
   userId = useParams().id;
 
   // GET user DAILY ACTIVITY data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}/activity`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/activity.json`);
   // FORMATE user DAILY ACTIVITY data with CLASS MODEL
   const formatedData = new ActivityModel(data);
   const activity = formatedData.sessions;
@@ -48,12 +48,13 @@ export default function DailyActivity(userId) {
         // date of the last seven days (today included)
         item.day.setDate(item.day.getDate() - index);
 
+        // let options = {
         const options = {
           month: '2-digit',
           day: '2-digit',
         };
 
-        // french format date matched with options (jj/mm)
+        // french format date matched with options : jj/mm
         item.day = new Intl.DateTimeFormat('fr', options).format(item.day);
         // console.log(item.day);
       });
@@ -137,9 +138,8 @@ export default function DailyActivity(userId) {
  * @function CustomTooltip
  * @param {bollean} active > hover ? y/n
  * @param {array} payload > data to display
- * @returns {?JSX}
+ * @returns {JSX}
  */
-
 function CustomTooltip({ active, payload }) {
   return active && payload ? (
     <ul className="custom-tooltip">
@@ -152,7 +152,7 @@ function CustomTooltip({ active, payload }) {
 /**
  * PropTypes DailyActivity component
  */
- DailyActivity.propTypes = {
+DailyActivity.propTypes = {
   userId: propTypes.string,
 };
 

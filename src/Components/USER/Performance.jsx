@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom';
-import { useFetch } from '../../Services/api';
-import PerformanceModel from '../../ClassModels/performanceModel';
 import propTypes from 'prop-types';
+
+import { useParams } from 'react-router-dom';
+import { useFetch } from '../../Services/mockedApi';
+
+import PerformanceModel from '../../ClassModels/performanceModel';
 
 import {
   ResponsiveContainer,
@@ -27,7 +29,7 @@ export default function Performance(userId) {
   userId = useParams().id;
 
   // GET user PERFORMANCES data from FETCH
-  const { data, isLoading, hasError } = useFetch(`${userId}/performance`);
+  const { data, isLoading, hasError } = useFetch(`${userId}/performance.json`);
   // FORMATE user PERFORMANCES data with CLASS MODEL
   const formatedData = new PerformanceModel(data);
 
