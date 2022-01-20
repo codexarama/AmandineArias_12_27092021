@@ -1,29 +1,23 @@
-  .banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    background: var(--dark-bg);
-  }
+.banner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: var(--dark-bg);
+}
 
-  .banner-brand {
-    z-index: 1;
-    width: 15rem;
-  }
+.banner-brand {
+  z-index: 1;
+  width: 15rem;
+}
 
-  .logo {
-    margin-left: 2rem;
-  }
+.brand {
+  margin-left: 1rem;
+}
 
-  .brand {
-    margin-left: 1rem;
-  }
-
-  .msg {
-    position: absolute;
-    margin-bottom: 0;
-    width: 100%;
-    color: var(--secondary);
-    text-align: center;
-  }
+.msg {
+  margin-bottom: 0;
+  color: var(--secondary);
+  text-align: center;
+}

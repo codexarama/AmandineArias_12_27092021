@@ -23,8 +23,8 @@ Tags: app, sport, dashboard, performance, health;
 /************ BODY ************/
 body {
   box-sizing: border-box;
-  min-width: 1024px;
-  min-height: 780px;
+  /* min-width: 1024px;
+  min-height: 780px; */
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -43,4 +43,5 @@ a {
 
 ul {
   list-style: none;
+  margin-bottom: 0;
 }

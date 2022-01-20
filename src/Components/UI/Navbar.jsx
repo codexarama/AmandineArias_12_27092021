@@ -20,14 +20,12 @@ export default function Navbar() {
   const topicId = ['Profil', 'Réglages', 'Communauté'];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
+    <nav className="navbar">
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="logo Sport See" />
           <img className="brand" src={SportSee} alt="logo Sport See" />
         </Link>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav w-100 d-flex justify-content-evenly">
+          <ul className="navbar-menu">
             <Link className="nav-link" to="/">
               Accueil
             </Link>
@@ -42,8 +40,6 @@ export default function Navbar() {
               </NavLink>
             ))}
           </ul>
-        </div>
-      </div>
     </nav>
   );
 }
