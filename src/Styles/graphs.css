@@ -119,3 +119,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 968px) {
+  .average-sessions,
+  .performance,
+  .score {
+    width: 100%;
+  }
+}

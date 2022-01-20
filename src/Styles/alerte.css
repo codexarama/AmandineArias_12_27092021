@@ -3,6 +3,12 @@
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-left: 5rem;
 }
 
 .info-redirection {
@@ -28,14 +34,13 @@
 }
 
 .error-back {
-  width: fit-content;
-  height: 2.5rem !important;
-  margin: auto;
-  padding: 0 0 !important;
+  width: 200px;
   border-bottom: solid 2px var(--link);
-  text-align: center;
   color: var(--link);
   font-size: x-small;
+  height: 50px !important;
+  text-align: center;
+  margin: auto;
 }
 
 /* UNKNOWN USER PAGE */

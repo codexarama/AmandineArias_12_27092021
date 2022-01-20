@@ -21,7 +21,7 @@ export default function Header(userId) {
   const formatedData = new InfosModel(data);
 
   return (
-    <header>
+    <header className="user-header">
       {isLoading ? (
         <p className="loading-msg">...</p>
       ) : hasError ? (
